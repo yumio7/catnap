@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -29,11 +31,14 @@ public class EnemyBehavior : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            var playerHealth = other.GetComponent<PlayerHealth>();
+            Debug.Log(("Collision"));
+            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            other.gameObject.GetComponent<CharacterController>()
+                .Move((transform.position - other.contacts[0].point).normalized * Time.deltaTime);
             playerHealth.TakeDamage(damageAmount);
         }
     }

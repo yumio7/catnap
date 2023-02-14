@@ -399,7 +399,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -870,8 +870,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4419847602975683314, guid: 5deae587ebc9449a2819ef32c458b36e, type: 3}
   projectileSpeed: 100
-  reticleImage: {fileID: 0}
-  reticleDementorColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2017706679160672668
 GameObject:
   m_ObjectHideFlags: 0
