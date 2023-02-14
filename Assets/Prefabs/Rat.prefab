@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b94ea7c7b3d3a4889fb5bc910ba589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dementorExpelled: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
+  destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
