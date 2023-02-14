@@ -39,7 +39,7 @@ public class SpawnerBehavior : MonoBehaviour
         // Set the instance counter to zero and initialize the time
         _instanceCounter = 0;
         _lastTime = Time.time;
-        _enemyManager = EnemyManager.Instance;
+        _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
     }
 
     // Update is called once per frame

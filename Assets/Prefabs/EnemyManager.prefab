@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2051230087683807536}
   m_Layer: 0
   m_Name: EnemyManager
-  m_TagString: Untagged
+  m_TagString: EnemyManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCap: 10
   enemyCount: 0
+  enemiesKilled: 0
+  killsForBossSpawn: 2
+  boss: {fileID: 0}
