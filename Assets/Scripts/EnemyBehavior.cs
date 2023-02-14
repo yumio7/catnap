@@ -38,7 +38,7 @@ public class EnemyBehavior : MonoBehaviour
             Debug.Log(("Collision"));
             var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
             other.gameObject.GetComponent<CharacterController>()
-                .Move((transform.position - other.contacts[0].point).normalized * Time.deltaTime);
+                .Move((transform.position - other.contacts[0].point).normalized * 2 * Time.deltaTime);
             playerHealth.TakeDamage(damageAmount);
         }
     }
