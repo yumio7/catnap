@@ -306,9 +306,12 @@ GameObject:
   - component: {fileID: 2017706678644702774}
   - component: {fileID: 2017706678644702775}
   - component: {fileID: 2017706678644702772}
+  - component: {fileID: 4077297471075489656}
+  - component: {fileID: 1165237476715095838}
+  - component: {fileID: 2735740668521586252}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,6 +402,53 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4077297471075489656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678644702773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97c05f182801445d827b85bdafd0014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  jumpHeight: 2
+  gravity: 9.81
+  airControl: 10
+--- !u!114 &1165237476715095838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678644702773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9e8a07132b541c9abda2e6ff38aae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+--- !u!143 &2735740668521586252
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678644702773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.0000005
+  m_Radius: 0.5000001
+  m_SlopeLimit: 90
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2017706678842660418
 GameObject:
@@ -566,8 +616,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.06237394}
-  - {x: -0.069747925, y: -0.06237394}
+  - {x: -0, y: -0.062373936}
+  - {x: -0.069747925, y: -0.062373936}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -611,7 +661,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1775
+  m_VersionIndex: 1781
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -718,6 +768,8 @@ GameObject:
   - component: {fileID: 2017706678887858977}
   - component: {fileID: 2017706678887858979}
   - component: {fileID: 2017706678887858976}
+  - component: {fileID: 318989737641616502}
+  - component: {fileID: 4703218751400363201}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -791,6 +843,35 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017706678887859006}
   m_Enabled: 1
+--- !u!114 &318989737641616502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678887859006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c1a973caca7465eb12f20766e570fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+--- !u!114 &4703218751400363201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678887859006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f072b11c44947efb3ec34d8cdac9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 100
+  reticleImage: {fileID: 0}
+  reticleDementorColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2017706679160672668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,25 +1204,25 @@ MonoBehaviour:
   - {x: -0.42491007, y: -0.03868866}
   - {x: 0.017659903, y: 0.006653905}
   - {x: 1.5722591, y: 0}
-  - {x: 1.1669269, y: 0}
+  - {x: 1.1669267, y: 0}
   - {x: 1.5722591, y: 0.11995435}
-  - {x: 1.1669269, y: 0.11995435}
+  - {x: 1.1669267, y: 0.11995435}
   - {x: -1.5026255, y: 0}
-  - {x: -1.7850453, y: 0}
+  - {x: -1.7850451, y: 0}
   - {x: -1.5026255, y: 0.11995435}
-  - {x: -1.7850453, y: 0.11995435}
-  - {x: -1.0350666, y: 0}
+  - {x: -1.7850451, y: 0.11995435}
+  - {x: -1.0350665, y: 0}
   - {x: -1.5113155, y: 0}
-  - {x: -1.0350666, y: 0.11995435}
+  - {x: -1.0350665, y: 0.11995435}
   - {x: -1.5113155, y: 0.11995435}
-  - {x: 1.4354459, y: 0}
-  - {x: 0.90047055, y: 0}
-  - {x: 1.4354459, y: 0.11995435}
-  - {x: 0.90047055, y: 0.11995435}
+  - {x: 1.435446, y: 0}
+  - {x: 0.9004706, y: 0}
+  - {x: 1.435446, y: 0.11995435}
+  - {x: 0.9004706, y: 0.11995435}
   - {x: -0.61108553, y: 0}
-  - {x: -0.99928063, y: 0}
+  - {x: -0.9992805, y: 0}
   - {x: -0.61108553, y: 0.11995435}
-  - {x: -0.99928063, y: 0.11995435}
+  - {x: -0.9992805, y: 0.11995435}
   - {x: 0.81131667, y: 0}
   - {x: 0.30427724, y: 0}
   - {x: 0.81131667, y: 0.11995435}
@@ -1211,10 +1292,10 @@ MonoBehaviour:
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
   m_Colors: []
   m_UnwrapParameters:
     m_HardAngle: 88
@@ -1224,7 +1305,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 589
+  m_VersionIndex: 595
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1485,8 +1566,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.06237394}
-  - {x: -0.069747925, y: -0.06237394}
+  - {x: -0, y: -0.062373936}
+  - {x: -0.069747925, y: -0.062373936}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -1530,7 +1611,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1772
+  m_VersionIndex: 1778
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

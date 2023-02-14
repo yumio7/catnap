@@ -24,7 +24,7 @@ CharacterController controller;
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
+        input = (transform.right * moveHorizontal + transform.up * moveVertical).normalized;
 
         input *= speed;
 
