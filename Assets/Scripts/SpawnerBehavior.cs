@@ -98,6 +98,7 @@ public class SpawnerBehavior : MonoBehaviour
         return (val >= low && val <= high);
     }
 
+    // Returns a vector within the x range and z range of the spawner
     private Vector3 _vectorInRange()
     {
         Vector3 pos = this.transform.position;
