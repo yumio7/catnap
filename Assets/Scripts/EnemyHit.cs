@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    public GameObject dementorExpelled;
+    public GameObject destroyedParticleEffect;
     void Start()
     {
         
@@ -18,23 +18,23 @@ public class EnemyHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
+        
           if (other.CompareTag("Projectile"))
         {
-            DestroyDementor();
+            DestroyEnemy();
         } 
-         */
+         
        
     }
 
-    void DestroyDementor()
+    void DestroyEnemy()
     {
-        /*
+        
          
-        Instantiate(dementorExpelled, transform.position, transform.rotation);
+        Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
         gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
         
-        */
+        
     }
 }
