@@ -23,6 +23,7 @@ public class EnemyHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            Destroy(collision.gameObject);
             enemyHealth -= 1;
             
             if (enemyHealth <= 0)
