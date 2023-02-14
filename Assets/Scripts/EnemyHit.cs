@@ -36,6 +36,7 @@ public class EnemyHit : MonoBehaviour
     {
         Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
         EnemyManager.Instance.enemyCount -= 1;
+        EnemyManager.Instance.enemiesKilled += 1;
         gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
         

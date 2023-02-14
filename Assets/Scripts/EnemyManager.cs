@@ -8,7 +8,15 @@ public class EnemyManager : MonoBehaviour
 
     public int enemyCount = 0;
 
+    public int enemiesKilled = 0;
+
+    public int killsForBossSpawn = 2;
+
+    [SerializeField] private GameObject boss;
+
     public static EnemyManager Instance;
+    
+    private bool _spawned = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +26,10 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (enemiesKilled >= killsForBossSpawn && !_spawned)
+        {
+            Instantiate(boss);
+            _spawned = true;
+        }
     }
 }
