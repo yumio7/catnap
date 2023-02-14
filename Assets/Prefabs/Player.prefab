@@ -264,8 +264,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.06237394}
-  - {x: -0.069747925, y: -0.06237394}
+  - {x: -0, y: -0.062373936}
+  - {x: -0.069747925, y: -0.062373936}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -416,6 +416,8 @@ GameObject:
   - component: {fileID: 7243230043308549783}
   - component: {fileID: 7243230043308549782}
   - component: {fileID: 7243230043308549781}
+  - component: {fileID: 1053872707856630620}
+  - component: {fileID: 3143597964139727972}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -489,6 +491,35 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7243230043308549780}
   m_Enabled: 1
+--- !u!114 &1053872707856630620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243230043308549780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f072b11c44947efb3ec34d8cdac9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 100
+  reticleImage: {fileID: 0}
+  reticleDementorColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &3143597964139727972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243230043308549780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c1a973caca7465eb12f20766e570fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
 --- !u!1 &7243230043374415627
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +686,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.06237394}
-  - {x: -0.069747925, y: -0.06237394}
+  - {x: -0, y: -0.062373936}
+  - {x: -0.069747925, y: -0.062373936}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -1226,25 +1257,25 @@ MonoBehaviour:
   - {x: -0.42491007, y: -0.03868866}
   - {x: 0.017659903, y: 0.006653905}
   - {x: 1.5722591, y: 0}
-  - {x: 1.1669269, y: 0}
+  - {x: 1.1669267, y: 0}
   - {x: 1.5722591, y: 0.11995435}
-  - {x: 1.1669269, y: 0.11995435}
+  - {x: 1.1669267, y: 0.11995435}
   - {x: -1.5026255, y: 0}
-  - {x: -1.7850453, y: 0}
+  - {x: -1.7850451, y: 0}
   - {x: -1.5026255, y: 0.11995435}
-  - {x: -1.7850453, y: 0.11995435}
-  - {x: -1.0350666, y: 0}
+  - {x: -1.7850451, y: 0.11995435}
+  - {x: -1.0350665, y: 0}
   - {x: -1.5113155, y: 0}
-  - {x: -1.0350666, y: 0.11995435}
+  - {x: -1.0350665, y: 0.11995435}
   - {x: -1.5113155, y: 0.11995435}
-  - {x: 1.4354459, y: 0}
-  - {x: 0.90047055, y: 0}
-  - {x: 1.4354459, y: 0.11995435}
-  - {x: 0.90047055, y: 0.11995435}
+  - {x: 1.435446, y: 0}
+  - {x: 0.9004706, y: 0}
+  - {x: 1.435446, y: 0.11995435}
+  - {x: 0.9004706, y: 0.11995435}
   - {x: -0.61108553, y: 0}
-  - {x: -0.99928063, y: 0}
+  - {x: -0.9992805, y: 0}
   - {x: -0.61108553, y: 0.11995435}
-  - {x: -0.99928063, y: 0.11995435}
+  - {x: -0.9992805, y: 0.11995435}
   - {x: 0.81131667, y: 0}
   - {x: 0.30427724, y: 0}
   - {x: 0.81131667, y: 0.11995435}
@@ -1314,10 +1345,10 @@ MonoBehaviour:
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
   m_Colors: []
   m_UnwrapParameters:
     m_HardAngle: 88
@@ -1434,6 +1465,8 @@ GameObject:
   - component: {fileID: 7243230043882950869}
   - component: {fileID: 7243230043882950868}
   - component: {fileID: 7243230043882950867}
+  - component: {fileID: 5791581334263221510}
+  - component: {fileID: 3587995283499592029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1528,6 +1561,35 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5791581334263221510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243230043882950866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97c05f182801445d827b85bdafd0014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpHeight: 3
+  gravity: 9.81
+  airControl: 10
+--- !u!114 &3587995283499592029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243230043882950866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9e8a07132b541c9abda2e6ff38aae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
 --- !u!1 &7243230043893665100
 GameObject:
   m_ObjectHideFlags: 0
