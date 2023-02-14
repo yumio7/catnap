@@ -15,14 +15,6 @@ public class SpawnerBehavior : MonoBehaviour
     // Maximum delay between spawns
     [SerializeField] private float spawnDelay;
 
-    // Cap of all enemies in scene
-    public static int EnemyCap = 5;
-
-    // Counter of all enemies alive in scene
-    // MAY WANT TO MOVE THIS AND ENEMY CAP TO LEVEL MANAGER
-    // OR AN "ENEMY MANAGER" SCRIPT
-    public static int EnemiesAlive = 0;
-
     // The number of objects that this spawner has spawned
     private int _instanceCounter;
 
@@ -32,12 +24,15 @@ public class SpawnerBehavior : MonoBehaviour
     // Clamped between .5 and 1, affects the spawn rate
     // based on how many enemies are in the scene relative to the cap
     private float _spawnRateModifier;
+
+    private EnemyManager _enemyManager;
     
     void Start()
     {
         // Set the instance counter to zero and initialize the time
         _instanceCounter = 0;
         _lastTime = Time.time;
+        _enemyManager = EnemyManager.Instance;
     }
 
     // Update is called once per frame
@@ -57,7 +52,7 @@ public class SpawnerBehavior : MonoBehaviour
         {
             Instantiate(spawnedObject, transform.position, Quaternion.identity);
             _instanceCounter += 1;
-            EnemiesAlive += 1;
+            _enemyManager.enemyCount += 1;
         }
     }
 
@@ -69,7 +64,7 @@ public class SpawnerBehavior : MonoBehaviour
         // Spawns enemies on the given delay modified by the spawnrate modifier
         if (_inRange(currentTime % (spawnDelay * _spawnRateModifier), -.01f, .01f) 
             && ((currentTime - _lastTime) > (spawnDelay / 2))
-            && EnemiesAlive < EnemyCap)
+            && _enemyManager.enemyCount < _enemyManager.enemyCap)
         {
             _spawnInstance();
             _lastTime = currentTime;
@@ -79,14 +74,14 @@ public class SpawnerBehavior : MonoBehaviour
     // Calculates the spawn rate modifier based on how full the scene is of enemies
     private void _calculateSpawnRateModifier()
     {
-        float count = EnemiesAlive;
+        float count = _enemyManager.enemyCount;
 
         if (count == 0)
         {
             count = 1;
         }
 
-        _spawnRateModifier = Mathf.Clamp(count / (float)EnemyCap, .5f, 1f);
+        _spawnRateModifier = Mathf.Clamp(count / (float)_enemyManager.enemyCap, .5f, 1f);
         
     }
 
