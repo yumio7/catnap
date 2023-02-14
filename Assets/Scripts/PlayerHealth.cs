@@ -35,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
         {
             PlayerDies();
         }
+        
+        Debug.Log(currentHealth);
     }
 
     void PlayerDies()
