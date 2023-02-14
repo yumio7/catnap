@@ -14,6 +14,12 @@ public class SpawnerBehavior : MonoBehaviour
 
     // Maximum delay between spawns
     [SerializeField] private float spawnDelay;
+    
+    // X distance away from spawner that object can spawn
+    [SerializeField] private float xRange;
+    
+    // Z distance away from spawner that object can spawn
+    [SerializeField] private float zRange;
 
     // The number of objects that this spawner has spawned
     private int _instanceCounter;
@@ -26,6 +32,7 @@ public class SpawnerBehavior : MonoBehaviour
     private float _spawnRateModifier;
 
     private EnemyManager _enemyManager;
+    
     
     void Start()
     {
@@ -50,7 +57,7 @@ public class SpawnerBehavior : MonoBehaviour
     {
         if (_instanceCounter < totalInstances)
         {
-            Instantiate(spawnedObject, transform.position, Quaternion.identity);
+            Instantiate(spawnedObject, _vectorInRange(), Quaternion.identity);
             _instanceCounter += 1;
             _enemyManager.enemyCount += 1;
         }
@@ -89,6 +96,18 @@ public class SpawnerBehavior : MonoBehaviour
     private bool _inRange(float val, float low, float high)
     {
         return (val >= low && val <= high);
+    }
+
+    private Vector3 _vectorInRange()
+    {
+        Vector3 pos = this.transform.position;
+        Vector3 ret = new Vector3();
+
+        ret.x = Random.Range(pos.x - xRange, pos.x + xRange);
+        ret.z = Random.Range(pos.z - zRange, pos.z + zRange);
+        ret.y = pos.y;
+
+        return ret;
     }
     
 }
