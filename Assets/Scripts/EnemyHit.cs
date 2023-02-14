@@ -24,13 +24,18 @@ public class EnemyHit : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Destroy(collision.gameObject);
-            enemyHealth -= 1;
-            
-            if (enemyHealth <= 0)
-            {
-                DestroyEnemy();
-            }
+            EnemyHurt(1);
         } 
+    }
+
+    public void EnemyHurt(int damage)
+    {
+        enemyHealth -= damage;
+            
+        if (enemyHealth <= 0)
+        {
+            DestroyEnemy();
+        }
     }
 
     void DestroyEnemy()
@@ -39,6 +44,7 @@ public class EnemyHit : MonoBehaviour
         EnemyManager.Instance.enemyCount -= 1;
         EnemyManager.Instance.enemiesKilled += 1;
         gameObject.SetActive(false);
+        FindObjectOfType<LevelManager>().SetScoreText();
         Destroy(gameObject, 0.5f);
         
         
