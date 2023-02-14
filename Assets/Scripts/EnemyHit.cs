@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyHit : MonoBehaviour
 {
     public GameObject destroyedParticleEffect;
+
+    public int enemyHealth = 2;
     void Start()
     {
         
@@ -21,14 +23,17 @@ public class EnemyHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            DestroyEnemy();
+            enemyHealth -= 1;
+            
+            if (enemyHealth <= 0)
+            {
+                DestroyEnemy();
+            }
         } 
     }
 
     void DestroyEnemy()
     {
-        
-         
         Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
         EnemyManager.Instance.enemyCount -= 1;
         gameObject.SetActive(false);

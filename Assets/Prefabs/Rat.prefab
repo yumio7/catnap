@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 5
-  minDistance: 2
+  minDistance: 0
   damageAmount: 20
 --- !u!114 &2936854180030921164
 MonoBehaviour:
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
+  enemyHealth: 2
 --- !u!54 &3025128996750224108
 Rigidbody:
   m_ObjectHideFlags: 0
