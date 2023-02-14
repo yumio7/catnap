@@ -42,7 +42,5 @@ public class PlayerHealth : MonoBehaviour
     void PlayerDies()
     {
         // AudioSource.PlayClipAtPoint(deadSFX, transform.position);
-        
-        transform.Rotate(-90, 0, 0, Space.Self);
     }
 }
