@@ -33,8 +33,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //var playerHealth = other.GetComponent<PlayerHealth>();
-            //playerHealth.TakeDamage(damageAmount);
+            var playerHealth = other.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
         }
     }
 }

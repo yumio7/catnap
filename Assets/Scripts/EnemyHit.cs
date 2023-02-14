@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,12 @@ public class EnemyHit : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        
-          if (other.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Projectile"))
         {
             DestroyEnemy();
         } 
-         
-       
     }
 
     void DestroyEnemy()
@@ -32,6 +30,7 @@ public class EnemyHit : MonoBehaviour
         
          
         Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
+        EnemyManager.Instance.enemyCount -= 1;
         gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
         
