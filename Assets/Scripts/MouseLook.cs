@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
     Transform playerBody;
     public float mouseSensitivity = 100;
 
-    float pitch = 0;
+    float pitch = -90f;
 
     void Start()
     {
