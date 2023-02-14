@@ -9,6 +9,7 @@ TagManager:
   - ProjectileParent
   - EnemyManager
   - ClawZone
+  - EnemyParent
   layers:
   - Default
   - TransparentFX

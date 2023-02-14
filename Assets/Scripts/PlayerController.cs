@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-CharacterController controller;
+    CharacterController controller;
 
     public float speed = 5f;
     public float jumpHeight = 3;
@@ -30,7 +30,7 @@ CharacterController controller;
 
         input *= speed;
 
-        if(controller.isGrounded)
+        if (controller.isGrounded)
         {
             moveDirection = input;
 
@@ -53,16 +53,14 @@ CharacterController controller;
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
-        
-        
+
+
         // SWIPE ATTACK
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _swipeAttack();
         }
     }
-    
-    
 
 
     void _swipeAttack()
@@ -70,8 +68,8 @@ CharacterController controller;
         // Access list of objects in zone
         List<GameObject> objList = _clawZone.GetComponent<ListOfObjectsInTrigger>().enemies;
         Vector3 pos = this.transform.position;
-        
-        foreach(GameObject obj in objList)
+
+        foreach (GameObject obj in objList)
         {
             if (obj != null)
             {
@@ -80,10 +78,8 @@ CharacterController controller;
                 obj.GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
                 EnemyHit eh = obj.GetComponent<EnemyHit>();
 
-                eh.EnemyHurt(1);   
+                eh.EnemyHurt(1);
             }
-
-
         }
     }
 }

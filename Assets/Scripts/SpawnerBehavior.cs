@@ -14,10 +14,10 @@ public class SpawnerBehavior : MonoBehaviour
 
     // Maximum delay between spawns
     [SerializeField] private float spawnDelay;
-    
+
     // X distance away from spawner that object can spawn
     [SerializeField] private float xRange;
-    
+
     // Z distance away from spawner that object can spawn
     [SerializeField] private float zRange;
 
@@ -32,14 +32,17 @@ public class SpawnerBehavior : MonoBehaviour
     private float _spawnRateModifier;
 
     private EnemyManager _enemyManager;
-    
-    
+
+    private GameObject _enemyParent;
+
+
     void Start()
     {
         // Set the instance counter to zero and initialize the time
         _instanceCounter = 0;
         _lastTime = Time.time;
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+        _enemyParent = GameObject.FindGameObjectWithTag("EnemyParent");
     }
 
     // Update is called once per frame
@@ -50,14 +53,15 @@ public class SpawnerBehavior : MonoBehaviour
         _calculateSpawnRateModifier();
         _spawnerLogic();
     }
-    
+
     // Spawns an instance of the specified object
     // if we have any spawns remaining
     private void _spawnInstance()
     {
         if (_instanceCounter < totalInstances)
         {
-            Instantiate(spawnedObject, _vectorInRange(), Quaternion.identity);
+            GameObject enemy = Instantiate(spawnedObject, _vectorInRange(), Quaternion.identity);
+            enemy.transform.SetParent(_enemyParent.transform);
             _instanceCounter += 1;
             _enemyManager.enemyCount += 1;
         }
@@ -69,7 +73,7 @@ public class SpawnerBehavior : MonoBehaviour
     {
         float currentTime = Time.time;
         // Spawns enemies on the given delay modified by the spawnrate modifier
-        if (_inRange(currentTime % (spawnDelay * _spawnRateModifier), -.01f, .01f) 
+        if (_inRange(currentTime % (spawnDelay * _spawnRateModifier), -.01f, .01f)
             && ((currentTime - _lastTime) > (spawnDelay / 2))
             && _enemyManager.enemyCount < _enemyManager.enemyCap)
         {
@@ -89,7 +93,6 @@ public class SpawnerBehavior : MonoBehaviour
         }
 
         _spawnRateModifier = Mathf.Clamp(count / (float)_enemyManager.enemyCap, .5f, 1f);
-        
     }
 
     // Returns true if a val is within range, false otherwies
@@ -110,5 +113,4 @@ public class SpawnerBehavior : MonoBehaviour
 
         return ret;
     }
-    
 }

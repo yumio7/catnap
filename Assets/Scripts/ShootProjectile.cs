@@ -6,19 +6,23 @@ using UnityEngine.UI;
 public class ShootProjectile : MonoBehaviour
 {
     public GameObject projectilePrefab;
-    
+
     public float projectileSpeed = 20;
 
     //public AudioClip spellSFX;
 
     //public Image reticleImage;
 
-   // public Color reticleDementorColor;
+    // public Color reticleDementorColor;
+
+    private GameObject _projectileParent;
 
     private Color originalReticleColor;
+
     void Start()
     {
         //originalReticleColor = reticleImage.color;
+        _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
     // Update is called once per frame
@@ -26,15 +30,15 @@ public class ShootProjectile : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject projectile = Instantiate(projectilePrefab, 
+            GameObject projectile = Instantiate(projectilePrefab,
                 transform.position + transform.forward, transform.rotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            
+
             rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
-            
+
             projectile.transform.SetParent(
-                GameObject.FindGameObjectWithTag("ProjectileParent").transform);
-            
+                _projectileParent.transform);
+
             //AudioSource.PlayClipAtPoint(spellSFX, transform.position);
         }
     }
