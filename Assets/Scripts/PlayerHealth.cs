@@ -7,14 +7,14 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     //public AudioClip deadSFX;
-    //public Slider healthSlider;
+    public Slider healthSlider;
 
     private int currentHealth;
 
     void Start()
     {
         currentHealth = startingHealth;
-        //healthSlider.value = currentHealth;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -27,15 +27,27 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damageAmount;
-            //healthSlider.value = currentHealth;
+            healthSlider.value = currentHealth;
         }
 
         if (currentHealth <= 0)
         {
             PlayerDies();
         }
+    }
 
-        Debug.Log(currentHealth);
+    public void AddHealth(int healthAmount)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth += healthAmount;
+        }
+
+        if (currentHealth >= startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+        healthSlider.value = currentHealth;
     }
 
     void PlayerDies()

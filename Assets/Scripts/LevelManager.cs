@@ -26,9 +26,9 @@ public class LevelManager : MonoBehaviour
     {
         isGameOver = false;
 
-        //countDown = levelDuration;
-
-        //SetTimerText();
+        totalKills = 0;
+        
+        RestartScore();
     }
 
     // Update is called once per frame
@@ -38,31 +38,20 @@ public class LevelManager : MonoBehaviour
         {
             LevelLost();
         }
-        /*if (!isGameOver)
-        {
-            if (countDown > 0)
-            {
-                countDown -= Time.deltaTime;
-            }
-            else
-            {
-                countDown = 0.0f;
-                LevelLost();
-            }
-            SetTimerText();
-
-        } */
 
     }
-
-    /*void SetTimerText()
-    {
-        timerText.text = countDown.ToString("f2");
-    } */
+    
 
     public void SetScoreText()
     {
         totalKills += 1;
+
+        score.text = "Score: " + totalKills.ToString();
+    }
+    
+    public void RestartScore()
+    {
+        totalKills = 0;
 
         score.text = "Score: " + totalKills.ToString();
     }
@@ -72,9 +61,6 @@ public class LevelManager : MonoBehaviour
         isGameOver = true;
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
-
-        //Camera.main.GetComponent<AudioSource>().pitch = 1;
-        //AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
 
         Invoke("LoadCurrentLevel", 2);
 

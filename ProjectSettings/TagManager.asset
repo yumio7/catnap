@@ -10,6 +10,8 @@ TagManager:
   - EnemyManager
   - ClawZone
   - EnemyParent
+  - PowerupParent
+  - Milk
   layers:
   - Default
   - TransparentFX
