@@ -11,9 +11,9 @@ public class ShootProjectile : MonoBehaviour
 
     //public AudioClip spellSFX;
 
-    //public Image reticleImage;
+    public Image reticleImage;
 
-    // public Color reticleDementorColor;
+    public Color reticleDementorColor;
 
     private GameObject _projectileParent;
 
@@ -21,7 +21,7 @@ public class ShootProjectile : MonoBehaviour
 
     void Start()
     {
-        //originalReticleColor = reticleImage.color;
+        originalReticleColor = reticleImage.color;
         _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
@@ -45,10 +45,10 @@ public class ShootProjectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //ReticleEffect();
+        ReticleEffect();
     }
 
-    /*void ReticleEffect()
+    void ReticleEffect()
     {
         RaycastHit hit;
 
@@ -71,5 +71,5 @@ public class ShootProjectile : MonoBehaviour
                     Time.deltaTime * 2);
             }
         }
-    } */
+    } 
 }
