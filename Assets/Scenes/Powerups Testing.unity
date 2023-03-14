@@ -4128,7 +4128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3012
+  m_Name: pb_Mesh-4658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11827,7 +11827,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3026
+  m_Name: pb_Mesh-4672
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15870,7 +15870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2017706678644702777, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.46
+      value: -22.42
       objectReference: {fileID: 0}
     - target: {fileID: 2017706678644702777, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16128,6 +16128,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1999990335}
+    - target: {fileID: 8892743772582120773, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 9216401746914071512, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -17243,6 +17247,26 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1393463715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2017706678644702773, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
+  m_PrefabInstance: {fileID: 1217854340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393463716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393463715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce2085f0c44644ebbeee9209ccc1197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnGrenadePrefab: {fileID: 4152860956492367022, guid: 53a2e240ca16d4cdbbb15a8e3a2043dd, type: 3}
+  yarnProjectileSpeed: 4
+  fireballPrefab: {fileID: 0}
 --- !u!1 &1396026358
 GameObject:
   m_ObjectHideFlags: 0
@@ -22056,7 +22080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184418, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: xRange
@@ -22763,7 +22787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184418, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: xRange
@@ -23511,7 +23535,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3040
+  m_Name: pb_Mesh-4686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
