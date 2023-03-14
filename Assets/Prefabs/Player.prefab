@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 4077297471075489656}
   - component: {fileID: 1165237476715095838}
   - component: {fileID: 2735740668521586252}
+  - component: {fileID: 1393463716}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -420,6 +421,8 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: 9.81
   airControl: 10
+  swipeRate: 0.5
+  swipeSFX: {fileID: 0}
 --- !u!114 &1165237476715095838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +455,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1393463716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017706678644702773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce2085f0c44644ebbeee9209ccc1197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnGrenadePrefab: {fileID: 4152860956492367022, guid: 53a2e240ca16d4cdbbb15a8e3a2043dd, type: 3}
+  yarnProjectileSpeed: 4
+  fireballPrefab: {fileID: 0}
 --- !u!1 &2017706678842660418
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,8 +636,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.062373936}
-  - {x: -0.069747925, y: -0.062373936}
+  - {x: -0, y: -0.06237394}
+  - {x: -0.069747925, y: -0.06237394}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -663,7 +681,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1781
+  m_VersionIndex: 2000
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1091,25 +1109,25 @@ MonoBehaviour:
   - {x: -0.42491007, y: -0.03868866}
   - {x: 0.017659903, y: 0.006653905}
   - {x: 1.5722591, y: 0}
-  - {x: 1.1669267, y: 0}
+  - {x: 1.1669269, y: 0}
   - {x: 1.5722591, y: 0.11995435}
-  - {x: 1.1669267, y: 0.11995435}
+  - {x: 1.1669269, y: 0.11995435}
   - {x: -1.5026255, y: 0}
-  - {x: -1.7850451, y: 0}
+  - {x: -1.7850453, y: 0}
   - {x: -1.5026255, y: 0.11995435}
-  - {x: -1.7850451, y: 0.11995435}
-  - {x: -1.0350665, y: 0}
+  - {x: -1.7850453, y: 0.11995435}
+  - {x: -1.0350666, y: 0}
   - {x: -1.5113155, y: 0}
-  - {x: -1.0350665, y: 0.11995435}
+  - {x: -1.0350666, y: 0.11995435}
   - {x: -1.5113155, y: 0.11995435}
-  - {x: 1.435446, y: 0}
-  - {x: 0.9004706, y: 0}
-  - {x: 1.435446, y: 0.11995435}
-  - {x: 0.9004706, y: 0.11995435}
+  - {x: 1.4354459, y: 0}
+  - {x: 0.90047055, y: 0}
+  - {x: 1.4354459, y: 0.11995435}
+  - {x: 0.90047055, y: 0.11995435}
   - {x: -0.61108553, y: 0}
-  - {x: -0.9992805, y: 0}
+  - {x: -0.99928063, y: 0}
   - {x: -0.61108553, y: 0.11995435}
-  - {x: -0.9992805, y: 0.11995435}
+  - {x: -0.99928063, y: 0.11995435}
   - {x: 0.81131667, y: 0}
   - {x: 0.30427724, y: 0}
   - {x: 0.81131667, y: 0.11995435}
@@ -1179,10 +1197,10 @@ MonoBehaviour:
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
   - {x: 0.9004407, y: 0, z: -0.4349788, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
-  - {x: -0.9947927, y: 0, z: 0.10191938, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
+  - {x: -0.9947927, y: 0, z: 0.101919375, w: -1}
   m_Colors: []
   m_UnwrapParameters:
     m_HardAngle: 88
@@ -1192,7 +1210,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 595
+  m_VersionIndex: 814
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1453,8 +1471,8 @@ MonoBehaviour:
   - {x: 0, y: -0.000000029802322}
   - {x: -0.17947733, y: -0.000000029802322}
   - {x: -0.08973867, y: 0.24212271}
-  - {x: -0, y: -0.062373936}
-  - {x: -0.069747925, y: -0.062373936}
+  - {x: -0, y: -0.06237394}
+  - {x: -0.069747925, y: -0.06237394}
   - {x: 0, y: 0.1958439}
   - {x: -0.069747925, y: 0.1958439}
   - {x: 0.17947733, y: -0.000000029802322}
@@ -1498,7 +1516,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1778
+  m_VersionIndex: 1997
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1707,7 +1725,7 @@ GameObject:
   - component: {fileID: 5736493916756475647}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1807,7 +1825,7 @@ MonoBehaviour:
   projectileSpeed: 20
   hairballSFX: {fileID: 8300000, guid: e1bf717e3bbbb45c991ec31720244823, type: 3}
   reticleImage: {fileID: 0}
-  reticleDementorColor: {r: 0, g: 0, b: 0, a: 0}
+  reticleDementorColor: {r: 1, g: 0, b: 0, a: 1}
   shootRate: 2
 --- !u!1001 &5812956377943925874
 PrefabInstance:
