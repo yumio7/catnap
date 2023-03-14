@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.81f;
     public float airControl = 10;
     private GameObject _clawZone;
+    private PlayerPowerups _powerups;
 
     Vector3 input, moveDirection;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         _clawZone = GameObject.FindGameObjectWithTag("ClawZone");
+        _powerups = gameObject.GetComponent<PlayerPowerups>();
     }
 
     // Update is called once per frame
@@ -60,6 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             _swipeAttack();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q) && _powerups.GetYarnGrenadeLevel() > 0)
+        {
+            _yarnGrenade();
+        }
     }
 
 
@@ -81,5 +88,10 @@ public class PlayerController : MonoBehaviour
                 eh.EnemyHurt(1);
             }
         }
+    }
+
+    void _yarnGrenade()
+    {
+        _powerups.FireYarnGrenade();
     }
 }
