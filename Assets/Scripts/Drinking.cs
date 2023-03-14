@@ -6,6 +6,8 @@ using UnityEngine;
 public class Drinking : MonoBehaviour
 {
     public int healthGainBack = 10;
+    
+    public AudioClip drinkingSFX;
 
     private int touched = 0;
     void Start()
@@ -26,6 +28,8 @@ public class Drinking : MonoBehaviour
             touched++;
             var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
             playerHealth.AddHealth(healthGainBack);
+            
+            AudioSource.PlayClipAtPoint(drinkingSFX, transform.position);
             
             Destroy(gameObject);
         }
