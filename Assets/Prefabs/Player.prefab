@@ -1805,9 +1805,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4419847602975683314, guid: 5deae587ebc9449a2819ef32c458b36e, type: 3}
   projectileSpeed: 20
-  hairballSFX: {fileID: 8300000, guid: b658f20d2fc05401181f5d5a2a4518bb, type: 3}
+  hairballSFX: {fileID: 8300000, guid: e1bf717e3bbbb45c991ec31720244823, type: 3}
   reticleImage: {fileID: 0}
   reticleDementorColor: {r: 0, g: 0, b: 0, a: 0}
+  shootRate: 2
 --- !u!1001 &5812956377943925874
 PrefabInstance:
   m_ObjectHideFlags: 0
