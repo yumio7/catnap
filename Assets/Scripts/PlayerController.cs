@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 3;
     public float gravity = 9.81f;
     public float airControl = 10;
+    public float swipeRate = 0.5f;
+    public AudioClip swipeSFX;
     private GameObject _clawZone;
+    private float elapsedTime = 0.0f;
 
     Vector3 input, moveDirection;
 
@@ -56,10 +59,14 @@ public class PlayerController : MonoBehaviour
 
 
         // SWIPE ATTACK
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && elapsedTime > swipeRate)
         {
             _swipeAttack();
+            
+            elapsedTime = 0.0f;
         }
+        
+        elapsedTime += Time.deltaTime;
     }
 
 
@@ -68,6 +75,8 @@ public class PlayerController : MonoBehaviour
         // Access list of objects in zone
         List<GameObject> objList = _clawZone.GetComponent<ListOfObjectsInTrigger>().enemies;
         Vector3 pos = this.transform.position;
+        
+        AudioSource.PlayClipAtPoint(swipeSFX, transform.position);
 
         foreach (GameObject obj in objList)
         {
