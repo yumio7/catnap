@@ -15848,6 +15848,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1393463716, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
+      propertyPath: powerMeowCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393463716, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
+      propertyPath: yarnGrenadeCooldown
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1165237476715095838, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: healthSlider
       value: 
@@ -15914,7 +15922,7 @@ PrefabInstance:
       objectReference: {fileID: 1895880095}
     - target: {fileID: 2017706678842660424, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_VersionIndex
-      value: 2003
+      value: 2009
       objectReference: {fileID: 0}
     - target: {fileID: 2017706679160672641, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_Mesh
@@ -15926,7 +15934,7 @@ PrefabInstance:
       objectReference: {fileID: 324737982}
     - target: {fileID: 2017706679160672642, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_VersionIndex
-      value: 817
+      value: 823
       objectReference: {fileID: 0}
     - target: {fileID: 2017706679160672670, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_Mesh
@@ -15946,7 +15954,7 @@ PrefabInstance:
       objectReference: {fileID: 756591257}
     - target: {fileID: 2017706679385508822, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: m_VersionIndex
-      value: 2000
+      value: 2006
       objectReference: {fileID: 0}
     - target: {fileID: 5736493916756475647, guid: d5d9b52c4667245e9892d77178aecced, type: 3}
       propertyPath: reticleImage

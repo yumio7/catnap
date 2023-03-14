@@ -35,7 +35,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(("Collision"));
             var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
             other.gameObject.GetComponent<CharacterController>()
                 .Move((transform.position - other.contacts[0].point).normalized * 2 * Time.deltaTime);

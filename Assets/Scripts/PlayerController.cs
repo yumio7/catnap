@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float swipeRate = 0.5f;
     public AudioClip swipeSFX;
     private GameObject _clawZone;
-    private PlayerPowerups _powerups;
     private float elapsedTime = 0.0f;
 
     Vector3 input, moveDirection;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         _clawZone = GameObject.FindGameObjectWithTag("ClawZone");
-        _powerups = gameObject.GetComponent<PlayerPowerups>();
     }
 
     // Update is called once per frame
@@ -67,12 +65,7 @@ public class PlayerController : MonoBehaviour
             
             elapsedTime = 0.0f;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Q) && _powerups.GetYarnGrenadeLevel() > 0)
-        {
-            _yarnGrenade();
-        }
-        
+
         elapsedTime += Time.deltaTime;
     }
 
@@ -97,10 +90,5 @@ public class PlayerController : MonoBehaviour
                 eh.EnemyHurt(1);
             }
         }
-    }
-
-    void _yarnGrenade()
-    {
-        _powerups.FireYarnGrenade();
     }
 }

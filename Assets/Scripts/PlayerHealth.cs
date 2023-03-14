@@ -49,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
         }
         healthSlider.value = currentHealth;
     }
+    
+    public int GetHealth() { return currentHealth; }
 
     void PlayerDies()
     {

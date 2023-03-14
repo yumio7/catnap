@@ -53,6 +53,8 @@ public class YarnGrenadeBehavior : MonoBehaviour
         GameObject explosionSphere = Instantiate(yarnExplosionEffectPrefab, transform.position, Quaternion.identity);
         explosionSphere.transform.localScale = new Vector3(yarnGrenadeRadius, yarnGrenadeRadius, yarnGrenadeRadius);
 
+        // TODO play yarn explosion sfx
+        
         foreach (Collider hit in hits)
         {
             if (hit.gameObject.CompareTag("Enemy"))

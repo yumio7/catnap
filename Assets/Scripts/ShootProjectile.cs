@@ -21,10 +21,11 @@ public class ShootProjectile : MonoBehaviour
 
     private Color originalReticleColor;
 
-    private float elapsedTime = 0.0f;
+    private float elapsedTime;
 
     void Start()
     {
+        elapsedTime = shootRate;
         originalReticleColor = reticleImage.color;
         _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
