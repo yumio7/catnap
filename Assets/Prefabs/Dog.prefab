@@ -3355,8 +3355,8 @@ GameObject:
   - component: {fileID: 7009996699122169390}
   - component: {fileID: 9046700726714187539}
   - component: {fileID: 29905826223840789}
-  - component: {fileID: 532583499}
   - component: {fileID: 532583500}
+  - component: {fileID: -7725855393714881151}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Enemy
@@ -3711,21 +3711,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &532583499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7054519287683841774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b94ea7c7b3d3a4889fb5bc910ba589, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
-  enemyHealth: 2
-  milkPrefab: {fileID: 2335062486411616253, guid: 6f36679597a2e144abadb0ab1397ea79, type: 3}
 --- !u!114 &532583500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3742,6 +3727,21 @@ MonoBehaviour:
   moveSpeed: 10
   minDistance: 2
   damageAmount: 20
+--- !u!114 &-7725855393714881151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054519287683841774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ff4cf9954a847ab80331b0f9bb3675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
+  enemyHealth: 5
+  milkPrefab: {fileID: 2335062486411616253, guid: 6f36679597a2e144abadb0ab1397ea79, type: 3}
 --- !u!1 &8412111982602213359
 GameObject:
   m_ObjectHideFlags: 0
