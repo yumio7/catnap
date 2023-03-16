@@ -12,6 +12,7 @@ TagManager:
   - EnemyParent
   - PowerupParent
   - Milk
+  - Paw
   layers:
   - Default
   - TransparentFX

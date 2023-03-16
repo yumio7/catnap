@@ -54,7 +54,10 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayerDies()
     {
-        FindObjectOfType<LevelManager>().LevelLost();
+        if (!LevelManager.isGameOver)
+        {
+            FindObjectOfType<LevelManager>().LevelLost();
+        }
         // AudioSource.PlayClipAtPoint(deadSFX, transform.position);
     }
 }

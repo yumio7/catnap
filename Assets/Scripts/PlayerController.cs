@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip swipeSFX;
     private GameObject _clawZone;
     private float elapsedTime = 0.0f;
+    private GameObject paw;
+    private bool paw_attack = false;
+    private Vector3 paw_pos;
 
     Vector3 input, moveDirection;
 
@@ -21,6 +24,9 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         _clawZone = GameObject.FindGameObjectWithTag("ClawZone");
+        paw = GameObject.FindGameObjectWithTag("Paw");
+        paw_pos = paw.transform.localPosition;
+        paw_attack = false;
     }
 
     // Update is called once per frame
@@ -55,18 +61,37 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
 
-        controller.Move(moveDirection * Time.deltaTime);
+        if (!LevelManager.isGameOver)
+        {
+            controller.Move(moveDirection * Time.deltaTime);
+        }
 
 
         // SWIPE ATTACK
-        if (Input.GetKeyDown(KeyCode.Mouse1) && elapsedTime > swipeRate)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && elapsedTime > swipeRate && !LevelManager.isGameOver)
         {
             _swipeAttack();
+
+            paw_attack = true;
             
             elapsedTime = 0.0f;
         }
-
+        
         elapsedTime += Time.deltaTime;
+        
+        Vector3 xmove = new Vector3(-0.5f, paw.transform.localPosition.y, paw.transform.localPosition.z);
+        if (paw_attack && elapsedTime < (swipeRate / 2))
+        {
+            paw.transform.localPosition = Vector3.Lerp(paw.transform.localPosition, xmove, 2 * Time.deltaTime);
+        } 
+        else if (paw_attack && elapsedTime < swipeRate)
+        {
+            paw.transform.localPosition = Vector3.Lerp(paw.transform.localPosition, paw_pos, 6 * Time.deltaTime);
+        }
+        else
+        {
+            paw_attack = false;
+        }
     }
 
 
@@ -87,7 +112,14 @@ public class PlayerController : MonoBehaviour
                 obj.GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
                 EnemyHit eh = obj.GetComponent<EnemyHit>();
 
-                eh.EnemyHurt(1);
+                if (eh == null)
+                {
+                    obj.GetComponent<BossHit>().EnemyHurt(1);
+                }
+                else
+                {
+                    eh.EnemyHurt(1); 
+                }
             }
         }
     }

@@ -59,8 +59,16 @@ public class YarnGrenadeBehavior : MonoBehaviour
         {
             if (hit.gameObject.CompareTag("Enemy"))
             {
-                hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(damageAmount);
-                hit.gameObject.GetComponent<EnemyHit>().Slow(slowAmount);
+                if (hit.gameObject.GetComponent<EnemyHit>() == null)
+                {
+                    hit.gameObject.GetComponent<BossHit>().EnemyHurt(damageAmount);
+                    hit.gameObject.GetComponent<BossHit>().Slow(slowAmount);
+                }
+                else
+                {
+                    hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(damageAmount);
+                    hit.gameObject.GetComponent<EnemyHit>().Slow(slowAmount);
+                }
             }
         }
 

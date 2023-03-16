@@ -11,10 +11,13 @@ public class BossHit : MonoBehaviour
     public GameObject milkPrefab;
     
     private GameObject _powerupParent;
+    
+    private EnemyBehavior _enemyBehavior;
 
     void Start()
     {
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
+        _enemyBehavior = gameObject.GetComponent<EnemyBehavior>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,22 @@ public class BossHit : MonoBehaviour
         {
             DestroyEnemy();
         }
+    }
+    
+    public void Slow(int duration)
+    {
+        SlowMoveSpeed();
+        Invoke(nameof(RegularMoveSpeed), duration);
+    }
+    
+    private void SlowMoveSpeed()
+    {
+        _enemyBehavior.moveSpeed = _enemyBehavior.moveSpeed / 2;
+    }
+    
+    private void RegularMoveSpeed()
+    {
+        _enemyBehavior.moveSpeed = _enemyBehavior.moveSpeed * 2;
     }
 
     void DestroyEnemy()

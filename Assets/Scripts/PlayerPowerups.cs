@@ -101,7 +101,14 @@ public class PlayerPowerups : MonoBehaviour
         {
             if (hit.gameObject.CompareTag("Enemy"))
             {
-                hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(10);
+                if (hit.gameObject.GetComponent<EnemyHit>() == null)
+                {
+                    hit.gameObject.GetComponent<BossHit>().EnemyHurt(10);
+                }
+                else
+                {
+                    hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(10);
+                }
                 hit.gameObject.GetComponent<Rigidbody>().AddExplosionForce(10f, _player.transform.position, 5f);
             }
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8062174898773158929}
   - component: {fileID: 2674870929060395564}
   - component: {fileID: 1886556812043843762}
+  - component: {fileID: 6836445365870805262}
   m_Layer: 0
   m_Name: SmallMilk
   m_TagString: Milk
@@ -63,6 +64,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthGainBack: 10
   drinkingSFX: {fileID: 8300000, guid: 8af0c558ef74f47179da398ee7f7166d, type: 3}
+--- !u!114 &6836445365870805262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335062486411616253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae3980c99b0f004fb24a5de61dbe959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3143895651014689989
 GameObject:
   m_ObjectHideFlags: 0
