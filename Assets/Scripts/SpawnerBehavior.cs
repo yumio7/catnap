@@ -58,7 +58,7 @@ public class SpawnerBehavior : MonoBehaviour
     // if we have any spawns remaining
     private void _spawnInstance()
     {
-        if (_instanceCounter < totalInstances)
+        if (_instanceCounter < totalInstances && !LevelManager.isGameOver)
         {
             GameObject enemy = Instantiate(spawnedObject, _vectorInRange(), Quaternion.identity);
             enemy.transform.SetParent(_enemyParent.transform);

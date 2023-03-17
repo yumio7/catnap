@@ -33,7 +33,7 @@ public class ShootProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && elapsedTime > shootRate)
+        if (Input.GetButtonDown("Fire1") && elapsedTime > shootRate  && !LevelManager.isGameOver)
         {
             GameObject projectile = Instantiate(projectilePrefab,
                 transform.position + transform.forward, transform.rotation);

@@ -57,7 +57,7 @@ public class EnemyBehavior : MonoBehaviour
             Vector3 nmePos = other.gameObject.GetComponent<Transform>().position;
             Vector3 forceVector = new Vector3(transform.position.x - nmePos.x, 
                 transform.position.y - nmePos.y, transform.position.z - nmePos.z);
-            GetComponent<Rigidbody>().AddForce(forceVector * 1000, ForceMode.Force);
+            GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
         }
     }
 }

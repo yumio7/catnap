@@ -33,5 +33,9 @@ public class Drinking : MonoBehaviour
             
             Destroy(gameObject);
         }
+        else
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), other);
+        }
     }
 }

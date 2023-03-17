@@ -24,12 +24,19 @@ public class MouseLook : MonoBehaviour
         float moveY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         //yaw
-        playerBody.Rotate(Vector3.back * moveX);
+        if (!LevelManager.isGameOver)
+        {
+            playerBody.Rotate(Vector3.back * moveX);
+        }
 
         //pitch
         pitch -= moveY;
 
         pitch = Mathf.Clamp(pitch, -180f, 0f);
-        transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+
+        if (!LevelManager.isGameOver)
+        {
+            transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        }
     }
 }
