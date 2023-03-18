@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yarnExplosionEffectPrefab: {fileID: 6687282169430112729, guid: 0f3bec4f2e1f74754bb43a1f9961ab2d, type: 3}
+  yarnSFX: {fileID: 8300000, guid: 535e97c46e3fa4a46adcaf5f86e316c0, type: 3}
   baseDamage: 1
+  baseDuration: 1
   yarnGrenadeRadius: 5
   perLevelDamageModifier: 1
   perLevelSlowModifier: 1

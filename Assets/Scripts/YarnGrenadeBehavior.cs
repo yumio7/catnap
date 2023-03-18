@@ -6,6 +6,9 @@ using UnityEngine;
 public class YarnGrenadeBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject yarnExplosionEffectPrefab;
+    
+    [Tooltip("Yarn bomb explosion")] [SerializeField]
+    private AudioClip yarnSFX;
 
     [Tooltip("Base damage of the grenade")] [SerializeField]
     private int baseDamage = 1;
@@ -53,7 +56,7 @@ public class YarnGrenadeBehavior : MonoBehaviour
         GameObject explosionSphere = Instantiate(yarnExplosionEffectPrefab, transform.position, Quaternion.identity);
         explosionSphere.transform.localScale = new Vector3(yarnGrenadeRadius, yarnGrenadeRadius, yarnGrenadeRadius);
 
-        // TODO play yarn explosion sfx
+        AudioSource.PlayClipAtPoint(yarnSFX, transform.position);
         
         foreach (Collider hit in hits)
         {

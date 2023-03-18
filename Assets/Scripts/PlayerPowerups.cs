@@ -11,7 +11,7 @@ public class PlayerPowerups : MonoBehaviour
     [SerializeField] private float powerMeowCooldown;
 
     private int yarnGrenadeLevel = 1;
-    private int powerMeowLevel = 1;
+    private int powerMeowLevel = 0;
     private GameObject _projectileParent;
     private GameObject _player;
     private Transform _camera;
