@@ -11465,6 +11465,7 @@ Transform:
   - {fileID: 5346708851999365338}
   - {fileID: 335330675478211396}
   - {fileID: 8860303269518418767}
+  - {fileID: 1600248220167246158}
   m_Father: {fileID: 7775178717538447959}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -21409,6 +21410,8 @@ GameObject:
   - component: {fileID: 4010379744453549972}
   - component: {fileID: 828000585454050754}
   - component: {fileID: 1152857703825467992}
+  - component: {fileID: -7080406065945180890}
+  - component: {fileID: 5679564851763148227}
   m_Layer: 0
   m_Name: Rat2
   m_TagString: Enemy
@@ -21495,6 +21498,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4505546, y: 0.40568584, z: 1.0852339}
   m_Center: {x: 0.21761763, y: 0.15892765, z: 0.19696271}
+--- !u!114 &-7080406065945180890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429838409288433751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b952d754d0454eee9f408fa35d8671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  attackDistance: 5
+  chaseDistance: 10
+  enemySpeed: 5
+  player: {fileID: 0}
+  enemyEyes: {fileID: 1600248220167246158}
+  fieldOfView: 150
+--- !u!195 &5679564851763148227
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429838409288433751}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6510476977357939375
 GameObject:
   m_ObjectHideFlags: 0
@@ -23885,6 +23929,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &6984653401358091854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1600248220167246158}
+  m_Layer: 0
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1600248220167246158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6984653401358091854}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.095, y: 0, z: 0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3625369886722949209}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &8523872569118527380
 GameObject:
   m_ObjectHideFlags: 0
