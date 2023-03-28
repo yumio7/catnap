@@ -21,23 +21,13 @@ public class EnemyAI : MonoBehaviour
     public float chaseDistance = 10;
     public float enemySpeed = 5;
     public GameObject player;
-    //public GameObject[] spellProjectiles;
-    //public GameObject wandTip;
-    //public float shootRate = 2.0f;
-    //public GameObject deadVFX;
 
     private GameObject[] wanderPoints;
     private Vector3 nextDestination;
-    //private Animator anim;
     private float distanceToPlayer;
     public int damageAmount = 20;
 
     private int currentDestinationIndex = 0;
-    
-    //private EnemyHealth enemyHealth;
-    //private int health;
-    //private Transform deadTransform;
-    //private bool isDead;
 
     private NavMeshAgent agent;
 
@@ -61,9 +51,7 @@ public class EnemyAI : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance
             (transform.position, player.transform.position);
-        
-        //health = enemyHealth.currentHealth;
-        
+
         switch (currentState)
         {
             case FSMStates.Patrol:
@@ -88,11 +76,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         counter += Time.deltaTime;
-
-        /*if (health <= 0)
-        {
-            currentState = FSMStates.Dead;
-        }*/
     }
 
     void Initialize()
@@ -101,22 +84,12 @@ public class EnemyAI : MonoBehaviour
         
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
 
-        //anim = GetComponent<Animator>();
-
         player = GameObject.FindGameObjectWithTag("Player");
-
-        //wandTip = GameObject.FindGameObjectWithTag("WandTip");
 
         agent = GetComponent<NavMeshAgent>();
         
         counter = hitDelay;
 
-        //enemyHealth = GetComponent<EnemyHealth>();
-
-        //health = enemyHealth.currentHealth;
-
-        //isDead = false;
-        
         FindNextPoint();
     }
     
@@ -152,9 +125,9 @@ public class EnemyAI : MonoBehaviour
         //anim.SetInteger("animState", 2);
         
         agent.stoppingDistance = 0;
-        agent.speed = 4;
+        agent.speed = 3;
 
-        if (distanceToPlayer <= 0)
+        if (distanceToPlayer == 0)
         {
             currentState = FSMStates.Attack;
         }
@@ -174,8 +147,6 @@ public class EnemyAI : MonoBehaviour
         print("attack");
 
         nextDestination = player.transform.position;
-        
-        //agent.stoppingDistance = attackDistance;
 
         if (distanceToPlayer <= 0)
         {
@@ -211,15 +182,6 @@ public class EnemyAI : MonoBehaviour
             currentState = FSMStates.Patrol;
         }
     }
-    
-    /*void UpdateDeadState()
-    {
-        anim.SetInteger("animState", 4);
-        deadTransform = gameObject.transform;
-        isDead = true;
-        
-        Destroy(gameObject, 3);
-    } */
 
     void FindNextPoint()
     {
@@ -238,33 +200,6 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp
             (transform.rotation, lookRotation, 10 * Time.deltaTime);
     }
-
-    /*void EnemySpellCast()
-    {
-        if (!isDead)
-        {
-            if (elapsedTime >= shootRate)
-            {
-                var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-                Invoke("SpellCasting", animDuration);
-                elapsedTime = 0.0f;
-            } 
-        }
-    } */
-
-    /*void SpellCasting()
-    {
-        int randProjectileIndex = Random.Range(0, spellProjectiles.Length);
-        
-        GameObject spellProjectile = spellProjectiles[randProjectileIndex];
-
-        Instantiate(spellProjectile, wandTip.transform.position, wandTip.transform.rotation);
-    } */
-
-    /*private void OnDestroy()
-    {
-        Instantiate(deadVFX, deadTransform.position, deadTransform.rotation);
-    } */
 
     private void OnDrawGizmos()
     {
