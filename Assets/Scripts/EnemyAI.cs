@@ -51,6 +51,13 @@ public class EnemyAI : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance
             (transform.position, player.transform.position);
+        
+        if (counter > hitDelay)
+        {
+            canHit = true;
+        }
+
+        counter += Time.deltaTime;
 
         switch (currentState)
         {
@@ -69,13 +76,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         elapsedTime += Time.deltaTime;
-        
-        if (counter > hitDelay)
-        {
-            canHit = true;
-        }
-
-        counter += Time.deltaTime;
     }
 
     void Initialize()
@@ -228,7 +228,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, chaseDistance))
             {
-                if (hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("SwipeZone"));
                 {
                     return true;
                 }
