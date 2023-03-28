@@ -12,11 +12,12 @@ public class EnemyAI : MonoBehaviour
           Idle,
           Patrol,
           Chase,
+          Attack,
+          Back,
     }
 
     public FSMStates currentState;
     
-    public float attackDistance = 5;
     public float chaseDistance = 10;
     public float enemySpeed = 5;
     public GameObject player;
@@ -29,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     private Vector3 nextDestination;
     //private Animator anim;
     private float distanceToPlayer;
+    public int damageAmount = 20;
 
     private int currentDestinationIndex = 0;
     
@@ -41,6 +43,10 @@ public class EnemyAI : MonoBehaviour
 
     public Transform enemyEyes;
     public float fieldOfView = 150f;
+    
+    private float hitDelay = 0.5f;
+    private float counter;
+    private bool canHit = true;
     
     
     private float elapsedTime = 0.0f;
@@ -66,15 +72,22 @@ public class EnemyAI : MonoBehaviour
             case FSMStates.Chase:
                 UpdateChaseState();
                 break;
-            /*case FSMStates.Attack:
+            case FSMStates.Attack:
                 UpdateAttackState();
                 break;
-            case FSMStates.Dead:
-                UpdateDeadState();
-                break; */
+            case FSMStates.Back:
+                UpdateBackState();
+                break;
         }
 
         elapsedTime += Time.deltaTime;
+        
+        if (counter > hitDelay)
+        {
+            canHit = true;
+        }
+
+        counter += Time.deltaTime;
 
         /*if (health <= 0)
         {
@@ -95,6 +108,8 @@ public class EnemyAI : MonoBehaviour
         //wandTip = GameObject.FindGameObjectWithTag("WandTip");
 
         agent = GetComponent<NavMeshAgent>();
+        
+        counter = hitDelay;
 
         //enemyHealth = GetComponent<EnemyHealth>();
 
@@ -112,7 +127,7 @@ public class EnemyAI : MonoBehaviour
         //anim.SetInteger("animState", 1);
 
         agent.stoppingDistance = 0;
-        agent.speed = 3.5f;
+        agent.speed = 2.5f;
 
         if (Vector3.Distance(transform.position, nextDestination) < 1)
         {
@@ -137,11 +152,11 @@ public class EnemyAI : MonoBehaviour
         //anim.SetInteger("animState", 2);
         
         agent.stoppingDistance = 0;
-        agent.speed = 5;
+        agent.speed = 4;
 
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer <= 0)
         {
-            //currentState = FSMStates.Attack;
+            currentState = FSMStates.Attack;
         }
         else if (distanceToPlayer > chaseDistance)
         {
@@ -154,7 +169,7 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(nextDestination);
     }
     
-    /*void UpdateAttackState()
+    void UpdateAttackState()
     {
         print("attack");
 
@@ -162,11 +177,11 @@ public class EnemyAI : MonoBehaviour
         
         //agent.stoppingDistance = attackDistance;
 
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer <= 0)
         {
-            currentState = FSMStates.Attack;
+            currentState = FSMStates.Back;
         }
-        else if (distanceToPlayer > attackDistance && distanceToPlayer <= chaseDistance)
+        else if (distanceToPlayer > 0 && distanceToPlayer <= chaseDistance)
         {
             currentState = FSMStates.Chase;
         }
@@ -176,11 +191,26 @@ public class EnemyAI : MonoBehaviour
         }
         
         FaceTarget(nextDestination);
-        
-        anim.SetInteger("animState", 3);
-        
-        EnemySpellCast();
-    } */
+        if (canHit)
+        {
+            canHit = false;
+            counter = 0;
+            var playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
+        }
+    }
+
+    void UpdateBackState()
+    {
+        if (counter < hitDelay)
+        {
+            agent.speed = -3;
+        }
+        else
+        {
+            currentState = FSMStates.Patrol;
+        }
+    }
     
     /*void UpdateDeadState()
     {
@@ -238,8 +268,8 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackDistance);
+        /*Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance); */
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);

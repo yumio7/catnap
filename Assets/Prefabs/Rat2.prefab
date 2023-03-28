@@ -21461,7 +21461,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5429838409288433751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1095df03c1a270b4a9950971bafd4d8f, type: 3}
   m_Name: 
@@ -21511,10 +21511,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  attackDistance: 5
   chaseDistance: 10
   enemySpeed: 5
   player: {fileID: 0}
+  damageAmount: 20
   enemyEyes: {fileID: 1600248220167246158}
   fieldOfView: 150
 --- !u!195 &5679564851763148227
@@ -21526,7 +21526,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5429838409288433751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
