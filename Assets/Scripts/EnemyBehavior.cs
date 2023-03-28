@@ -16,25 +16,12 @@ public class EnemyBehavior : MonoBehaviour
     private bool canHit = true;
     void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-
         counter = hitDelay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float step = moveSpeed * Time.deltaTime;
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance > minDistance && !LevelManager.isGameOver)
-        {
-            transform.LookAt(player);
-            transform.position = Vector3.MoveTowards(transform.position, player.position, step);    
-        }
-
         if (counter > hitDelay)
         {
             canHit = true;
