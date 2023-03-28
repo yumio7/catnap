@@ -12,35 +12,31 @@ public class EnemyAI : MonoBehaviour
           Idle,
           Patrol,
           Chase,
+          Attack,
+          Back,
     }
 
     public FSMStates currentState;
     
-    public float attackDistance = 5;
     public float chaseDistance = 10;
     public float enemySpeed = 5;
     public GameObject player;
-    //public GameObject[] spellProjectiles;
-    //public GameObject wandTip;
-    //public float shootRate = 2.0f;
-    //public GameObject deadVFX;
 
     private GameObject[] wanderPoints;
     private Vector3 nextDestination;
-    //private Animator anim;
     private float distanceToPlayer;
+    public int damageAmount = 20;
 
     private int currentDestinationIndex = 0;
-    
-    //private EnemyHealth enemyHealth;
-    //private int health;
-    //private Transform deadTransform;
-    //private bool isDead;
 
     private NavMeshAgent agent;
 
     public Transform enemyEyes;
     public float fieldOfView = 150f;
+    
+    private float hitDelay = 0.5f;
+    private float counter;
+    private bool canHit = true;
     
     
     private float elapsedTime = 0.0f;
@@ -55,9 +51,7 @@ public class EnemyAI : MonoBehaviour
     {
         distanceToPlayer = Vector3.Distance
             (transform.position, player.transform.position);
-        
-        //health = enemyHealth.currentHealth;
-        
+
         switch (currentState)
         {
             case FSMStates.Patrol:
@@ -66,20 +60,22 @@ public class EnemyAI : MonoBehaviour
             case FSMStates.Chase:
                 UpdateChaseState();
                 break;
-            /*case FSMStates.Attack:
+            case FSMStates.Attack:
                 UpdateAttackState();
                 break;
-            case FSMStates.Dead:
-                UpdateDeadState();
-                break; */
+            case FSMStates.Back:
+                UpdateBackState();
+                break;
         }
 
         elapsedTime += Time.deltaTime;
-
-        /*if (health <= 0)
+        
+        if (counter > hitDelay)
         {
-            currentState = FSMStates.Dead;
-        }*/
+            canHit = true;
+        }
+
+        counter += Time.deltaTime;
     }
 
     void Initialize()
@@ -88,20 +84,12 @@ public class EnemyAI : MonoBehaviour
         
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
 
-        //anim = GetComponent<Animator>();
-
         player = GameObject.FindGameObjectWithTag("Player");
 
-        //wandTip = GameObject.FindGameObjectWithTag("WandTip");
-
         agent = GetComponent<NavMeshAgent>();
-
-        //enemyHealth = GetComponent<EnemyHealth>();
-
-        //health = enemyHealth.currentHealth;
-
-        //isDead = false;
         
+        counter = hitDelay;
+
         FindNextPoint();
     }
     
@@ -112,7 +100,7 @@ public class EnemyAI : MonoBehaviour
         //anim.SetInteger("animState", 1);
 
         agent.stoppingDistance = 0;
-        agent.speed = 3.5f;
+        agent.speed = 2.5f;
 
         if (Vector3.Distance(transform.position, nextDestination) < 1)
         {
@@ -137,11 +125,11 @@ public class EnemyAI : MonoBehaviour
         //anim.SetInteger("animState", 2);
         
         agent.stoppingDistance = 0;
-        agent.speed = 5;
+        agent.speed = 3;
 
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer == 0)
         {
-            //currentState = FSMStates.Attack;
+            currentState = FSMStates.Attack;
         }
         else if (distanceToPlayer > chaseDistance)
         {
@@ -154,19 +142,17 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(nextDestination);
     }
     
-    /*void UpdateAttackState()
+    void UpdateAttackState()
     {
         print("attack");
 
         nextDestination = player.transform.position;
-        
-        //agent.stoppingDistance = attackDistance;
 
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer <= 0)
         {
-            currentState = FSMStates.Attack;
+            currentState = FSMStates.Back;
         }
-        else if (distanceToPlayer > attackDistance && distanceToPlayer <= chaseDistance)
+        else if (distanceToPlayer > 0 && distanceToPlayer <= chaseDistance)
         {
             currentState = FSMStates.Chase;
         }
@@ -176,20 +162,26 @@ public class EnemyAI : MonoBehaviour
         }
         
         FaceTarget(nextDestination);
-        
-        anim.SetInteger("animState", 3);
-        
-        EnemySpellCast();
-    } */
-    
-    /*void UpdateDeadState()
+        if (canHit)
+        {
+            canHit = false;
+            counter = 0;
+            var playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
+        }
+    }
+
+    void UpdateBackState()
     {
-        anim.SetInteger("animState", 4);
-        deadTransform = gameObject.transform;
-        isDead = true;
-        
-        Destroy(gameObject, 3);
-    } */
+        if (counter < hitDelay)
+        {
+            agent.speed = -3;
+        }
+        else
+        {
+            currentState = FSMStates.Patrol;
+        }
+    }
 
     void FindNextPoint()
     {
@@ -206,40 +198,13 @@ public class EnemyAI : MonoBehaviour
         directionToTarget.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
         transform.rotation = Quaternion.Slerp
-            (transform.rotation, lookRotation, 10 * Time.deltaTime);
+            (transform.rotation, lookRotation, 2 * Time.deltaTime);
     }
-
-    /*void EnemySpellCast()
-    {
-        if (!isDead)
-        {
-            if (elapsedTime >= shootRate)
-            {
-                var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-                Invoke("SpellCasting", animDuration);
-                elapsedTime = 0.0f;
-            } 
-        }
-    } */
-
-    /*void SpellCasting()
-    {
-        int randProjectileIndex = Random.Range(0, spellProjectiles.Length);
-        
-        GameObject spellProjectile = spellProjectiles[randProjectileIndex];
-
-        Instantiate(spellProjectile, wandTip.transform.position, wandTip.transform.rotation);
-    } */
-
-    /*private void OnDestroy()
-    {
-        Instantiate(deadVFX, deadTransform.position, deadTransform.rotation);
-    } */
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackDistance);
+        /*Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance); */
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
