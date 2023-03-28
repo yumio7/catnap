@@ -21530,7 +21530,7 @@ MonoBehaviour:
   player: {fileID: 0}
   damageAmount: 20
   enemyEyes: {fileID: 1600248220167246158}
-  fieldOfView: 150
+  fieldOfView: 90
 --- !u!195 &5679564851763148227
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21540,7 +21540,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5429838409288433751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2
+  m_Radius: 1.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
