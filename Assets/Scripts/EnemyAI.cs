@@ -106,7 +106,7 @@ public class EnemyAI : MonoBehaviour
         {
             FindNextPoint();
         }
-        else if (distanceToPlayer <= chaseDistance && IsPlayerInClearFOV())
+        else if (IsPlayerInClearFOV())
         {
             currentState = FSMStates.Chase;
         }
