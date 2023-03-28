@@ -21408,6 +21408,7 @@ GameObject:
   - component: {fileID: 7775178717538447959}
   - component: {fileID: 5802876814002353336}
   - component: {fileID: 4010379744453549972}
+  - component: {fileID: 3381290516162691031}
   - component: {fileID: 828000585454050754}
   - component: {fileID: 1152857703825467992}
   - component: {fileID: -7080406065945180890}
@@ -21470,6 +21471,19 @@ MonoBehaviour:
   moveSpeed: 1.5
   minDistance: 0
   damageAmount: 20
+--- !u!114 &3381290516162691031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429838409288433751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1611e3d366e361647bbb2f242d60dbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cryOfDeath: {fileID: 8300000, guid: 580a7d4e591b8404cada891adfa80715, type: 3}
 --- !u!114 &828000585454050754
 MonoBehaviour:
   m_ObjectHideFlags: 0
