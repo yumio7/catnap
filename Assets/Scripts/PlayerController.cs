@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float airControl = 10;
     public float swipeRate = 0.5f;
     public AudioClip swipeSFX;
+
     private GameObject _clawZone;
     private float elapsedTime = 0.0f;
     private GameObject paw;
