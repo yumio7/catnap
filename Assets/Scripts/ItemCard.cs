@@ -23,6 +23,15 @@ public class ItemCard : MonoBehaviour
 
     public void SetTitleText(String text)
     {
-        _titleText.text = text;
+        if (_titleText != null)
+        {
+            _titleText.text = text;
+        }
+        else
+        {
+            _titleText = GetComponentInChildren<Text>();
+            _titleText.text = text;
+        }
+
     }
 }

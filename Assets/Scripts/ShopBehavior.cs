@@ -35,7 +35,6 @@ public class ShopBehavior : MonoBehaviour
         // copy the array over, we need an arraylist for the removeat method
         foreach (var t in _powerupsInput)
         {
-            print(t);
             _powerupsInputArrayList.Add(t);
         }
 

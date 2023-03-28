@@ -5,11 +5,11 @@ using UnityEngine;
 public class InteractBehavior : MonoBehaviour
 {
     [SerializeField] private Canvas shopWindow;
-    
+    [SerializeField] private int interactDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -19,12 +19,13 @@ public class InteractBehavior : MonoBehaviour
         // INTERACT
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out var hit, 3.0f);
-            if (hit.transform.CompareTag("ShopkeepNPC"))
+            if (Physics.Raycast(gameObject.transform.position, gameObject.transform.forward, out var hit, interactDistance))
             {
-                Instantiate(shopWindow);
+                if (hit.transform.CompareTag("ShopkeepNPC"))
+                {
+                    Instantiate(shopWindow);
+                }
             }
         }
-        
     }
 }
