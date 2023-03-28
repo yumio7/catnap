@@ -13,6 +13,8 @@ TagManager:
   - PowerupParent
   - Milk
   - Paw
+  - ShopItemCard
+  - ShopkeepNPC
   layers:
   - Default
   - TransparentFX
