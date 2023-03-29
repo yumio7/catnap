@@ -34,9 +34,10 @@ public class EnemyAI : MonoBehaviour
     public Transform enemyEyes;
     public float fieldOfView = 150f;
     
-    private float hitDelay = 0.5f;
+    private float hitDelay = 2f;
     private float counter;
     private bool canHit = true;
+    private int pushback = 0;
     
     
     private float elapsedTime = 0.0f;
@@ -90,6 +91,8 @@ public class EnemyAI : MonoBehaviour
         
         counter = hitDelay;
 
+        pushback = 0;
+
         FindNextPoint();
     }
     
@@ -124,10 +127,10 @@ public class EnemyAI : MonoBehaviour
         
         //anim.SetInteger("animState", 2);
         
-        agent.stoppingDistance = 0;
+        agent.stoppingDistance = 0.5f;
         agent.speed = 3;
 
-        if (distanceToPlayer == 0)
+        if (distanceToPlayer <= 0.5)
         {
             currentState = FSMStates.Attack;
         }
@@ -147,8 +150,16 @@ public class EnemyAI : MonoBehaviour
         print("attack");
 
         nextDestination = player.transform.position;
+        
+        if (canHit)
+        {
+            canHit = false;
+            counter = 0;
+            var playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(damageAmount);
+        }
 
-        if (distanceToPlayer <= 0)
+        if (distanceToPlayer <= 0.5)
         {
             currentState = FSMStates.Back;
         }
@@ -162,25 +173,15 @@ public class EnemyAI : MonoBehaviour
         }
         
         FaceTarget(nextDestination);
-        if (canHit)
-        {
-            canHit = false;
-            counter = 0;
-            var playerHealth = player.gameObject.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(damageAmount);
-        }
     }
 
     void UpdateBackState()
     {
-        if (counter < hitDelay)
-        {
-            agent.speed = -3;
-        }
-        else
-        {
-            currentState = FSMStates.Patrol;
-        }
+        Vector3 nmePos = player.gameObject.GetComponent<Transform>().position;
+        Vector3 forceVector = new Vector3(transform.position.x - nmePos.x, 
+            transform.position.y - nmePos.y, transform.position.z - nmePos.z);
+        GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
+        currentState = FSMStates.Chase;
     }
 
     void FindNextPoint()
