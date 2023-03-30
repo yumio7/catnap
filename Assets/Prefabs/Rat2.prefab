@@ -21526,9 +21526,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   chaseDistance: 10
-  enemySpeed: 5
+  chaseSpeed: 3
+  patrolSpeed: 2.5
   player: {fileID: 0}
-  damageAmount: 20
+  damageAmount: 10
   enemyEyes: {fileID: 1600248220167246158}
   fieldOfView: 90
 --- !u!195 &5679564851763148227

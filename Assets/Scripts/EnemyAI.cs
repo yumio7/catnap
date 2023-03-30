@@ -19,7 +19,8 @@ public class EnemyAI : MonoBehaviour
     public FSMStates currentState;
     
     public float chaseDistance = 10;
-    public float enemySpeed = 5;
+    public float chaseSpeed = 3f;
+    public float patrolSpeed = 2.5f;
     public GameObject player;
 
     private GameObject[] wanderPoints;
@@ -74,6 +75,10 @@ public class EnemyAI : MonoBehaviour
                     UpdateBackState();
                     break;
             }
+        } 
+        else 
+        { 
+            agent.speed = 0;
         }
 
         elapsedTime += Time.deltaTime;
@@ -97,7 +102,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePatrolState()
     {
         agent.stoppingDistance = 0;
-        agent.speed = 2.5f;
+        agent.speed = patrolSpeed;
 
         if (Vector3.Distance(transform.position, nextDestination) < 1)
         {
@@ -115,14 +120,10 @@ public class EnemyAI : MonoBehaviour
     
     void UpdateChaseState()
     {
-        //print("Chasing!");
-
         nextDestination = player.transform.position;
-        
-        //anim.SetInteger("animState", 2);
-        
+
         agent.stoppingDistance = 0.5f;
-        agent.speed = 3;
+        agent.speed = chaseSpeed;
 
         if (distanceToPlayer > chaseDistance)
         {
@@ -187,7 +188,7 @@ public class EnemyAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         /*Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackDistance); */
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, chaseDistance);
@@ -198,7 +199,7 @@ public class EnemyAI : MonoBehaviour
         
         Debug.DrawLine(enemyEyes.position, frontRayPoint, Color.cyan);
         Debug.DrawLine(enemyEyes.position, leftRayPoint, Color.yellow);
-        Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow);
+        Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow); */
     }
 
     bool IsPlayerInClearFOV()
