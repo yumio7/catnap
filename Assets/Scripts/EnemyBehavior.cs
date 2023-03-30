@@ -30,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
         counter += Time.deltaTime;
     }
 
-    void OnCollisionEnter(Collision other)
+    /*void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player") && canHit)
         {
@@ -46,5 +46,5 @@ public class EnemyBehavior : MonoBehaviour
                 transform.position.y - nmePos.y, transform.position.z - nmePos.z);
             GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
         }
-    }
+    } */
 }

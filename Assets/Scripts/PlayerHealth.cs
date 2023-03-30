@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damageAmount;
+            print(currentHealth);
             healthSlider.value = currentHealth;
         }
 

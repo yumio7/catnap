@@ -37,9 +37,7 @@ public class EnemyAI : MonoBehaviour
     private float hitDelay = 2f;
     private float counter;
     private bool canHit = true;
-    private int pushback = 0;
-    
-    
+
     private float elapsedTime = 0.0f;
     
     void Start()
@@ -91,17 +89,11 @@ public class EnemyAI : MonoBehaviour
         
         counter = hitDelay;
 
-        pushback = 0;
-
         FindNextPoint();
     }
     
     void UpdatePatrolState()
     {
-        //print("Patrolling");
-        
-        //anim.SetInteger("animState", 1);
-
         agent.stoppingDistance = 0;
         agent.speed = 2.5f;
 
@@ -121,7 +113,7 @@ public class EnemyAI : MonoBehaviour
     
     void UpdateChaseState()
     {
-        print("Chasing!");
+        //print("Chasing!");
 
         nextDestination = player.transform.position;
         
@@ -130,11 +122,7 @@ public class EnemyAI : MonoBehaviour
         agent.stoppingDistance = 0.5f;
         agent.speed = 3;
 
-        if (distanceToPlayer <= 0.5)
-        {
-            currentState = FSMStates.Attack;
-        }
-        else if (distanceToPlayer > chaseDistance)
+        if (distanceToPlayer > chaseDistance)
         {
             FindNextPoint();
             currentState = FSMStates.Patrol;
@@ -144,43 +132,35 @@ public class EnemyAI : MonoBehaviour
 
         agent.SetDestination(nextDestination);
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            currentState = FSMStates.Attack;
+        }
+    }
+
     void UpdateAttackState()
     {
-        print("attack");
-
         nextDestination = player.transform.position;
         
         if (canHit)
         {
-            canHit = false;
+            print("Hit");
             counter = 0;
+            canHit = false;
             var playerHealth = player.gameObject.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(damageAmount);
-        }
-
-        if (distanceToPlayer <= 0.5)
-        {
             currentState = FSMStates.Back;
         }
-        else if (distanceToPlayer > 0 && distanceToPlayer <= chaseDistance)
-        {
-            currentState = FSMStates.Chase;
-        }
-        else if (distanceToPlayer > chaseDistance)
-        {
-            currentState = FSMStates.Patrol;
-        }
-        
+
         FaceTarget(nextDestination);
     }
 
     void UpdateBackState()
     {
-        Vector3 nmePos = player.gameObject.GetComponent<Transform>().position;
-        Vector3 forceVector = new Vector3(transform.position.x - nmePos.x, 
-            transform.position.y - nmePos.y, transform.position.z - nmePos.z);
-        GetComponent<Rigidbody>().AddForce(forceVector * 500, ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(-transform.forward * 500, ForceMode.Force);
         currentState = FSMStates.Chase;
     }
 
@@ -229,7 +209,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, chaseDistance))
             {
-                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("SwipeZone"));
+                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("ClawZone"))
                 {
                     return true;
                 }
