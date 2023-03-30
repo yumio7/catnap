@@ -57,21 +57,23 @@ public class EnemyAI : MonoBehaviour
         }
 
         counter += Time.deltaTime;
-
-        switch (currentState)
+        if (!LevelManager.isGameOver)
         {
-            case FSMStates.Patrol:
-                UpdatePatrolState();
-                break;
-            case FSMStates.Chase:
-                UpdateChaseState();
-                break;
-            case FSMStates.Attack:
-                UpdateAttackState();
-                break;
-            case FSMStates.Back:
-                UpdateBackState();
-                break;
+            switch (currentState)
+            {
+                case FSMStates.Patrol:
+                    UpdatePatrolState();
+                    break;
+                case FSMStates.Chase:
+                    UpdateChaseState();
+                    break;
+                case FSMStates.Attack:
+                    UpdateAttackState();
+                    break;
+                case FSMStates.Back:
+                    UpdateBackState();
+                    break;
+            }
         }
 
         elapsedTime += Time.deltaTime;
@@ -135,7 +137,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !LevelManager.isGameOver)
         {
             currentState = FSMStates.Attack;
         }
