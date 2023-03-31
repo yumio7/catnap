@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 491164}
   - component: {fileID: 3325642}
   - component: {fileID: 2341418}
+  - component: {fileID: 5955133462601357328}
+  - component: {fileID: 2242801737489311734}
   m_Layer: 0
   m_Name: SM_Prop_Statue_01
   m_TagString: Untagged
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5955133462601357328
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2583619, y: 2.6873028, z: 1.7343961}
+  m_Center: {x: 0.021918891, y: 2.4813066, z: 0.2599361}
+--- !u!65 &2242801737489311734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2583619, y: 1.2328582, z: 1.2941408}
+  m_Center: {x: 0.021918891, y: 0.6164291, z: 0.03980857}
