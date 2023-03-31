@@ -57,6 +57,8 @@ public class ShopkeepBehavior : MonoBehaviour
     {
         // rotate toward player
         var direction = (player.position - transform.position).normalized;
+        direction.y = 0f; // set the y component of direction to 0 to keep the NPC flat
+
         transform.rotation = Quaternion.LookRotation(direction);
 
         if (distanceToPlayer > playerVisibleDistance)
@@ -64,4 +66,5 @@ public class ShopkeepBehavior : MonoBehaviour
             currentState = FSMStates.Idle;
         }
     }
+
 }

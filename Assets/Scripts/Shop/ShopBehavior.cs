@@ -16,24 +16,30 @@ public class ShopBehavior : MonoBehaviour
 
     // set of shop options to be displayed for players
     private List<String> _shopOptions;
-
-    // shopOpen so that the player can't press E again if shop is already open
-    private bool shopOpen;
-
+    
     void Start()
     {
+        
         GenerateShopOptions();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // free the cursor and make it visible
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // disable player movement and controls
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<PlayerHealth>().enabled = false;
+        player.GetComponent<PlayerPowerups>().enabled = false;
+        
+        // disable camera movement
+        Camera camera = Camera.main;
+        camera.GetComponent<MouseLook>().enabled = false;
+        camera.GetComponent<ShootProjectile>().enabled = false;
     }
 
     void GenerateShopOptions()
     {
-        shopOpen = true;
-        
         // initialize arraylists
         _powerupsInputArrayList = new List<String>();
         _shopOptions = new List<String>();
@@ -60,12 +66,33 @@ public class ShopBehavior : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i].ToString());
+            itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i]);
         }
     }
 
-    public bool ShopIsOpen()
+    void OnDestroy()
     {
-        return shopOpen;
+        // lock the cursor and make it invisible
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // enable player movement and controls
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<PlayerHealth>().enabled = true;
+        player.GetComponent<PlayerPowerups>().enabled = true;
+
+        // enable camera movement
+        Camera camera = Camera.main;
+        camera.GetComponent<MouseLook>().enabled = true;
+        camera.GetComponent<ShootProjectile>().enabled = true;
+    }
+
+    
+    public void OnButtonClicked(int buttonIndex)
+    {
+        Debug.Log("Button " + (buttonIndex + 1) + " clicked");
+        // Do whatever you want to do when a button is clicked
+        Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
     }
 }
