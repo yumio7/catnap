@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drinking : MonoBehaviour
+public class MilkPickupBehavior : MonoBehaviour
 {
     public int healthGainBack = 10;
     

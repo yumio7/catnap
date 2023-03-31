@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YarnGrenadeBehavior : MonoBehaviour
+public class YarnGrenadeProjectileBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject yarnExplosionEffectPrefab;
     

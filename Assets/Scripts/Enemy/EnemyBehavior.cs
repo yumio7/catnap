@@ -13,7 +13,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private float hitDelay = 0.5f;
     private float counter;
-    private bool canHit = true;
+    // private bool canHit = true;
     void Start()
     {
         counter = hitDelay;
@@ -24,7 +24,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (counter > hitDelay)
         {
-            canHit = true;
+            // variable not used right now
+           // canHit = true;
         }
 
         counter += Time.deltaTime;

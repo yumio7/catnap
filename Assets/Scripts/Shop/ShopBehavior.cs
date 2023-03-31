@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -11,10 +12,13 @@ public class ShopBehavior : MonoBehaviour
     [SerializeField] private String[] _powerupsInput;
 
     // list of powerupsInput in ArrayList form
-    private ArrayList _powerupsInputArrayList;
+    private List<String> _powerupsInputArrayList;
 
     // set of shop options to be displayed for players
-    private ArrayList _shopOptions;
+    private List<String> _shopOptions;
+
+    // shopOpen so that the player can't press E again if shop is already open
+    private bool shopOpen;
 
     void Start()
     {
@@ -28,9 +32,11 @@ public class ShopBehavior : MonoBehaviour
 
     void GenerateShopOptions()
     {
+        shopOpen = true;
+        
         // initialize arraylists
-        _powerupsInputArrayList = new ArrayList();
-        _shopOptions = new ArrayList();
+        _powerupsInputArrayList = new List<String>();
+        _shopOptions = new List<String>();
 
         // copy the array over, we need an arraylist for the removeat method
         foreach (var t in _powerupsInput)
@@ -56,5 +62,10 @@ public class ShopBehavior : MonoBehaviour
         {
             itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i].ToString());
         }
+    }
+
+    public bool ShopIsOpen()
+    {
+        return shopOpen;
     }
 }
