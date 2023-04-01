@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InteractBehavior : MonoBehaviour
 {
     [SerializeField] private Canvas shopWindowPrefab;
     [SerializeField] private int interactDistance;
+    // this string represents the name of the next level
+    [SerializeField] private string _nextLevel;
 
     private Canvas shopWindowInstance;
     private bool shopOpen;
@@ -39,7 +42,13 @@ public class InteractBehavior : MonoBehaviour
                 // close the shop
                 Destroy(shopWindowInstance.gameObject);
                 shopOpen = false;
+                Invoke("LoadLevel", 3f);
             }
         }
+    }
+    
+    void LoadLevel()
+    {
+        SceneManager.LoadScene(_nextLevel);
     }
 }

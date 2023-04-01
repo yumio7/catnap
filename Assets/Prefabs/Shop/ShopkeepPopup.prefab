@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 7888967133282593696}
   m_Layer: 5
   m_Name: ShopkeepPopup
-  m_TagString: Untagged
+  m_TagString: ShopkeepPopUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1373,6 +1373,7 @@ MonoBehaviour:
   - Yarn Grenade
   - Sturdy Shoes
   - Fireball
+  _nextLevel: 
 --- !u!1 &7888967133397971548
 GameObject:
   m_ObjectHideFlags: 0
