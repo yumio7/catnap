@@ -169,9 +169,9 @@ public class EnemyAI : MonoBehaviour
 
     void FindNextPoint()
     {
-        nextDestination = wanderPoints[currentDestinationIndex].transform.position;
+        nextDestination = wanderPoints[Random.Range(0, wanderPoints.Length)].transform.position;
 
-        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+       // currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
 
         agent.SetDestination(nextDestination);
     }
