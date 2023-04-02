@@ -18,6 +18,7 @@ public class ShopkeepBehavior : MonoBehaviour
     private GameObject[] wanderPoints;
     private Vector3 nextDestination;
     private int currentDestinationIndex = 0;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class ShopkeepBehavior : MonoBehaviour
         currentState = FSMStates.Idle;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
+        anim = this.GetComponent<Animator>();
+        FindNextPoint();
     }
 
     // Update is called once per frame
@@ -48,12 +51,16 @@ public class ShopkeepBehavior : MonoBehaviour
     {
         // TODO implement wanderpoints/walking around/idle animation
 
-        if (Vector3.Distance(transform.position, nextDestination) == 0)
+        anim.SetInteger("animState", 1);
+        
+        //Debug.Log(nextDestination);
+
+        if (Vector3.Distance(transform.position, nextDestination) <= 0.5f)
         {
             FindNextPoint();
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, nextDestination, Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, nextDestination, Time.deltaTime);
         
         FaceTarget(nextDestination);
         
@@ -73,6 +80,7 @@ public class ShopkeepBehavior : MonoBehaviour
 
     void UpdateInteractState()
     {
+        anim.SetInteger("animState", 2);
         // rotate toward player
         var direction = (player.position - transform.position).normalized;
         direction.y = 0f; // set the y component of direction to 0 to keep the NPC flat
