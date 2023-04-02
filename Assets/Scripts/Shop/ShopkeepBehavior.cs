@@ -15,12 +15,16 @@ public class ShopkeepBehavior : MonoBehaviour
     private FSMStates currentState;
     private Transform player;
     private float distanceToPlayer;
-    
+    private GameObject[] wanderPoints;
+    private Vector3 nextDestination;
+    private int currentDestinationIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         currentState = FSMStates.Idle;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
     }
 
     // Update is called once per frame
@@ -43,14 +47,28 @@ public class ShopkeepBehavior : MonoBehaviour
     void UpdateIdleState()
     {
         // TODO implement wanderpoints/walking around/idle animation
-        
-        // spin in circles
-        transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 360);
 
+        if (Vector3.Distance(transform.position, nextDestination) == 0)
+        {
+            FindNextPoint();
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, nextDestination, Time.deltaTime);
+        
+        FaceTarget(nextDestination);
+        
         if (distanceToPlayer <= playerVisibleDistance)
         {
             currentState = FSMStates.Interact;
         }
+
+        // spin in circles
+        /*transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 360);
+
+        if (distanceToPlayer <= playerVisibleDistance)
+        {
+            currentState = FSMStates.Interact;
+        } */
     }
 
     void UpdateInteractState()
@@ -65,6 +83,24 @@ public class ShopkeepBehavior : MonoBehaviour
         {
             currentState = FSMStates.Idle;
         }
+    }
+    
+    void FindNextPoint()
+    {
+        nextDestination = wanderPoints[currentDestinationIndex].transform.position;
+
+        currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+
+        //agent.SetDestination(nextDestination);
+    }
+    
+    void FaceTarget(Vector3 target)
+    {
+        Vector3 directionToTarget = (target - transform.position).normalized;
+        directionToTarget.y = 0;
+        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+        transform.rotation = Quaternion.Slerp
+            (transform.rotation, lookRotation, 2 * Time.deltaTime);
     }
 
 }
