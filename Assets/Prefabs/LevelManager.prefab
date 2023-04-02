@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e255c94c9cdb74a8cbc709eb89018423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameText: {fileID: 6138312586228919211, guid: ee5988b741c6741aaac7352d008951f7, type: 3}
-  score: {fileID: 4435834623285340854, guid: bf023da1ceb6e49c088de0eea9dbac5c, type: 3}
-  nextLevel: 
+  gameText: {fileID: 0}
+  score: {fileID: 0}
+  nextLevel: Shop

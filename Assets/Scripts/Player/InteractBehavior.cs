@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class InteractBehavior : MonoBehaviour
@@ -46,8 +43,8 @@ public class InteractBehavior : MonoBehaviour
             }
         }
     }
-    
-    void LoadLevel()
+
+    private void LoadLevel()
     {
         SceneManager.LoadScene(_nextLevel);
     }

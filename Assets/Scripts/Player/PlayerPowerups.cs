@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPowerups : MonoBehaviour
@@ -21,7 +19,7 @@ public class PlayerPowerups : MonoBehaviour
     private float powerMeowCooldownCounter;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -33,7 +31,7 @@ public class PlayerPowerups : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // YARN GRENADE
         if (Input.GetKeyDown(KeyCode.Q) && GetYarnGrenadeLevel() > 0 && yarnGrenadeCooldownCounter > yarnGrenadeCooldown)

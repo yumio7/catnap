@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +21,7 @@ public class ShootProjectile : MonoBehaviour
 
     private float elapsedTime;
 
-    void Start()
+    private void Start()
     {
         elapsedTime = shootRate;
         originalReticleColor = reticleImage.color;
@@ -31,7 +29,7 @@ public class ShootProjectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Fire1") && elapsedTime > shootRate  && !LevelManager.isGameOver)
         {
@@ -57,7 +55,7 @@ public class ShootProjectile : MonoBehaviour
         ReticleEffect();
     }
 
-    void ReticleEffect()
+    private void ReticleEffect()
     {
         RaycastHit hit;
 

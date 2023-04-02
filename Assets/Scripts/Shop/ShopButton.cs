@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ public class ShopButton : MonoBehaviour
     // index of this button
     public int buttonIndex;
 
-    void Start()
+    private void Start()
     {
         // get a reference to the button component
         _button = GetComponent<Button>();
@@ -26,7 +24,7 @@ public class ShopButton : MonoBehaviour
         _button.onClick.AddListener(OnButtonClicked);
     }
 
-    void OnButtonClicked()
+    private void OnButtonClicked()
     {
         // call the OnButtonClicked method in the ShopBehavior script
         _shopBehavior.OnButtonClicked(buttonIndex);

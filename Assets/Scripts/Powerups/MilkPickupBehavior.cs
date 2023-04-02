@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MilkPickupBehavior : MonoBehaviour
@@ -10,13 +7,14 @@ public class MilkPickupBehavior : MonoBehaviour
     public AudioClip drinkingSFX;
 
     private int touched = 0;
-    void Start()
+
+    private void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

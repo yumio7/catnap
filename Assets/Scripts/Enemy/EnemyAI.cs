@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -40,14 +37,14 @@ public class EnemyAI : MonoBehaviour
     private bool canHit = true;
 
     private float elapsedTime = 0.0f;
-    
-    void Start()
+
+    private void Start()
     {
         Initialize();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         distanceToPlayer = Vector3.Distance
             (transform.position, player.transform.position);
@@ -84,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         elapsedTime += Time.deltaTime;
     }
 
-    void Initialize()
+    private void Initialize()
     {
         currentState = FSMStates.Patrol;
         
@@ -98,8 +95,8 @@ public class EnemyAI : MonoBehaviour
 
         FindNextPoint();
     }
-    
-    void UpdatePatrolState()
+
+    private void UpdatePatrolState()
     {
         agent.stoppingDistance = 0;
         agent.speed = patrolSpeed;
@@ -117,8 +114,8 @@ public class EnemyAI : MonoBehaviour
 
         agent.SetDestination(nextDestination);
     }
-    
-    void UpdateChaseState()
+
+    private void UpdateChaseState()
     {
         nextDestination = player.transform.position;
 
@@ -144,7 +141,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void UpdateAttackState()
+    private void UpdateAttackState()
     {
         nextDestination = player.transform.position;
         
@@ -161,13 +158,13 @@ public class EnemyAI : MonoBehaviour
         FaceTarget(nextDestination);
     }
 
-    void UpdateBackState()
+    private void UpdateBackState()
     {
         GetComponent<Rigidbody>().AddForce(-transform.forward * 500, ForceMode.Force);
         currentState = FSMStates.Chase;
     }
 
-    void FindNextPoint()
+    private void FindNextPoint()
     {
         nextDestination = wanderPoints[Random.Range(0, wanderPoints.Length)].transform.position;
 
@@ -176,7 +173,7 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(nextDestination);
     }
 
-    void FaceTarget(Vector3 target)
+    private void FaceTarget(Vector3 target)
     {
         Vector3 directionToTarget = (target - transform.position).normalized;
         directionToTarget.y = 0;
@@ -202,7 +199,7 @@ public class EnemyAI : MonoBehaviour
         Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow); */
     }
 
-    bool IsPlayerInClearFOV()
+    private bool IsPlayerInClearFOV()
     {
         RaycastHit hit;
         

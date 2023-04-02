@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    CharacterController controller;
+    private CharacterController controller;
 
     public float speed = 5f;
     public float jumpHeight = 3;
@@ -19,9 +18,9 @@ public class PlayerController : MonoBehaviour
     private bool paw_attack = false;
     private Vector3 paw_pos;
 
-    Vector3 input, moveDirection;
+    private Vector3 input, moveDirection;
 
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
         _clawZone = GameObject.FindGameObjectWithTag("ClawZone");
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -96,7 +95,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void _swipeAttack()
+    private void _swipeAttack()
     {
         // Access list of objects in zone
         List<GameObject> objList = _clawZone.GetComponent<ListOfObjectsInTrigger>().enemies;

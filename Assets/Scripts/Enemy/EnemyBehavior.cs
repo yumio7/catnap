@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -14,13 +10,13 @@ public class EnemyBehavior : MonoBehaviour
     private float hitDelay = 0.5f;
     private float counter;
     // private bool canHit = true;
-    void Start()
+    private void Start()
     {
         counter = hitDelay;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (counter > hitDelay)
         {

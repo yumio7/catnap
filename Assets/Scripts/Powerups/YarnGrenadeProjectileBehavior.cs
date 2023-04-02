@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class YarnGrenadeProjectileBehavior : MonoBehaviour
@@ -31,7 +28,7 @@ public class YarnGrenadeProjectileBehavior : MonoBehaviour
     private PlayerPowerups _powerups;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _powerups = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPowerups>();
         currentLevel = _powerups.GetYarnGrenadeLevel();
@@ -40,7 +37,7 @@ public class YarnGrenadeProjectileBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
     }
 

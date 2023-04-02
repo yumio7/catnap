@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,9 +18,9 @@ public class LevelManager : MonoBehaviour
 
     // float countDown;
 
-    int totalKills = 0;
+    private int totalKills = 0;
 
-    void Start()
+    private void Start()
     {
         isGameOver = false;
 
@@ -32,7 +30,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         /*if (isGameOver)
         {
@@ -81,12 +79,12 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void LoadLevel()
+    private void LoadLevel()
     {
         SceneManager.LoadScene(nextLevel);
     }
 
-    void LoadCurrentLevel()
+    private void LoadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

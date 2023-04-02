@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 
 public class SpawnerBehavior : MonoBehaviour
 {
@@ -36,7 +33,7 @@ public class SpawnerBehavior : MonoBehaviour
     private GameObject _enemyParent;
 
 
-    void Start()
+    private void Start()
     {
         // Set the instance counter to zero and initialize the time
         _instanceCounter = 0;
@@ -46,7 +43,7 @@ public class SpawnerBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // We calculate the spawn rate modifier and 
         // possible spawn enemies

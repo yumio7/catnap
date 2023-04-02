@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    Transform playerBody;
+    private Transform playerBody;
     public float mouseSensitivity = 100;
 
-    float pitch = -90f;
+    private float pitch = -90f;
 
-    void Start()
+    private void Start()
     {
         playerBody = transform.parent.transform;
 
@@ -18,7 +16,7 @@ public class MouseLook : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float moveX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float moveY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

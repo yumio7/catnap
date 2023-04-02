@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -18,13 +16,13 @@ public class EnemyManager : MonoBehaviour
     
     private bool _spawned = false;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Instance = this;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (enemiesKilled >= killsForBossSpawn && !_spawned)
         {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossHit : MonoBehaviour
@@ -14,14 +12,14 @@ public class BossHit : MonoBehaviour
     
     private EnemyBehavior _enemyBehavior;
 
-    void Start()
+    private void Start()
     {
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
         _enemyBehavior = gameObject.GetComponent<EnemyBehavior>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
@@ -61,7 +59,7 @@ public class BossHit : MonoBehaviour
         _enemyBehavior.moveSpeed = _enemyBehavior.moveSpeed * 2;
     }
 
-    void DestroyEnemy()
+    private void DestroyEnemy()
     {
         Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
         EnemyManager.Instance.enemyCount -= 1;

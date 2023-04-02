@@ -1,21 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RatCryOfDeath : MonoBehaviour
 {
-    [SerializeField] AudioClip cryOfDeath;
+    [SerializeField] private AudioClip cryOfDeath;
 
     private AudioSource _source;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

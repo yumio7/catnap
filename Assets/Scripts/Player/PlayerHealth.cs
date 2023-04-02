@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,14 +9,14 @@ public class PlayerHealth : MonoBehaviour
 
     private int currentHealth;
 
-    void Start()
+    private void Start()
     {
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
     }
 
@@ -53,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
     
     public int GetHealth() { return currentHealth; }
 
-    void PlayerDies()
+    private void PlayerDies()
     {
         if (!LevelManager.isGameOver)
         {

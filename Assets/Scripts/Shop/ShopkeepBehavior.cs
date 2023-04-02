@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopkeepBehavior : MonoBehaviour
@@ -21,7 +19,7 @@ public class ShopkeepBehavior : MonoBehaviour
     private Animator anim;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         currentState = FSMStates.Idle;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -31,7 +29,7 @@ public class ShopkeepBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -47,7 +45,7 @@ public class ShopkeepBehavior : MonoBehaviour
         }
     }
 
-    void UpdateIdleState()
+    private void UpdateIdleState()
     {
         // TODO implement wanderpoints/walking around/idle animation
 
@@ -78,7 +76,7 @@ public class ShopkeepBehavior : MonoBehaviour
         } */
     }
 
-    void UpdateInteractState()
+    private void UpdateInteractState()
     {
         anim.SetInteger("animState", 2);
         // rotate toward player
@@ -92,8 +90,8 @@ public class ShopkeepBehavior : MonoBehaviour
             currentState = FSMStates.Idle;
         }
     }
-    
-    void FindNextPoint()
+
+    private void FindNextPoint()
     {
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
@@ -101,8 +99,8 @@ public class ShopkeepBehavior : MonoBehaviour
 
         //agent.SetDestination(nextDestination);
     }
-    
-    void FaceTarget(Vector3 target)
+
+    private void FaceTarget(Vector3 target)
     {
         Vector3 directionToTarget = (target - transform.position).normalized;
         directionToTarget.y = 0;

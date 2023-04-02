@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,14 +13,14 @@ public class EnemyHit : MonoBehaviour
 
     private EnemyAI _enemyAI;
 
-    void Start()
+    private void Start()
     {
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
         _enemyAI = gameObject.GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
@@ -65,7 +62,7 @@ public class EnemyHit : MonoBehaviour
         _enemyAI.patrolSpeed = _enemyAI.patrolSpeed * 2;
     }
 
-    void DestroyEnemy()
+    private void DestroyEnemy()
     {
         Instantiate(destroyedParticleEffect, transform.position, transform.rotation);
         EnemyManager.Instance.enemyCount -= 1;
