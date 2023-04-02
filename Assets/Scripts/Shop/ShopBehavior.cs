@@ -1,98 +1,88 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class ShopBehavior : MonoBehaviour
 {
     // this class generates a shop popup with 3 selections of powerup
-    [SerializeField] private String[] _powerupsInput;
-
-    // list of powerupsInput in ArrayList form
-    private List<String> _powerupsInputArrayList;
+    [SerializeField] private string[] _powerupsInput;
 
     // set of shop options to be displayed for players
-    private List<String> _shopOptions;
-    
-    void Start()
+    private List<string> _shopOptions;
+
+    private GameObject player;
+    private Camera mainCam;
+
+    private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        mainCam = Camera.main;
+
+        // generate shop
         GenerateShopOptions();
 
-        // free the cursor and make it visible
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         // disable player movement and controls
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerController>().enabled = false;
-        player.GetComponent<PlayerHealth>().enabled = false;
-        player.GetComponent<PlayerPowerups>().enabled = false;
-        
-        // disable camera movement
-        Camera camera = Camera.main;
-        camera.GetComponent<MouseLook>().enabled = false;
-        camera.GetComponent<ShootProjectile>().enabled = false;
+        SetPlayerControls(false);
     }
 
-    void GenerateShopOptions()
+    private void GenerateShopOptions()
     {
-        // initialize arraylists
-        _powerupsInputArrayList = new List<String>();
-        _shopOptions = new List<String>();
+        // initialize lists
+        _shopOptions = new List<string>();
 
-        // copy the array over, we need an arraylist for the removeat method
-        foreach (var t in _powerupsInput)
+        // shuffle the input array
+        for (var i = 0; i < _powerupsInput.Length; i++)
         {
-            _powerupsInputArrayList.Add(t);
+            var j = Random.Range(i, _powerupsInput.Length);
+            
+            // swap between j and i to shuffle
+            (_powerupsInput[i], _powerupsInput[j]) = (_powerupsInput[j], _powerupsInput[i]);
         }
 
-        // select powerups
-        for (int i = 0; i < 3; i++)
+        // select the first three items
+        for (var i = 0; i < 3; i++)
         {
-            // select this powerup
-            int powerupSelectionIdx = Random.Range(0, _powerupsInputArrayList.Count - i);
-            _shopOptions.Add(_powerupsInputArrayList[powerupSelectionIdx]);
-
-            // remove it from the list of powerups
-            _powerupsInputArrayList.RemoveAt(powerupSelectionIdx);
+            _shopOptions.Add(_powerupsInput[i]);
         }
 
-        // grab the three text areas in the canvas I am attached to
-        GameObject[] itemCards = GameObject.FindGameObjectsWithTag("ShopItemCard");
-
-        for (int i = 0; i < 3; i++)
+        // update the item cards
+        var itemCards = GameObject.FindGameObjectsWithTag("ShopItemCard");
+        for (var i = 0; i < 3; i++)
         {
             itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i]);
         }
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
-        // lock the cursor and make it invisible
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // enable player movement and controls
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerController>().enabled = true;
-        player.GetComponent<PlayerHealth>().enabled = true;
-        player.GetComponent<PlayerPowerups>().enabled = true;
-
-        // enable camera movement
-        Camera camera = Camera.main;
-        camera.GetComponent<MouseLook>().enabled = true;
-        camera.GetComponent<ShootProjectile>().enabled = true;
+        // re-enable player movement and controls
+        SetPlayerControls(true);
     }
 
-    
+
     public void OnButtonClicked(int buttonIndex)
     {
         Debug.Log("Button " + (buttonIndex + 1) + " clicked");
         // Do whatever you want to do when a button is clicked
         Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
+    }
+
+    private void SetPlayerControls(bool value)
+    {
+        if (value)
+        {
+            // giving player controls
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            // removing player controls
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        player.GetComponent<PlayerController>().enabled = value;
+        mainCam.GetComponent<MouseLook>().enabled = value;
     }
 }
