@@ -15587,7 +15587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   chaseDistance: 10
-  enemySpeed: 5
+  chaseSpeed: 3
+  patrolSpeed: 2.5
   player: {fileID: 0}
   damageAmount: 20
   enemyEyes: {fileID: 5184157885544326494}
@@ -15601,7 +15602,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3500661114641967003}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

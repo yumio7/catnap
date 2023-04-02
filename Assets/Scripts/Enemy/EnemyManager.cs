@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemiesKilled >= killsForBossSpawn && !_spawned)
         {
-            Instantiate(boss);
+            Instantiate(boss, transform.position, transform.rotation);
             _spawned = true;
         }
     }
