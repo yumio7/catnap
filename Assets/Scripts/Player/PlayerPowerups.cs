@@ -9,7 +9,8 @@ public class PlayerPowerups : MonoBehaviour
     [SerializeField] private float powerMeowCooldown;
 
     private int yarnGrenadeLevel = 1;
-    private int powerMeowLevel = 0;
+    private int powerMeowLevel = 1;
+    public static bool jump = false;
     private GameObject _projectileParent;
     private GameObject _player;
     private Transform _camera;
@@ -41,9 +42,10 @@ public class PlayerPowerups : MonoBehaviour
         }
         
         // POWER MEOW
-        if (_playerHealth.GetHealth() < 25 && GetPowerMeowLevel() > 0 && powerMeowCooldownCounter > powerMeowCooldown)
+        if (_playerHealth.GetHealth() < 25 && GetPowerMeowLevel() > 0 && powerMeowCooldownCounter > powerMeowCooldown && jump)
         {
             FirePowerMeow();
+            jump = false;
             powerMeowCooldownCounter = 0;
         }
         

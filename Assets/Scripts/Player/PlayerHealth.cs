@@ -15,15 +15,14 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = currentHealth;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
     public void TakeDamage(int damageAmount)
     {
         if (currentHealth > 0)
         {
+            if (currentHealth > 25 && currentHealth - damageAmount <= 25)
+            {
+                PlayerPowerups.jump = true;
+            }
             currentHealth -= damageAmount;
             print(currentHealth);
             healthSlider.value = currentHealth;
@@ -31,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
+            healthSlider.value = currentHealth;
             PlayerDies();
         }
     }
