@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
+            //Debug.Log(moveDirection);
 
         if (!LevelManager.isGameOver)
         {
