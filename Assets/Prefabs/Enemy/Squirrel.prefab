@@ -28399,8 +28399,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.024929, y: 1.9080647, z: 2.9276705}
-  m_Center: {x: 0.37503433, y: 1.0201917, z: -0.45709872}
+  m_Size: {x: 1.4750805, y: 1.9080648, z: 2.923603}
+  m_Center: {x: -0.47647762, y: 1.0201917, z: 0.5684223}
 --- !u!195 &-1471204273309438589
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -28442,7 +28442,7 @@ MonoBehaviour:
   player: {fileID: 0}
   damageAmount: 20
   enemyEyes: {fileID: 1853020619020879081}
-  fieldOfView: 90
+  fieldOfView: 120
 --- !u!1 &1272896953351138099
 GameObject:
   m_ObjectHideFlags: 0
