@@ -7,7 +7,7 @@ public class EnemyNav : MonoBehaviour
     private Transform playerTransform;
     private NavMeshAgent navMeshAgent;
 
-    void Start()
+    private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -15,7 +15,7 @@ public class EnemyNav : MonoBehaviour
         RegularMovespeed();
     }
 
-    void Update()
+    private void Update()
     {
             navMeshAgent.SetDestination(playerTransform.position);
     }

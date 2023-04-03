@@ -3,26 +3,21 @@ using Random = UnityEngine.Random;
 
 public class EnemyHit : MonoBehaviour
 {
-    public GameObject destroyedParticleEffect;
-
-    public int enemyHealth = 2;
-    
-    public GameObject milkPrefab;
+    [SerializeField, Tooltip("Should the player win the game when this enemy is beat?")]
+    private bool isBoss;
+    [SerializeField] private GameObject destroyedParticleEffect;
+    [SerializeField] private int enemyHealth = 2;
+    [SerializeField] private GameObject milkPrefab;
     
     private GameObject _powerupParent;
-
     private EnemyNav _enemyNav;
+    private LevelManager _levelMan;
 
     private void Start()
     {
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
         _enemyNav = gameObject.GetComponent<EnemyNav>();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        _levelMan = FindObjectOfType<LevelManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -76,7 +71,11 @@ public class EnemyHit : MonoBehaviour
                 _powerupParent.transform);
         }
 
-        FindObjectOfType<LevelManager>().SetScoreText();
+        _levelMan.SetScoreText();
+        if (isBoss)
+        {
+           _levelMan.LevelBeat(); 
+        }
         Destroy(gameObject, 0.5f);
         
         

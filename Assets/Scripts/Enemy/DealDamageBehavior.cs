@@ -11,12 +11,12 @@ public class DealDamageBehavior : MonoBehaviour
     private PlayerHealth _playerHealth;
     private float _timeSinceLastAttack = 0f;
 
-    void Start()
+    private void Start()
     {
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
-    void Update()
+    private void Update()
     {
     }
 
