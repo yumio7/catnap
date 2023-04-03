@@ -103,7 +103,7 @@ public class PlayerPowerups : MonoBehaviour
             {
                 if (hit.gameObject.GetComponent<EnemyHit>() == null)
                 {
-                    hit.gameObject.GetComponent<BossHit>().EnemyHurt(10);
+                    hit.gameObject.GetComponent<BossHit>().EnemyHurt(2);
                 }
                 else
                 {
