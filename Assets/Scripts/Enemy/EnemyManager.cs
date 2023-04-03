@@ -24,6 +24,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        print(enemyCount);
         if (enemiesKilled >= killsForBossSpawn && !_spawned)
         {
             Instantiate(boss, transform.position, transform.rotation);

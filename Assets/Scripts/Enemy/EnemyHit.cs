@@ -11,12 +11,12 @@ public class EnemyHit : MonoBehaviour
     
     private GameObject _powerupParent;
 
-    private EnemyAI _enemyAI;
+    private EnemyNav _enemyNav;
 
     private void Start()
     {
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
-        _enemyAI = gameObject.GetComponent<EnemyAI>();
+        _enemyNav = gameObject.GetComponent<EnemyNav>();
     }
 
     // Update is called once per frame
@@ -52,14 +52,12 @@ public class EnemyHit : MonoBehaviour
     
     private void SlowMoveSpeed()
     {
-        _enemyAI.chaseSpeed = _enemyAI.chaseSpeed / 2;
-        _enemyAI.patrolSpeed = _enemyAI.patrolSpeed / 2;
+        _enemyNav.SlowMovespeed();
     }
     
     private void RegularMoveSpeed()
     {
-        _enemyAI.chaseSpeed = _enemyAI.chaseSpeed * 2;
-        _enemyAI.patrolSpeed = _enemyAI.patrolSpeed * 2;
+        _enemyNav.RegularMovespeed();
     }
 
     private void DestroyEnemy()

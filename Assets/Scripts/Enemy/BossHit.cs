@@ -51,12 +51,12 @@ public class BossHit : MonoBehaviour
     
     private void SlowMoveSpeed()
     {
-        _enemyBehavior.moveSpeed = _enemyBehavior.moveSpeed / 2;
+        _enemyBehavior.moveSpeed /= 2;
     }
     
     private void RegularMoveSpeed()
     {
-        _enemyBehavior.moveSpeed = _enemyBehavior.moveSpeed * 2;
+        _enemyBehavior.moveSpeed *= 2;
     }
 
     private void DestroyEnemy()

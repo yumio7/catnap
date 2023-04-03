@@ -7,10 +7,12 @@ public class SpawnerBehavior : MonoBehaviour
 
     // Total number of objects to be spawned over the
     // lifetime of this spawner
-    [SerializeField] private int totalInstances;
+    [SerializeField, Tooltip("Total number of objects to be spawned over the lifetime of this spawner")] 
+    private int totalInstances;
 
     // Maximum delay between spawns
-    [SerializeField] private float spawnDelay;
+    [SerializeField, Tooltip("Maximum delay between spawns")] 
+    private float spawnDelay;
 
     // X distance away from spawner that object can spawn
     [SerializeField] private float xRange;
