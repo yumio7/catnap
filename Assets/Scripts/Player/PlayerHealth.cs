@@ -19,12 +19,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth > 0)
         {
-            if (currentHealth > 25 && currentHealth - damageAmount <= 25)
-            {
-                PlayerPowerups.jump = true;
-            }
             currentHealth -= damageAmount;
-            print(currentHealth);
             healthSlider.value = currentHealth;
         }
 
