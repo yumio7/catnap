@@ -3,8 +3,8 @@ using UnityEngine;
 public class YarnGrenadePowerup : MonoBehaviour
 {
     [SerializeField] private GameObject yarnGrenadePrefab;
-    [SerializeField] private float yarnGrenadeProjectileSpeed;
-    [SerializeField] private float yarnGrenadeCooldown;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private float cooldown;
     
     private float yarnGrenadeCooldownCounter;
     private Transform _camera;
@@ -12,7 +12,7 @@ public class YarnGrenadePowerup : MonoBehaviour
     
     private void Start()
     {
-        yarnGrenadeCooldownCounter = yarnGrenadeCooldown;
+        yarnGrenadeCooldownCounter = cooldown;
         _camera = Camera.main.transform;
         _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent").transform;
     }
@@ -20,7 +20,7 @@ public class YarnGrenadePowerup : MonoBehaviour
     private void Update()
     {
         // fire yarn grenade
-        if (Input.GetKeyDown(KeyCode.Q) && yarnGrenadeCooldownCounter > yarnGrenadeCooldown)
+        if (Input.GetKeyDown(KeyCode.Q) && yarnGrenadeCooldownCounter > cooldown)
         {
             FireYarnGrenade();
             yarnGrenadeCooldownCounter = 0;
@@ -35,7 +35,7 @@ public class YarnGrenadePowerup : MonoBehaviour
             _camera.position + _camera.forward, _camera.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
-        rb.AddForce((_camera.forward + _camera.up) * yarnGrenadeProjectileSpeed, ForceMode.VelocityChange);
+        rb.AddForce((_camera.forward + _camera.up) * projectileSpeed, ForceMode.VelocityChange);
 
         projectile.transform.SetParent(
             _projectileParent.transform);

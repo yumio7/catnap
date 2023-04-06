@@ -8,13 +8,16 @@ public class EnemyHit : MonoBehaviour
     [SerializeField] private GameObject destroyedParticleEffect;
     [SerializeField] private int enemyHealth = 2;
     [SerializeField] private GameObject milkPrefab;
+    [SerializeField] private GameObject slowIndicator;
     
     private GameObject _powerupParent;
     private EnemyNav _enemyNav;
     private LevelManager _levelMan;
+    private int maxHealth;
 
     private void Start()
     {
+        maxHealth = enemyHealth;
         _powerupParent = GameObject.FindGameObjectWithTag("PowerupParent");
         _enemyNav = gameObject.GetComponent<EnemyNav>();
         _levelMan = FindObjectOfType<LevelManager>();
@@ -22,10 +25,12 @@ public class EnemyHit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
+        var coll = collision.gameObject;
+        
+        if (coll.CompareTag("Projectile"))
         {
-            Destroy(collision.gameObject);
-            EnemyHurt(1);
+            EnemyHurt(coll.GetComponent<ProjectileStats>().GetDamageDealt());
+            Destroy(coll);
         } 
     }
 
@@ -39,15 +44,30 @@ public class EnemyHit : MonoBehaviour
         }
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    
+    public int GetCurrentHealth()
+    {
+        return enemyHealth;
+    }
+
     public void Slow(int duration)
     {
-        SlowMoveSpeed();
+        SlowMoveSpeed(duration);
         Invoke(nameof(RegularMoveSpeed), duration);
     }
     
-    private void SlowMoveSpeed()
+    private void SlowMoveSpeed(int duration)
     {
+        var slowIndctr = Instantiate(slowIndicator, 
+            transform.position, 
+            Quaternion.identity);
+        slowIndctr.transform.parent = gameObject.transform;
         _enemyNav.SlowMovespeed();
+        Destroy(slowIndctr, duration);
     }
     
     private void RegularMoveSpeed()

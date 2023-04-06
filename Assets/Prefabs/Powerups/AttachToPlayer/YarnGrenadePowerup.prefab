@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yarnGrenadePrefab: {fileID: 4152860956492367022, guid: 53a2e240ca16d4cdbbb15a8e3a2043dd, type: 3}
-  yarnGrenadeProjectileSpeed: 1
-  yarnGrenadeCooldown: 5
+  projectileSpeed: 5
+  cooldown: 5
