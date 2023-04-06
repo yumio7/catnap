@@ -79,6 +79,12 @@ public class PlayerController : MonoBehaviour
         }
         
         elapsedTime += Time.deltaTime;
+
+        if (paw == null)
+        {
+            // paw was probably updated by a powerup, let's find the new one
+            paw = GameObject.FindGameObjectWithTag("Paw");
+        }
         
         Vector3 xmove = new Vector3(-0.5f, paw.transform.localPosition.y, paw.transform.localPosition.z);
         if (paw_attack && elapsedTime < (swipeRate / 2))
