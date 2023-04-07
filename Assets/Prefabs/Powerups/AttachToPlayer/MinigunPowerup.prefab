@@ -47,6 +47,7 @@ MonoBehaviour:
   myName: Minigun
   description: Paw is replaced with a minigun that fires much faster
   shopCost: 1
+  mySprite: {fileID: 21300000, guid: b67aef02893b5d240a141cfe8c8a98b1, type: 3}
   newPawPrefab: {fileID: 3060023452755572069, guid: 7fec44488b18545d49615eb9eb8db157, type: 3}
   projectilePrefab: {fileID: 4862840425999325253, guid: dbcda5726ffb1471685274cf3137a77c, type: 3}
   projectileSpeed: 100

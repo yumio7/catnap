@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     private float distanceToPlayer;
     public int damageAmount = 20;
 
-    private int currentDestinationIndex = 0;
+    // private int currentDestinationIndex = 0;
 
     private NavMeshAgent agent;
 

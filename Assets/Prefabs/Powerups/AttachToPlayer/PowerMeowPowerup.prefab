@@ -48,6 +48,7 @@ MonoBehaviour:
   description: If hit below 25 health, explode in a powerful meow that deals massive
     damage
   shopCost: 1
+  mySprite: {fileID: 21300000, guid: be6bc1c76d38c034c8463fbaf7016b7a, type: 3}
   cooldown: 10
   activationThreshold: 25
   damageDealt: 2

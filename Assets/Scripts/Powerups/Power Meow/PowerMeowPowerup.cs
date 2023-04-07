@@ -5,6 +5,7 @@ public class PowerMeowPowerup : MonoBehaviour, Powerup
     [SerializeField] private string myName;
     [SerializeField] private string description;
     [SerializeField] private int shopCost = 1;
+    [SerializeField] private Sprite mySprite;
     [SerializeField] private int cooldown;
     [SerializeField, Tooltip("How low must the player get before power meow activates?")]
     private int activationThreshold;
@@ -87,5 +88,10 @@ public class PowerMeowPowerup : MonoBehaviour, Powerup
     public int GetCost()
     {
         return shopCost;
+    }
+
+    public Sprite GetSprite()
+    {
+        return mySprite;
     }
 }

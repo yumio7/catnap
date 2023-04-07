@@ -5,7 +5,8 @@ public class NewWeaponPowerup : MonoBehaviour, Powerup
 {
     [SerializeField] private string myName;
     [SerializeField] private string description;
-    [SerializeField] private int shopCost;
+    [SerializeField] private int shopCost = 1;
+    [SerializeField] private Sprite mySprite;
     [SerializeField] private GameObject newPawPrefab;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed;
@@ -73,5 +74,10 @@ public class NewWeaponPowerup : MonoBehaviour, Powerup
     public int GetCost()
     {
         return shopCost;
+    }
+    
+    public Sprite GetSprite()
+    {
+        return mySprite;
     }
 }
