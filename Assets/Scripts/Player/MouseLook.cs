@@ -5,7 +5,7 @@ public class MouseLook : MonoBehaviour
 {
     private Transform playerBody;
     public float mouseSensitivity = 100;
-    public Slider slider;
+    //public Slider slider;
 
     private float pitch = 0f;
 
@@ -40,9 +40,9 @@ public class MouseLook : MonoBehaviour
         }
     }
 
-    public void UpdateSlider()
+    /*public void UpdateSlider()
     {
         mouseSensitivity = slider.value;
         PlayerPrefs.SetInt("MouseSenstivity", (int) mouseSensitivity);
-    }
+    } */
 }

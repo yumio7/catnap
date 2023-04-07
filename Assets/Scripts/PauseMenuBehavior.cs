@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenuBehavior : MonoBehaviour
 {
     public static bool isGamePaused = false;
     public GameObject pauseMenu;
+    public Slider slider;
 
     // Update is called once per frame
     void Update()
@@ -59,5 +61,11 @@ public class PauseMenuBehavior : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    
+    public void UpdateSlider()
+    {
+        Camera.main.GetComponent<MouseLook>().mouseSensitivity = slider.value;
+        PlayerPrefs.SetInt("MouseSenstivity", (int) slider.value);
     }
 }
