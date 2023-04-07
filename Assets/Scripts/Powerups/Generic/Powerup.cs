@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface Powerup
 {
     public enum powerupType
@@ -11,4 +13,5 @@ public interface Powerup
     public string GetDescription();
     public powerupType GetSlot();
     public int GetCost();
+    public Sprite GetSprite();
 }

@@ -31,14 +31,15 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     private void Update()
     {
-        /*if (isGameOver)
+        if (isGameOver)
         {
             LevelLost();
-        } */
+        } 
 
-    }
+    }*/
     
 
     public void SetScoreText()

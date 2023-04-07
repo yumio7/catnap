@@ -21804,8 +21804,10 @@ GameObject:
   - component: {fileID: 828000585454050754}
   - component: {fileID: -2379012720228912509}
   - component: {fileID: -4409146770941299895}
+  - component: {fileID: 4861511519214447063}
   - component: {fileID: 1152857703825467992}
   - component: {fileID: 5679564851763148227}
+  - component: {fileID: -920618765729540373}
   m_Layer: 0
   m_Name: Rat3
   m_TagString: Enemy
@@ -21906,6 +21908,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackDamage: 5
   _attackRate: 2
+--- !u!114 &4861511519214447063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429838409288433751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb290a92c1ea47c78465997ccf3903a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMoneyValue: 10
+  maxMoneyValue: 30
 --- !u!65 &1152857703825467992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21941,6 +21957,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-920618765729540373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429838409288433751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb290a92c1ea47c78465997ccf3903a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMoneyValue: 0
+  maxMoneyValue: 0
 --- !u!1 &6510476977357939375
 GameObject:
   m_ObjectHideFlags: 0

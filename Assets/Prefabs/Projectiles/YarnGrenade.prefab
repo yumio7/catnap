@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionVFXPrefab: {fileID: 6687282169430112729, guid: 0f3bec4f2e1f74754bb43a1f9961ab2d, type: 3}
   explosiveSFX: {fileID: 8300000, guid: 535e97c46e3fa4a46adcaf5f86e316c0, type: 3}
-  damageAmount: 10
+  damageAmount: 15
   slowingProjectile: 1
   slowDuration: 5
   explosionRadius: 10

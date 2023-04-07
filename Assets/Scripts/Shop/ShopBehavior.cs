@@ -67,9 +67,22 @@ public class ShopBehavior : MonoBehaviour
         // Do whatever you want to do when a button is clicked
         Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
         
-        // add that component to the player
-        var powerup = Instantiate(_shopOptions[buttonIndex]);
-        powerup.transform.parent = player.transform;
+        // check if player can afford it
+        var playerCurrency = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCurrency>();
+        var costOfItem = _shopOptions[buttonIndex].GetComponent<Powerup>().GetCost();
+
+        if (playerCurrency.CanBuy(costOfItem))
+        {
+            // add that component to the player
+            var powerup = Instantiate(_shopOptions[buttonIndex]);
+            powerup.transform.parent = player.transform;
+            // and remove that currency from the player
+            playerCurrency.RemoveMoney(costOfItem);
+        }
+        else
+        {
+            print("Can't afford!!");
+        }
     }
 
     private void SetPlayerControls(bool value)

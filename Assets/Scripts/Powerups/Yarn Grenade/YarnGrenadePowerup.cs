@@ -5,6 +5,7 @@ public class YarnGrenadePowerup : MonoBehaviour, Powerup
     [SerializeField] private string myName;
     [SerializeField] private string description;
     [SerializeField] private int shopCost = 1;
+    [SerializeField] private Sprite mySprite;
     [SerializeField] private GameObject yarnGrenadePrefab;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float cooldown;
@@ -62,5 +63,10 @@ public class YarnGrenadePowerup : MonoBehaviour, Powerup
     public int GetCost()
     {
         return shopCost;
+    }
+    
+    public Sprite GetSprite()
+    {
+        return mySprite;
     }
 }
