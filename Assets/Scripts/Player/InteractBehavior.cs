@@ -5,8 +5,6 @@ public class InteractBehavior : MonoBehaviour
 {
     [SerializeField] private Canvas shopWindowPrefab;
     [SerializeField] private int interactDistance;
-    // this string represents the name of the next level
-    [SerializeField] private string _nextLevel;
 
     private Canvas shopWindowInstance;
     private bool shopOpen;

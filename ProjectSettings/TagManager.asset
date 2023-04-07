@@ -20,6 +20,7 @@ TagManager:
   - Powerup
   - Spawnpoint
   - LevelManager
+  - HealthSlider
   layers:
   - Default
   - TransparentFX

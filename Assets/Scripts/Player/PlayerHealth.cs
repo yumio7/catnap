@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
+
     //public AudioClip deadSFX;
     public Slider healthSlider;
 
@@ -12,7 +13,15 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = startingHealth;
-        healthSlider.value = currentHealth;
+        try
+        {
+            healthSlider.value = currentHealth;
+        }
+        catch
+        {
+            healthSlider = GameObject.FindGameObjectWithTag("HealthSlider").GetComponent<Slider>();
+            healthSlider.value = currentHealth;
+        }
     }
 
     public void TakeDamage(int damageAmount)
@@ -20,13 +29,29 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damageAmount;
-            healthSlider.value = currentHealth;
+            try
+            {
+                healthSlider.value = currentHealth;
+            }
+            catch
+            {
+                healthSlider = GameObject.FindGameObjectWithTag("HealthSlider").GetComponent<Slider>();
+                healthSlider.value = currentHealth;
+            }
         }
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            healthSlider.value = currentHealth;
+            try
+            {
+                healthSlider.value = currentHealth;
+            }
+            catch
+            {
+                healthSlider = GameObject.FindGameObjectWithTag("HealthSlider").GetComponent<Slider>();
+                healthSlider.value = currentHealth;
+            }
             PlayerDies();
         }
     }
@@ -42,10 +67,22 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = startingHealth;
         }
-        healthSlider.value = currentHealth;
+
+        try
+        {
+            healthSlider.value = currentHealth;
+        }
+        catch
+        {
+            healthSlider = GameObject.FindGameObjectWithTag("HealthSlider").GetComponent<Slider>();
+            healthSlider.value = currentHealth;
+        }
     }
-    
-    public int GetHealth() { return currentHealth; }
+
+    public int GetHealth()
+    {
+        return currentHealth;
+    }
 
     private void PlayerDies()
     {

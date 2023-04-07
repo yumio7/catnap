@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4152121817299358898, guid: 6cd0151ef7709412bb4f4b9144246f51, type: 3}
+      propertyPath: m_TagString
+      value: HealthSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 4152121817299358899, guid: 6cd0151ef7709412bb4f4b9144246f51, type: 3}
       propertyPath: m_Pivot.x
       value: 1

@@ -28,9 +28,18 @@ public class ShootProjectile : MonoBehaviour
         {
             GameObject projectile = Instantiate(projectilePrefab,
                 transform.position + transform.forward, transform.rotation);
-            projectile.transform.SetParent(
-                _projectileParent.transform);
-            
+            try
+            {
+                projectile.transform.SetParent(
+                    _projectileParent.transform);
+            }
+            catch
+            {
+                _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
+                projectile.transform.SetParent(
+                    _projectileParent.transform);
+            }
+
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
@@ -39,7 +48,7 @@ public class ShootProjectile : MonoBehaviour
 
             elapsedTime = 0.0f;
         }
-        
+
         elapsedTime += Time.deltaTime;
     }
 }

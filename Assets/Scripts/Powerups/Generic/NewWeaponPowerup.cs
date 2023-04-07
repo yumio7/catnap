@@ -50,7 +50,15 @@ public class NewWeaponPowerup : MonoBehaviour, Powerup
 
             rb.AddForce(playerCamera.forward * projectileSpeed, ForceMode.VelocityChange);
 
-            projectile.transform.SetParent(projectileParent.transform);
+            try
+            {
+                projectile.transform.SetParent(projectileParent.transform);
+            }
+            catch
+            {
+                projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
+                projectile.transform.SetParent(projectileParent.transform);
+            }
 
             yield return new WaitForSeconds(firingDelay);
         }
