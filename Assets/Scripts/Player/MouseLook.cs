@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseLook : MonoBehaviour
 {
     private Transform playerBody;
     public float mouseSensitivity = 100;
+    public Slider slider;
 
     private float pitch = 0f;
 
@@ -36,5 +38,11 @@ public class MouseLook : MonoBehaviour
         {
             transform.localRotation = Quaternion.Euler(pitch, 0, 0);
         }
+    }
+
+    public void UpdateSlider()
+    {
+        mouseSensitivity = slider.value;
+        PlayerPrefs.SetInt("MouseSenstivity", (int) mouseSensitivity);
     }
 }
