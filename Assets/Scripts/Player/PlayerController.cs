@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        input = (transform.right * moveHorizontal + transform.up * moveVertical).normalized;
+        input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
         input *= speed;
 
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             paw = GameObject.FindGameObjectWithTag("Paw");
         }
         
-        Vector3 xmove = new Vector3(-0.5f, paw.transform.localPosition.y, paw.transform.localPosition.z);
+        Vector3 xmove = new Vector3(0, paw.transform.localPosition.y, paw.transform.localPosition.z);
         if (paw_attack && elapsedTime < (swipeRate / 2))
         {
             paw.transform.localPosition = Vector3.Lerp(paw.transform.localPosition, xmove, 2 * Time.deltaTime);

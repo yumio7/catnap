@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1881602099691430978}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameText: {fileID: 0}
-  score: {fileID: 0}
+  scoreText: {fileID: 0}
   nextLevel: Shop

@@ -5,7 +5,7 @@ public class MouseLook : MonoBehaviour
     private Transform playerBody;
     public float mouseSensitivity = 100;
 
-    private float pitch = -90f;
+    private float pitch = 0f;
 
     private void Start()
     {
@@ -24,13 +24,11 @@ public class MouseLook : MonoBehaviour
         //yaw
         if (!LevelManager.isGameOver)
         {
-            playerBody.Rotate(Vector3.back * moveX);
+            playerBody.Rotate(Vector3.up * moveX);
         }
 
         //pitch
         pitch -= moveY;
-
-        pitch = Mathf.Clamp(pitch, -180f, 0f);
 
         if (!LevelManager.isGameOver)
         {

@@ -46,6 +46,7 @@ public class InteractBehavior : MonoBehaviour
 
     private void LoadLevel()
     {
-        SceneManager.LoadScene(_nextLevel);
+        var levelMan = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        levelMan.LoadLevel();
     }
 }

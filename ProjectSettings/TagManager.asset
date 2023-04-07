@@ -19,6 +19,7 @@ TagManager:
   - ShopkeepPopUp
   - Powerup
   - Spawnpoint
+  - LevelManager
   layers:
   - Default
   - TransparentFX

@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void LoadLevel()
+    public void LoadLevel()
     {
         SceneManager.LoadScene(nextLevel);
     }
