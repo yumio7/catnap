@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class NewWeaponPowerup : MonoBehaviour
+public class NewWeaponPowerup : MonoBehaviour, Powerup
 {
+    [SerializeField] private string myName;
+    [SerializeField] private string description;
+    [SerializeField] private int shopCost;
     [SerializeField] private GameObject newPawPrefab;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed;
@@ -51,5 +53,25 @@ public class NewWeaponPowerup : MonoBehaviour
 
             yield return new WaitForSeconds(firingDelay);
         }
+    }
+
+    public string GetName()
+    {
+        return myName;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
+    public Powerup.powerupType GetSlot()
+    {
+        return Powerup.powerupType.Paw;
+    }
+
+    public int GetCost()
+    {
+        return shopCost;
     }
 }

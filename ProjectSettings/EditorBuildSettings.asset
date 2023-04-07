@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/House.unity
     guid: 981cf59730afd5b4b8a94d4ed95d9f64
-  - enabled: 0
-    path: Assets/Scenes/Shopkeep Test.unity
-    guid: a23e87cf87cc94b31bfa9aff26d79abe
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 5fb916ca014b64a22b58db6a3929a977

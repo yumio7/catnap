@@ -39,7 +39,7 @@ public class InteractBehavior : MonoBehaviour
                 // close the shop
                 Destroy(shopWindowInstance.gameObject);
                 shopOpen = false;
-                Invoke("LoadLevel", 3f);
+                Invoke(nameof(LoadLevel), 3f);
             }
         }
     }

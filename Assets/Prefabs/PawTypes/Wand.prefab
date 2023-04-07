@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3060023452755572069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -94,7 +94,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3060023452755572069}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -111,3 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c457b2746d44809a3834793e258ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionVFXPrefab: {fileID: 0}
+  explosiveSFX: {fileID: 0}
+  damageAmount: 1
+  slowingProjectile: 0
+  slowDuration: 1
+  explosionRadius: 0

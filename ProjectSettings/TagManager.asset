@@ -17,6 +17,7 @@ TagManager:
   - ShopkeepNPC
   - WanderPoint
   - ShopkeepPopUp
+  - Powerup
   layers:
   - Default
   - TransparentFX

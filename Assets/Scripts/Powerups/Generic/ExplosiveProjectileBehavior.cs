@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class ExplosiveProjectileBehavior : MonoBehaviour
 {
+    
     [SerializeField] private GameObject explosionVFXPrefab;
-
     [Tooltip("Explosion sound to be played")] [SerializeField]
     private AudioClip explosiveSFX;
-
     [Tooltip("Damage of the grenade")] [SerializeField]
     private int damageAmount = 1;
-
     [Tooltip("Should this projectile slow enemies it hits?")] [SerializeField]
     private bool slowingProjectile;
-
     [Tooltip("Slow duration of the explosive (if enabled)")] [SerializeField]
     private int slowDuration = 1;
-
     [Tooltip("Radius of the explosion")] [SerializeField]
     private int explosionRadius;
 

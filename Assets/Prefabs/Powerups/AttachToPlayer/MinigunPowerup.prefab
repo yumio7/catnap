@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7938048540335169595}
   m_Layer: 0
   m_Name: MinigunPowerup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76a6f3b621343428312671ee82fcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Minigun
+  description: Paw is replaced with a minigun that fires much faster
+  shopCost: 1
   newPawPrefab: {fileID: 3060023452755572069, guid: 7fec44488b18545d49615eb9eb8db157, type: 3}
   projectilePrefab: {fileID: 4862840425999325253, guid: dbcda5726ffb1471685274cf3137a77c, type: 3}
   projectileSpeed: 100

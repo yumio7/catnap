@@ -31,16 +31,16 @@ public class ShootProjectile : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && elapsedTime > shootRate  && !LevelManager.isGameOver)
+        if (Input.GetButtonDown("Fire1") && elapsedTime > shootRate && !LevelManager.isGameOver)
         {
             GameObject projectile = Instantiate(projectilePrefab,
                 transform.position + transform.forward, transform.rotation);
+            projectile.transform.SetParent(
+                _projectileParent.transform);
+            
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
             rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
-
-            projectile.transform.SetParent(
-                _projectileParent.transform);
 
             AudioSource.PlayClipAtPoint(hairballSFX, transform.position);
 

@@ -1368,11 +1368,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerupsInput:
-  - Fireball
-  - Ice Breath
-  - Sprinting Shoes
-  - Pointy Hat
-  - Laser Eyes
+  - {fileID: 7784591166366206898, guid: bb724a26f08b743789d7393ba28befea, type: 3}
+  - {fileID: 7784591166366206898, guid: ae48218bf4ddb453b85149483040e639, type: 3}
+  - {fileID: 9083447601386955374, guid: 0c5a2517427b64298beddab0b0eadc10, type: 3}
+  - {fileID: 5597516240315524124, guid: 194a916009bc248509b430fa4139f6af, type: 3}
 --- !u!1 &7888967133397971548
 GameObject:
   m_ObjectHideFlags: 0

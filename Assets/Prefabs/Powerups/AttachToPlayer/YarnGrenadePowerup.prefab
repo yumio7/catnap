@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5597516240315524125}
   m_Layer: 0
   m_Name: YarnGrenadePowerup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529903f627e1346e18d1547bf584537f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Yarn Grenade
+  description: Press Q to launch a yarn grenade that deals small damage and slows
+    in a large area
+  shopCost: 1
   yarnGrenadePrefab: {fileID: 4152860956492367022, guid: 53a2e240ca16d4cdbbb15a8e3a2043dd, type: 3}
   projectileSpeed: 5
   cooldown: 5

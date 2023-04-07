@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class YarnGrenadePowerup : MonoBehaviour
+public class YarnGrenadePowerup : MonoBehaviour, Powerup
 {
+    [SerializeField] private string myName;
+    [SerializeField] private string description;
+    [SerializeField] private int shopCost = 1;
     [SerializeField] private GameObject yarnGrenadePrefab;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float cooldown;
@@ -39,5 +42,25 @@ public class YarnGrenadePowerup : MonoBehaviour
 
         projectile.transform.SetParent(
             _projectileParent.transform);
+    }
+
+    public string GetName()
+    {
+        return myName;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
+    public Powerup.powerupType GetSlot()
+    {
+        return Powerup.powerupType.Q;
+    }
+
+    public int GetCost()
+    {
+        return shopCost;
     }
 }

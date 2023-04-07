@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9083447601386955375}
   m_Layer: 0
   m_Name: PowerMeowPowerup
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391fdb4fc196348958f0ff82b6bd7926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Power Meow
+  description: If hit below 25 health, explode in a powerful meow that deals massive
+    damage
+  shopCost: 1
   cooldown: 10
   activationThreshold: 25
   damageDealt: 2

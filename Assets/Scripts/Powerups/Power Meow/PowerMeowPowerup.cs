@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class PowerMeowPowerup : MonoBehaviour
+public class PowerMeowPowerup : MonoBehaviour, Powerup
 {
+    [SerializeField] private string myName;
+    [SerializeField] private string description;
+    [SerializeField] private int shopCost = 1;
     [SerializeField] private int cooldown;
     [SerializeField, Tooltip("How low must the player get before power meow activates?")]
     private int activationThreshold;
@@ -67,5 +67,25 @@ public class PowerMeowPowerup : MonoBehaviour
     void PowerMeowAvailable()
     {
         powerMeowOffCooldown = true;
+    }
+
+    public string GetName()
+    {
+        return myName;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
+    public Powerup.powerupType GetSlot()
+    {
+        return Powerup.powerupType.Augment;
+    }
+
+    public int GetCost()
+    {
+        return shopCost;
     }
 }

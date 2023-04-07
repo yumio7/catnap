@@ -6,8 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     //public float levelDuration = 10.0f;
     //public Text timerText;
-    public Text gameText;
-    public Text score;
+    [SerializeField] private Text gameText;
+    [SerializeField] private Text scoreText;
 
     //public AudioClip gameOverSFX;
     //public AudioClip gameWonSFX;
@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+
         isGameOver = false;
 
         totalKills = 0;
@@ -44,14 +45,14 @@ public class LevelManager : MonoBehaviour
     {
         totalKills += 1;
 
-        score.text = "Score: " + totalKills.ToString();
+        scoreText.text = "Score: " + totalKills.ToString();
     }
     
     public void RestartScore()
     {
         totalKills = 0;
 
-        score.text = "Score: " + totalKills.ToString();
+        scoreText.text = "Score: " + totalKills.ToString();
     }
 
     public void LevelLost()
@@ -60,7 +61,7 @@ public class LevelManager : MonoBehaviour
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
 
-        Invoke("LoadCurrentLevel", 2);
+        Invoke(nameof(LoadCurrentLevel), 2);
 
     }
 
@@ -75,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextLevel))
         {
-            Invoke("LoadLevel", 2);
+            Invoke(nameof(LoadLevel), 2);
         }
     }
 

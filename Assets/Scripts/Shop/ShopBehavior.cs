@@ -5,10 +5,10 @@ using Random = UnityEngine.Random;
 public class ShopBehavior : MonoBehaviour
 {
     // this class generates a shop popup with 3 selections of powerup
-    [SerializeField] private string[] _powerupsInput;
+    [SerializeField] private GameObject[] _powerupsInput;
 
     // set of shop options to be displayed for players
-    private List<string> _shopOptions;
+    private List<GameObject> _shopOptions;
 
     private GameObject player;
     private Camera mainCam;
@@ -28,7 +28,7 @@ public class ShopBehavior : MonoBehaviour
     private void GenerateShopOptions()
     {
         // initialize lists
-        _shopOptions = new List<string>();
+        _shopOptions = new List<GameObject>();
 
         // shuffle the input array
         for (var i = 0; i < _powerupsInput.Length; i++)
@@ -49,7 +49,8 @@ public class ShopBehavior : MonoBehaviour
         var itemCards = GameObject.FindGameObjectsWithTag("ShopItemCard");
         for (var i = 0; i < 3; i++)
         {
-            itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i]);
+            itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i].GetComponent<Powerup>().GetName());
+            // TODO itemCards[i].GetComponent<ItemCard>().SetDescText(_shopOptions[i].GetDescription());
         }
     }
 
@@ -65,6 +66,10 @@ public class ShopBehavior : MonoBehaviour
         Debug.Log("Button " + (buttonIndex + 1) + " clicked");
         // Do whatever you want to do when a button is clicked
         Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
+        
+        // add that component to the player
+        var powerup = Instantiate(_shopOptions[buttonIndex]);
+        powerup.transform.parent = player.transform;
     }
 
     private void SetPlayerControls(bool value)
