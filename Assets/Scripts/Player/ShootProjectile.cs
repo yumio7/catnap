@@ -9,22 +9,15 @@ public class ShootProjectile : MonoBehaviour
 
     public AudioClip hairballSFX;
 
-    public Image reticleImage;
-
-    public Color reticleDementorColor;
-    
     public float shootRate = 2.0f;
 
     private GameObject _projectileParent;
-
-    private Color originalReticleColor;
 
     private float elapsedTime;
 
     private void Start()
     {
         elapsedTime = shootRate;
-        originalReticleColor = reticleImage.color;
         _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
@@ -49,34 +42,4 @@ public class ShootProjectile : MonoBehaviour
         
         elapsedTime += Time.deltaTime;
     }
-
-    private void FixedUpdate()
-    {
-        ReticleEffect();
-    }
-
-    private void ReticleEffect()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
-        {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                reticleImage.color = Color.Lerp(
-                    reticleImage.color, reticleDementorColor, Time.deltaTime * 2);
-                reticleImage.transform.localScale = Vector3.Lerp(
-                    reticleImage.transform.localScale, new Vector3(0.7f, 0.7f, 0.7f),
-                    Time.deltaTime * 2);
-            }
-            else
-            {
-                reticleImage.color = Color.Lerp(
-                    reticleImage.color, originalReticleColor, Time.deltaTime * 2);
-                reticleImage.transform.localScale = Vector3.Lerp(
-                    reticleImage.transform.localScale, Vector3.one,
-                    Time.deltaTime * 2);
-            }
-        }
-    } 
 }
