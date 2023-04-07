@@ -50052,6 +50052,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1199440340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1101866243, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+  m_PrefabInstance: {fileID: 1543029586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296cec891bbbc4416962b2c92c0940ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1221554219
 GameObject:
   m_ObjectHideFlags: 0
@@ -56199,17 +56210,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1296369317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6159012568936015386, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
-  m_PrefabInstance: {fileID: 710182037}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8c1a973caca7465eb12f20766e570fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1310398255
 Mesh:
   m_ObjectHideFlags: 0
@@ -63936,10 +63936,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123769476, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351389842, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415969586, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101866243, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 1185065675}
     - target: {fileID: 1185065676, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
       propertyPath: sliderEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1296369317}
+      objectReference: {fileID: 1199440340}
+    - target: {fileID: 1185065676, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: sliderEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185065676, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: sliderEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenuBehavior, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5971290339291926531, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
