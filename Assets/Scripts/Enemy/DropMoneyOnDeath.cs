@@ -10,8 +10,11 @@ public class DropMoneyOnDeath : MonoBehaviour
 
     void OnDestroy()
     {
-        var currency = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCurrency>();
-        
-        currency.AddMoney(Random.Range(minMoneyValue, maxMoneyValue));
+        if (!LevelManager.isGameOver)
+        {
+            var currency = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCurrency>();
+
+            currency.AddMoney(Random.Range(minMoneyValue, maxMoneyValue));
+        }
     }
 }
