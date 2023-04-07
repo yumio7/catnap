@@ -47,4 +47,4 @@ MonoBehaviour:
   myName: Sneakers
   description: Increase movement speed by 50%
   shopCost: 1
-  mySprite: {fileID: 21300000, guid: e762d82c4732e4ae8812aaa9e16bed54, type: 3}
+  mySprite: {fileID: 21300000, guid: ebb373d166347bb408924daa001407df, type: 3}

@@ -2232,6 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  noPowerupSprite: {fileID: 21300000, guid: 4cbeb1891a72f8f49b7273b460c8a30c, type: 3}
 --- !u!1 &7728462997482041093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,6 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  noPowerupSprite: {fileID: 21300000, guid: 4cbeb1891a72f8f49b7273b460c8a30c, type: 3}
 --- !u!1 &7728462998366332743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  noPowerupSprite: {fileID: 21300000, guid: 4cbeb1891a72f8f49b7273b460c8a30c, type: 3}
 --- !u!1001 &7728462997408584565
 PrefabInstance:
   m_ObjectHideFlags: 0
