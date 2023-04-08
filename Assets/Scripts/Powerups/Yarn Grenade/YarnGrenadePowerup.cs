@@ -41,8 +41,17 @@ public class YarnGrenadePowerup : MonoBehaviour, Powerup
 
         rb.AddForce((_camera.forward + _camera.up) * projectileSpeed, ForceMode.VelocityChange);
 
-        projectile.transform.SetParent(
-            _projectileParent.transform);
+        try
+        {
+            projectile.transform.SetParent(
+                _projectileParent.transform);
+        }
+        catch
+        {
+            _projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent").transform;
+            projectile.transform.SetParent(
+                _projectileParent.transform);
+        }
     }
 
     public string GetName()

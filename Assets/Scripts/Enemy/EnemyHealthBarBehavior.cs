@@ -20,7 +20,7 @@ public class EnemyHealthBarBehavior : MonoBehaviour
         {
             _healthSlider.maxValue = _health.GetMaxHealth();
         }
-        
+
         _healthSlider.value = _health.GetCurrentHealth();
     }
 }
