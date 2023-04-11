@@ -63964,6 +63964,14 @@ PrefabInstance:
       propertyPath: sliderEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseMenuBehavior, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4565125953202334157, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1651626143}
+    - target: {fileID: 4565125953202334157, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 5971290339291926531, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -66568,6 +66576,11 @@ Transform:
   m_Father: {fileID: 974987148}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1651626143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 415969586, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
+  m_PrefabInstance: {fileID: 1543029586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661170329
 GameObject:
   m_ObjectHideFlags: 0
