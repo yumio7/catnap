@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PowerMeowPowerup : MonoBehaviour, Powerup
@@ -6,27 +7,25 @@ public class PowerMeowPowerup : MonoBehaviour, Powerup
     [SerializeField] private string description;
     [SerializeField] private int shopCost = 1;
     [SerializeField] private Sprite mySprite;
-    [SerializeField] private int cooldown;
+    [SerializeField] private int cooldown = 30;
     [SerializeField, Tooltip("How low must the player get before power meow activates?")]
     private int activationThreshold;
     [SerializeField] private int damageDealt;
     [SerializeField, Tooltip("Explosion radius of the power meow")]
     private float explosionRadius;
-    [SerializeField, Tooltip("How high does the power meow launch the player?")]
-    private float launchHeight;
+    [SerializeField, Tooltip("How long the player is invulnerable after power meow")]
+    private float invulnerabilityDuration = 5f;
     [SerializeField] private AudioClip powerMeowSound;
 
     private GameObject _player;
     private PlayerHealth _playerHealth;
     private bool powerMeowOffCooldown;
-    private CharacterController _characterController;
     private int prevHealth;
 
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerHealth = _player.GetComponent<PlayerHealth>();
-        _characterController = _player.GetComponent<CharacterController>();
 
         powerMeowOffCooldown = true;
         prevHealth = _playerHealth.GetHealth();
@@ -40,17 +39,16 @@ public class PowerMeowPowerup : MonoBehaviour, Powerup
         {
             FirePowerMeow();
             powerMeowOffCooldown = false;
-            Invoke(nameof(PowerMeowAvailable), cooldown);
+            StartCoroutine(PowerMeowCooldown());
         }
-        
+    
         prevHealth = _playerHealth.GetHealth();
     }
 
     void FirePowerMeow()
     {
         var playerPos = _player.transform.position;
-        
-        // launch charCont into the air
+    
         Collider[] hits = Physics.OverlapSphere(playerPos, explosionRadius);
 
         foreach (Collider hit in hits)
@@ -60,16 +58,37 @@ public class PowerMeowPowerup : MonoBehaviour, Powerup
                 hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(damageDealt);
             }
         }
-        
-        _characterController.Move(new Vector3(0, launchHeight, 0));
+    
         AudioSource.PlayClipAtPoint(powerMeowSound, playerPos);
+    
+        // disable all player colliders
+        foreach (Collider collider in _player.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
+    
+        // wait power meow invulnerability duration
+        StartCoroutine(DisablePlayerColliders(invulnerabilityDuration));
     }
 
-    void PowerMeowAvailable()
+    private IEnumerator DisablePlayerColliders(float duration)
     {
+        yield return new WaitForSeconds(duration);
+    
+        // re-enable colliders
+        foreach (Collider collider in _player.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = true;
+        }
+    }
+
+    private IEnumerator PowerMeowCooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+    
         powerMeowOffCooldown = true;
     }
-
+    
     public string GetName()
     {
         return myName;

@@ -10,6 +10,7 @@ public class ItemCard : MonoBehaviour
     private TextMeshProUGUI title;
     private TextMeshProUGUI description;
     private TextMeshProUGUI overwriteWarning;
+    private TextMeshProUGUI cost;
 
     private Image[] imagePanels;
     private Image image;
@@ -49,6 +50,9 @@ public class ItemCard : MonoBehaviour
             else if (t.CompareTag("ShopEntryOverwriteWarning"))
             {
                 overwriteWarning = t;
+            } else if (t.CompareTag("ShopEntryCost"))
+            {
+                cost = t;
             }
         }
     }
@@ -81,6 +85,16 @@ public class ItemCard : MonoBehaviour
         }
 
         overwriteWarning.text = text;
+    }
+
+    public void SetCostText(String text)
+    {
+        if (cost == null)
+        {
+            RetrieveTexts();
+        }
+        
+        cost.text = text;
     }
 
     public void SetImage(Sprite inputSprite)

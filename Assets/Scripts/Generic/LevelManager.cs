@@ -62,8 +62,19 @@ public class LevelManager : MonoBehaviour
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
 
+        if (SceneManager.GetActiveScene().name == "House")
+        {
+            Invoke(nameof(DestroyPlayer), 1.95f);
+        }
+
         Invoke(nameof(LoadCurrentLevel), 2);
 
+    }
+
+    void DestroyPlayer()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(player.gameObject);
     }
 
     public void LevelBeat()
