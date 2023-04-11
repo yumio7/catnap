@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -34206,6 +34206,18 @@ PrefabInstance:
     - target: {fileID: 6159012569478392077, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159012569478392079, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
+      propertyPath: dmgAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159012569478392079, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
+      propertyPath: knockBack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159012569478392079, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
+      propertyPath: swipeRadius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6159012569478392083, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
       propertyPath: healthSlider

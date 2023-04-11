@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 input, moveDirection;
 
+    [SerializeField] private int swipeRadius;
+    [SerializeField] private int dmgAmount;
+    [SerializeField] private int knockBack;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -71,7 +74,8 @@ public class PlayerController : MonoBehaviour
         // SWIPE ATTACK
         if (Input.GetKeyDown(KeyCode.Mouse1) && elapsedTime > swipeRate && !LevelManager.isGameOver)
         {
-            _swipeAttack();
+            _swipeAttack2();
+            //_swipeAttack();
 
             paw_attack = true;
             
@@ -127,6 +131,34 @@ public class PlayerController : MonoBehaviour
                 {
                     eh.EnemyHurt(1); 
                 }
+            }
+        }
+    }
+
+    private void _swipeAttack2()
+    {
+        Collider[] hits = Physics.OverlapBox(transform.position, new Vector3(swipeRadius, swipeRadius, swipeRadius));
+        AudioSource.PlayClipAtPoint(swipeSFX, transform.position);
+        
+        foreach (Collider hit in hits)
+        {
+            if (hit.gameObject.CompareTag("Enemy"))
+            {
+                GameObject obj = hit.gameObject;
+                Vector3 pos = this.transform.position;
+                Vector3 nmePos = obj.GetComponent<Transform>().position;
+                Vector3 forceVector = new Vector3(nmePos.x - pos.x, nmePos.y - pos.y, nmePos.z - pos.z).normalized;
+                obj.GetComponent<Rigidbody>().AddForce(forceVector * knockBack, ForceMode.Force);
+                EnemyHit eh = obj.GetComponent<EnemyHit>();
+
+                if (eh == null)
+                {
+                    obj.GetComponent<BossHit>().EnemyHurt(dmgAmount);
+                }
+                else
+                {
+                    eh.EnemyHurt(dmgAmount); 
+                }       
             }
         }
     }
