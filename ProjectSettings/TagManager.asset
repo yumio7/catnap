@@ -25,6 +25,7 @@ TagManager:
   - ShopEntryTitle
   - ShopEntryDescription
   - ShopEntryOverwriteWarning
+  - Dialogue
   layers:
   - Default
   - TransparentFX
