@@ -47,7 +47,7 @@ MonoBehaviour:
   myName: Yarn Grenade
   description: Press Q to launch a yarn grenade that deals small damage and slows
     in a large area
-  shopCost: 1
+  shopCost: 75
   mySprite: {fileID: 21300000, guid: defd0f13719894d87b955673ffe9fc8d, type: 3}
   yarnGrenadePrefab: {fileID: 4152860956492367022, guid: 53a2e240ca16d4cdbbb15a8e3a2043dd, type: 3}
   projectileSpeed: 5

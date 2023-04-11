@@ -21907,8 +21907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b601be379744d2e973ec59c1b127b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDamage: 5
-  _attackRate: 2
+  _attackDamage: 10
+  _attackRate: 1
 --- !u!114 &4861511519214447063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21921,7 +21921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb290a92c1ea47c78465997ccf3903a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMoneyValue: 10
+  minMoneyValue: 15
   maxMoneyValue: 30
 --- !u!65 &1152857703825467992
 BoxCollider:

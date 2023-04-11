@@ -15490,6 +15490,7 @@ GameObject:
   - component: {fileID: -2075935862752424465}
   - component: {fileID: -5404790573672643574}
   - component: {fileID: 628399777294191674}
+  - component: {fileID: 4095878699462756276}
   - component: {fileID: 7395629895586352349}
   - component: {fileID: -1611951792122858778}
   m_Layer: 0
@@ -15575,7 +15576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 1
   destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
-  enemyHealth: 250
+  enemyHealth: 300
   milkPrefab: {fileID: 2335062486411616253, guid: 6f36679597a2e144abadb0ab1397ea79, type: 3}
   slowIndicator: {fileID: 8349572951801342927, guid: 8b0ed19635fdc4a088ab8cf838348209, type: 3}
   hitSFX: {fileID: 8300000, guid: 631a4f19833fb45fbb1dd901aab67f0e, type: 3}
@@ -15605,8 +15606,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b601be379744d2e973ec59c1b127b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDamage: 15
-  _attackRate: 3
+  _attackDamage: 20
+  _attackRate: 1
+--- !u!114 &4095878699462756276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500661114641967003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb290a92c1ea47c78465997ccf3903a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBoss: 1
+  minMoneyValue: 100
+  maxMoneyValue: 250
 --- !u!82 &7395629895586352349
 AudioSource:
   m_ObjectHideFlags: 0

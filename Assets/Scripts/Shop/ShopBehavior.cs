@@ -53,6 +53,7 @@ public class ShopBehavior : MonoBehaviour
             var curPowerup = _shopOptions[i].GetComponent<Powerup>();
             itemCard.SetTitleText(curPowerup.GetName());
             itemCard.SetDescriptionText(curPowerup.GetDescription());
+            itemCard.SetCostText("Cost: " + curPowerup.GetCost());
             itemCard.SetImage(curPowerup.GetSprite());
             // TODO if player has this powerup type already (Q or F), add overwrite warning
         }
