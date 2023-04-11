@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private int playerVisibleDistance = 5;
     
     public GameObject dialoguebox;
+    public GameObject rat;
     
     private int talkCounter;
     public TextMeshProUGUI dialogueText;
@@ -31,12 +34,14 @@ public class Tutorial : MonoBehaviour
     private bool canTalk;
     public float coolDown = 2f;
     private float timer = 0f;
+    private NavMeshAgent navMeshAgent;
     
     
 
     // Start is called before the first frame update
     private void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         currentState = FSMStates.Idle;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
@@ -50,8 +55,10 @@ public class Tutorial : MonoBehaviour
             "Oh hey little cat! You look so tired! Having trouble moving, " +
             "try pressing the arrow keys or WASD.",
             "Wow! You did such a great job! Now try swipping, by using right click!",
+            "Now look around. You have a health bar, a score counter and a coin counter. If you" +
+            " press ESC, the game will pause.",
             "Who's a good little cat! OH NO! There's a rat. Quick fire a hairball by left clicking or" +
-            "swipe at them.",
+            " swipe at them.",
             "I think you need a nap! Word of advice though, remember drinking milk can only help!"
         };
         dialogue = d;
@@ -83,9 +90,11 @@ public class Tutorial : MonoBehaviour
 
     private void UpdateIdleState()
     {
+        navMeshAgent.speed = 0.5f;
+        
         anim.SetInteger("animState", 1);
 
-        if (Vector3.Distance(transform.position, nextDestination) <= 0.5f)
+        if (Vector3.Distance(transform.position, nextDestination) <= 1f)
         {
             FindNextPoint();
         }
@@ -94,15 +103,31 @@ public class Tutorial : MonoBehaviour
         
         if (distanceToPlayer <= playerVisibleDistance && canTalk)
         {
-            currentState = FSMStates.Interact; 
-            dialoguebox.SetActive(true);
-            dialogueText.text = dialogue[talkCounter];
-            talkCounter++;
+            if (talkCounter == 4)
+            {
+                if (LevelManager.totalKills == 1)
+                {
+                    navMeshAgent.speed = 0;
+                    currentState = FSMStates.Interact; 
+                    dialoguebox.SetActive(true);
+                    dialogueText.text = dialogue[talkCounter];
+                    talkCounter++;
+                }
+            }
+            else
+            {
+                navMeshAgent.speed = 0;
+                currentState = FSMStates.Interact; 
+                dialoguebox.SetActive(true);
+                dialogueText.text = dialogue[talkCounter];
+                talkCounter++; 
+            }
         }
     }
 
     private void UpdateInteractState()
     {
+        navMeshAgent.speed = 0;
         player.GetComponent<PlayerController>().enabled = false;
         anim.SetInteger("animState", 2);
         var direction = (player.position - transform.position).normalized;
@@ -110,8 +135,21 @@ public class Tutorial : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(direction);
 
-        if (distanceToPlayer > playerVisibleDistance || Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
+            if (talkCounter == 4)
+            {
+                Instantiate(rat, new Vector3(0, 1, 1), player.rotation);
+            }
+            if (talkCounter == 5)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (var p in players)
+                {
+                    Destroy(p);
+                }
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
             dialoguebox.SetActive(false);
             canTalk = false;
             timer = 0;
@@ -125,6 +163,8 @@ public class Tutorial : MonoBehaviour
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
         currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
+        
+        navMeshAgent.SetDestination(nextDestination);
     }
 
     private void FaceTarget(Vector3 target)

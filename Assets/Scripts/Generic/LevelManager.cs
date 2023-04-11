@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     // float countDown;
 
-    private int totalKills = 0;
+    public static int totalKills = 0;
 
     private void Start()
     {
@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
 
-        if (SceneManager.GetActiveScene().name == "House")
+        if (SceneManager.GetActiveScene().name == "House" || SceneManager.GetActiveScene().name == "Tutorial")
         {
             Invoke(nameof(DestroyPlayer), 1.95f);
         }
