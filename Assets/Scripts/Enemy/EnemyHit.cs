@@ -70,7 +70,7 @@ public class EnemyHit : MonoBehaviour
             renderersInEnemy[i].material.color = Color.red;
         }
 
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position); 
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, .2f); 
 
         yield return new WaitForSeconds(hitIndicatorDuration); // wait for duration of hit indicator
         
