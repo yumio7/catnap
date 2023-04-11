@@ -1,35 +1,94 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemCard : MonoBehaviour
 {
 
-    private Text _titleText;
+    private TextMeshProUGUI[] texts;
+    private TextMeshProUGUI title;
+    private TextMeshProUGUI description;
+    private TextMeshProUGUI overwriteWarning;
+
+    private Image[] imagePanels;
+    private Image image;
     
     // Start is called before the first frame update
     private void Start()
     {
-        _titleText = GetComponentInChildren<Text>();
+        RetrieveTexts();
+        RetrieveImagePanel();
     }
 
-    // Update is called once per frame
-    private void Update()
+    void RetrieveImagePanel()
     {
-        
+        imagePanels = GetComponentsInChildren<Image>();
+        foreach (Image i in imagePanels)
+        {
+            if (i.CompareTag("ShopItemImage"))
+            {
+                image = i;
+            }
+        }
+    }
+
+    void RetrieveTexts()
+    {
+        texts = GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (TextMeshProUGUI t in texts)
+        {
+            if (t.CompareTag("ShopEntryTitle"))
+            {
+                title = t;
+            }
+            else if (t.CompareTag("ShopEntryDescription"))
+            {
+                description = t;
+            }
+            else if (t.CompareTag("ShopEntryOverwriteWarning"))
+            {
+                overwriteWarning = t;
+            }
+        }
     }
 
     public void SetTitleText(String text)
     {
-        if (_titleText != null)
+        if (title == null)
         {
-            _titleText.text = text;
+            RetrieveTexts();
         }
-        else
+        
+        title.text = text;
+    }
+
+    public void SetDescriptionText(String text)
+    {
+        if (description == null)
         {
-            _titleText = GetComponentInChildren<Text>();
-            _titleText.text = text;
+            RetrieveTexts();
         }
 
+        description.text = text;
+    }
+
+    public void SetOverwriteWarningText(String text)
+    {
+        if (overwriteWarning == null)
+        {
+            RetrieveTexts();
+        }
+
+        overwriteWarning.text = text;
+    }
+
+    public void SetImage(Sprite inputSprite)
+    {
+        if (image == null)
+        {
+            RetrieveImagePanel();
+        }
+        image.sprite = inputSprite;
     }
 }

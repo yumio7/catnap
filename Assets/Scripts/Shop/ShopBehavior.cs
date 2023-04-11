@@ -49,8 +49,12 @@ public class ShopBehavior : MonoBehaviour
         var itemCards = GameObject.FindGameObjectsWithTag("ShopItemCard");
         for (var i = 0; i < 3; i++)
         {
-            itemCards[i].GetComponent<ItemCard>().SetTitleText(_shopOptions[i].GetComponent<Powerup>().GetName());
-            // TODO itemCards[i].GetComponent<ItemCard>().SetDescText(_shopOptions[i].GetDescription());
+            var itemCard = itemCards[i].GetComponent<ItemCard>();
+            var curPowerup = _shopOptions[i].GetComponent<Powerup>();
+            itemCard.SetTitleText(curPowerup.GetName());
+            itemCard.SetDescriptionText(curPowerup.GetDescription());
+            itemCard.SetImage(curPowerup.GetSprite());
+            // TODO if player has this powerup type already (Q or F), add overwrite warning
         }
     }
 
@@ -59,7 +63,6 @@ public class ShopBehavior : MonoBehaviour
         // re-enable player movement and controls
         SetPlayerControls(true);
     }
-
 
     public void OnButtonClicked(int buttonIndex)
     {

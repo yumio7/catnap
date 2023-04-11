@@ -21,6 +21,10 @@ TagManager:
   - Spawnpoint
   - LevelManager
   - HealthSlider
+  - ShopItemImage
+  - ShopEntryTitle
+  - ShopEntryDescription
+  - ShopEntryOverwriteWarning
   layers:
   - Default
   - TransparentFX
