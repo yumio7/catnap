@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -16,16 +17,16 @@ public class Tutorial : MonoBehaviour
     }
 
     [SerializeField] private int playerVisibleDistance = 5;
-    
+
     public GameObject dialoguebox;
     public GameObject rat;
-    
+
     private int talkCounter;
     public TextMeshProUGUI dialogueText;
-    
+
     public Transform enemyEyes;
     public float fieldOfView = 150f;
-    
+
     private FSMStates currentState;
     private Transform player;
     private float distanceToPlayer;
@@ -38,8 +39,10 @@ public class Tutorial : MonoBehaviour
     public float coolDown = 2f;
     private float timer = 0f;
     private NavMeshAgent navMeshAgent;
-    
-    
+
+    private TutorialUIBehavior tutorialUIComponent;
+    private bool readyToAdvance;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -55,9 +58,9 @@ public class Tutorial : MonoBehaviour
         talkCounter = 0;
         string[] d =
         {
-            "Oh hey little cat! You look so tired! Having trouble moving, " +
-            "try pressing the arrow keys or WASD.",
-            "Wow! You did such a great job! Now try swipping, by using right click!",
+            "Oh hey little cat! You look so tired! Having trouble moving? " +
+            "Try using WASD.",
+            "Wow! You did such a great job! Now try swiping, by using right click!",
             "Now look around. You have a health bar, a score counter and a coin counter. If you" +
             " press ESC, the game will pause.",
             "Who's a good little cat! OH NO! There's a rat. Quick fire a hairball by left clicking or" +
@@ -65,14 +68,16 @@ public class Tutorial : MonoBehaviour
             "I think you need a nap! Word of advice though, remember drinking milk can only help!"
         };
         dialogue = d;
+
+        tutorialUIComponent = GameObject.FindGameObjectWithTag("TutorialUI").GetComponent<TutorialUIBehavior>();
+        readyToAdvance = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        
+
         switch (currentState)
         {
             case FSMStates.Idle:
@@ -80,6 +85,32 @@ public class Tutorial : MonoBehaviour
                 break;
             case FSMStates.Interact:
                 UpdateInteractState();
+                break;
+        }
+
+        switch (talkCounter)
+        {
+            case 0:
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A) ||
+                    Input.GetKeyDown(KeyCode.D))
+                    Success();
+                break;
+            case 2:
+                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                    Success();
+                break;
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    Success();
+                break;
+            case 4:
+                if (LevelManager.totalKills == 1)
+                    Success();
+                break;
+            case 5:
+                tutorialUIComponent.SetTextColor(Color.green);
                 break;
         }
 
@@ -91,10 +122,16 @@ public class Tutorial : MonoBehaviour
         }
     }
 
+    private void Success()
+    {
+        tutorialUIComponent.SetTextColor(Color.green);
+        readyToAdvance = true;
+    }
+
     private void UpdateIdleState()
     {
         navMeshAgent.speed = 0.5f;
-        
+
         anim.SetInteger("animState", 1);
 
         if (Vector3.Distance(transform.position, nextDestination) <= 2f)
@@ -103,29 +140,40 @@ public class Tutorial : MonoBehaviour
         }
 
         FaceTarget(nextDestination);
-        
-        if (IsPlayerInClearFOV() && canTalk)
+
+        if (IsPlayerInClearFOV() && canTalk && readyToAdvance)
         {
-            if (talkCounter == 4)
+            switch (talkCounter)
             {
-                if (LevelManager.totalKills == 1)
-                {
-                    navMeshAgent.speed = 0;
-                    currentState = FSMStates.Interact; 
-                    dialoguebox.SetActive(true);
-                    dialogueText.text = dialogue[talkCounter];
-                    talkCounter++;
-                }
-            }
-            else
-            {
-                navMeshAgent.speed = 0;
-                currentState = FSMStates.Interact; 
-                dialoguebox.SetActive(true);
-                dialogueText.text = dialogue[talkCounter];
-                talkCounter++; 
+                case 0:
+                    AdvanceTalkingState("Move with WASD");
+                    break;
+                case 1:
+                    AdvanceTalkingState("Swipe with right click or shoot a hairball with left click");
+                    break;
+                case 2:
+                    AdvanceTalkingState("Press ESC to pause");
+                    break;
+                case 3:
+                    AdvanceTalkingState("Defeat the enemy rat");
+                    break;
+                case 4:
+                    AdvanceTalkingState("Great job!");
+                    break;
             }
         }
+    }
+
+    private void AdvanceTalkingState(string inStr)
+    {
+        navMeshAgent.speed = 0;
+        currentState = FSMStates.Interact;
+        dialoguebox.SetActive(true);
+        dialogueText.text = dialogue[talkCounter];
+        talkCounter++;
+        tutorialUIComponent.SetTextColor(Color.red);
+        tutorialUIComponent.SetText(inStr);
+        readyToAdvance = false;
     }
 
     private void UpdateInteractState()
@@ -144,6 +192,7 @@ public class Tutorial : MonoBehaviour
             {
                 Instantiate(rat, new Vector3(0, 210, 1), player.rotation);
             }
+
             if (talkCounter == 5)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -151,8 +200,10 @@ public class Tutorial : MonoBehaviour
                 {
                     Destroy(p);
                 }
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+
             dialoguebox.SetActive(false);
             canTalk = false;
             timer = 0;
@@ -166,7 +217,7 @@ public class Tutorial : MonoBehaviour
         nextDestination = wanderPoints[currentDestinationIndex].transform.position;
 
         currentDestinationIndex = (currentDestinationIndex + 1) % wanderPoints.Length;
-        
+
         navMeshAgent.SetDestination(nextDestination);
     }
 
@@ -178,11 +229,11 @@ public class Tutorial : MonoBehaviour
         transform.rotation = Quaternion.Slerp
             (transform.rotation, lookRotation, 2 * Time.deltaTime);
     }
-    
+
     private bool IsPlayerInClearFOV()
     {
         RaycastHit hit;
-        
+
         Vector3 directionToPlayer = player.transform.position - enemyEyes.position;
 
         if (Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
@@ -193,10 +244,13 @@ public class Tutorial : MonoBehaviour
                 {
                     return true;
                 }
+
                 return false;
             }
+
             return false;
         }
+
         return false;
     }
 }

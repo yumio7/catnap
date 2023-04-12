@@ -26,6 +26,8 @@ TagManager:
   - ShopEntryDescription
   - ShopEntryOverwriteWarning
   - Dialogue
+  - ShopEntryCost
+  - TutorialUI
   layers:
   - Default
   - TransparentFX
