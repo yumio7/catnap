@@ -3859,7 +3859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 415969586}
-  slider: {fileID: 0}
+  slider: {fileID: 1185065675}
 --- !u!1 &7728462997635384342
 GameObject:
   m_ObjectHideFlags: 0
