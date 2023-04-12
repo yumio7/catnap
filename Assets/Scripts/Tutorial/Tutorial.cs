@@ -23,6 +23,9 @@ public class Tutorial : MonoBehaviour
     private int talkCounter;
     public TextMeshProUGUI dialogueText;
     
+    public Transform enemyEyes;
+    public float fieldOfView = 150f;
+    
     private FSMStates currentState;
     private Transform player;
     private float distanceToPlayer;
@@ -94,14 +97,14 @@ public class Tutorial : MonoBehaviour
         
         anim.SetInteger("animState", 1);
 
-        if (Vector3.Distance(transform.position, nextDestination) <= 1f)
+        if (Vector3.Distance(transform.position, nextDestination) <= 2f)
         {
             FindNextPoint();
         }
 
         FaceTarget(nextDestination);
         
-        if (distanceToPlayer <= playerVisibleDistance && canTalk)
+        if (IsPlayerInClearFOV() && canTalk)
         {
             if (talkCounter == 4)
             {
@@ -139,7 +142,7 @@ public class Tutorial : MonoBehaviour
         {
             if (talkCounter == 4)
             {
-                Instantiate(rat, new Vector3(0, 1, 1), player.rotation);
+                Instantiate(rat, new Vector3(0, 210, 1), player.rotation);
             }
             if (talkCounter == 5)
             {
@@ -174,5 +177,26 @@ public class Tutorial : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
         transform.rotation = Quaternion.Slerp
             (transform.rotation, lookRotation, 2 * Time.deltaTime);
+    }
+    
+    private bool IsPlayerInClearFOV()
+    {
+        RaycastHit hit;
+        
+        Vector3 directionToPlayer = player.transform.position - enemyEyes.position;
+
+        if (Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
+        {
+            if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, playerVisibleDistance))
+            {
+                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("ClawZone"))
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        return false;
     }
 }
