@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class ShopkeepBehavior : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class ShopkeepBehavior : MonoBehaviour
 
     [SerializeField] private int playerVisibleDistance = 5;
     
+    [SerializeField] private string[] dialogue;
+
+    public static bool hasTalked;
+    public GameObject dialoguebox;
+    
+    public TextMeshProUGUI dialogueText;
+
+    private string message;
+    private int counter;
     private FSMStates currentState;
     private Transform player;
     private float distanceToPlayer;
@@ -17,6 +27,8 @@ public class ShopkeepBehavior : MonoBehaviour
     private Vector3 nextDestination;
     private int currentDestinationIndex = 0;
     private Animator anim;
+    public Transform enemyEyes;
+    public float fieldOfView = 150f;
 
     // Start is called before the first frame update
     private void Start()
@@ -25,6 +37,8 @@ public class ShopkeepBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         wanderPoints = GameObject.FindGameObjectsWithTag("WanderPoint");
         anim = this.GetComponent<Animator>();
+        counter = 0;
+        hasTalked = false;
         FindNextPoint();
     }
 
@@ -50,30 +64,26 @@ public class ShopkeepBehavior : MonoBehaviour
         // TODO implement wanderpoints/walking around/idle animation
 
         anim.SetInteger("animState", 1);
-        
-        //Debug.Log(nextDestination);
 
         if (Vector3.Distance(transform.position, nextDestination) <= 0.5f)
         {
             FindNextPoint();
         }
 
-        //transform.position = Vector3.MoveTowards(transform.position, nextDestination, Time.deltaTime);
-        
         FaceTarget(nextDestination);
         
-        if (distanceToPlayer <= playerVisibleDistance)
+        if (IsPlayerInClearFOV() && counter < dialogue.Length)
         {
+            dialoguebox.SetActive(true);
             currentState = FSMStates.Interact;
+            player.GetComponent<PlayerController>().enabled = false;
+            Camera.main.GetComponent<MouseLook>().enabled = false;
         }
-
-        // spin in circles
-        /*transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * 360);
-
-        if (distanceToPlayer <= playerVisibleDistance)
+        else if (IsPlayerInClearFOV())
         {
-            currentState = FSMStates.Interact;
-        } */
+            anim.SetInteger("animState", 2);
+        }
+        
     }
 
     private void UpdateInteractState()
@@ -82,12 +92,26 @@ public class ShopkeepBehavior : MonoBehaviour
         // rotate toward player
         var direction = (player.position - transform.position).normalized;
         direction.y = 0f; // set the y component of direction to 0 to keep the NPC flat
+        
+        dialogueText.text = dialogue[counter];
 
         transform.rotation = Quaternion.LookRotation(direction);
 
-        if (distanceToPlayer > playerVisibleDistance)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            currentState = FSMStates.Idle;
+            if (counter == dialogue.Length - 1)
+            {
+                counter++;
+                player.GetComponent<PlayerController>().enabled = true;
+                Camera.main.GetComponent<MouseLook>().enabled = true;
+                dialoguebox.SetActive(false);
+                hasTalked = true;
+                currentState = FSMStates.Idle;
+            }
+            else
+            {
+                counter++;
+            }
         }
     }
 
@@ -107,6 +131,30 @@ public class ShopkeepBehavior : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
         transform.rotation = Quaternion.Slerp
             (transform.rotation, lookRotation, 2 * Time.deltaTime);
+    }
+    
+    private bool IsPlayerInClearFOV()
+    {
+        RaycastHit hit;
+
+        Vector3 directionToPlayer = player.transform.position - enemyEyes.position;
+
+        if (Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
+        {
+            if (Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, playerVisibleDistance))
+            {
+                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("ClawZone"))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
+        return false;
     }
 
 }

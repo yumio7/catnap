@@ -22,13 +22,14 @@ public class InteractBehavior : MonoBehaviour
             RaycastHit hit;
             // if player is looking at shopkeep and in range...
             if (!shopOpen && 
-                Physics.Raycast(transform.position, transform.forward, out hit, interactDistance))
+                Physics.Raycast(transform.position, transform.forward, out hit, interactDistance) &&
+                ShopkeepBehavior.hasTalked)
             {
                 if (hit.transform.CompareTag("ShopkeepNPC"))
                 {
                     // open the shop
                     shopWindowInstance = Instantiate(shopWindowPrefab);
-                    shopOpen = true;
+                    shopOpen = true; 
                 }
             }
             // if shop is open, we should close

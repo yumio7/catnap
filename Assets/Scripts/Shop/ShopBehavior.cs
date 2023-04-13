@@ -6,6 +6,7 @@ public class ShopBehavior : MonoBehaviour
 {
     // this class generates a shop popup with 3 selections of powerup
     [SerializeField] private GameObject[] _powerupsInput;
+    
 
     // set of shop options to be displayed for players
     private List<GameObject> _shopOptions;
