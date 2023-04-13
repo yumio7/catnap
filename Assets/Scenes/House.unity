@@ -68397,7 +68397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnDelay
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnedObject
@@ -68405,7 +68405,7 @@ PrefabInstance:
       objectReference: {fileID: 5429838409288433751, guid: fc43314d6d06c4622996bec989fc8f88, type: 3}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: totalInstances
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184430, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: m_RootOrder
@@ -68506,7 +68506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: killsForBossSpawn
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807537, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: m_RootOrder
@@ -69483,7 +69483,7 @@ PrefabInstance:
       objectReference: {fileID: 5429838409288433751, guid: fc43314d6d06c4622996bec989fc8f88, type: 3}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: totalInstances
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184430, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: m_RootOrder
