@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 5795172391501991753}
   - component: {fileID: 8458336226468751632}
   - component: {fileID: 5425680663128394597}
+  - component: {fileID: -2657541394806570160}
   m_Layer: 0
   m_Name: Lawnmower2
   m_TagString: Untagged
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283072471984847073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 828e9257472bb4760a89c612f11ffe9a, type: 3}
   m_Name: 
@@ -321,6 +322,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2657541394806570160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283072471984847073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8af2d764ce74f3b8924516c8d5009b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 10
 --- !u!1 &1283072472067739176
 GameObject:
   m_ObjectHideFlags: 0
