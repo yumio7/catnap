@@ -21921,8 +21921,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb290a92c1ea47c78465997ccf3903a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minMoneyValue: 15
-  maxMoneyValue: 30
+  isBoss: 0
+  minMoneyValue: 5
+  maxMoneyValue: 15
 --- !u!65 &1152857703825467992
 BoxCollider:
   m_ObjectHideFlags: 0

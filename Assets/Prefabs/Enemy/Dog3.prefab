@@ -15621,8 +15621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  minMoneyValue: 100
-  maxMoneyValue: 250
+  minMoneyValue: 50
+  maxMoneyValue: 150
 --- !u!82 &7395629895586352349
 AudioSource:
   m_ObjectHideFlags: 0

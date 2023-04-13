@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  minMoneyValue: 100
-  maxMoneyValue: 250
+  minMoneyValue: 50
+  maxMoneyValue: 150
 --- !u!65 &2906552347069252589
 BoxCollider:
   m_ObjectHideFlags: 0
