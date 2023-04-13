@@ -22,11 +22,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-
         isGameOver = false;
 
         totalKills = 0;
-        
+
         RestartScore();
     }
 
@@ -40,7 +39,7 @@ public class LevelManager : MonoBehaviour
         } 
 
     }*/
-    
+
 
     public void SetScoreText()
     {
@@ -48,7 +47,7 @@ public class LevelManager : MonoBehaviour
 
         scoreText.text = "Score: " + totalKills.ToString();
     }
-    
+
     public void RestartScore()
     {
         totalKills = 0;
@@ -62,13 +61,12 @@ public class LevelManager : MonoBehaviour
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
 
-        if (SceneManager.GetActiveScene().name == "House" || SceneManager.GetActiveScene().name == "Tutorial")
-        {
-            Invoke(nameof(DestroyPlayer), 1.95f);
-        }
+        // destroy player object to reset health, powerups, etc
+        Invoke(nameof(DestroyPlayer), 1.95f);
 
+        // we send the player back to house when they die
+        nextLevel = "House";
         Invoke(nameof(LoadCurrentLevel), 2);
-
     }
 
     void DestroyPlayer()

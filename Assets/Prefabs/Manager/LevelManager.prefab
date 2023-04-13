@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameText: {fileID: 0}
   scoreText: {fileID: 0}
-  nextLevel: Shop
+  nextLevel: 
