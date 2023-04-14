@@ -87,6 +87,16 @@ public class ItemCard : MonoBehaviour
         overwriteWarning.text = text;
     }
 
+    public void SetOverwriteWarningTextActive(bool active)
+    {
+        if (overwriteWarning == null)
+        {
+            RetrieveTexts();
+        }
+
+        overwriteWarning.text = active ? overwriteWarning.text : ""; 
+    }
+
     public void SetCostText(String text)
     {
         if (cost == null)

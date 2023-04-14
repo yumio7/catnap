@@ -7,7 +7,6 @@ public class ShopBehavior : MonoBehaviour
     // this class generates a shop popup with 3 selections of powerup
     [SerializeField] private GameObject[] _powerupsInput;
     
-
     // set of shop options to be displayed for players
     private List<GameObject> _shopOptions;
 
@@ -35,7 +34,7 @@ public class ShopBehavior : MonoBehaviour
         for (var i = 0; i < _powerupsInput.Length; i++)
         {
             var j = Random.Range(i, _powerupsInput.Length);
-            
+
             // swap between j and i to shuffle
             (_powerupsInput[i], _powerupsInput[j]) = (_powerupsInput[j], _powerupsInput[i]);
         }
@@ -56,14 +55,18 @@ public class ShopBehavior : MonoBehaviour
             itemCard.SetDescriptionText(curPowerup.GetDescription());
             itemCard.SetCostText("Cost: " + curPowerup.GetCost());
             itemCard.SetImage(curPowerup.GetSprite());
-            // TODO if player has this powerup type already (Q or F), add overwrite warning
-        }
-    }
+            itemCard.SetOverwriteWarningTextActive(false);
 
-    private void OnDestroy()
-    {
-        // re-enable player movement and controls
-        SetPlayerControls(true);
+            // player can get infinite augments, but we need to check for conflict on paw or grenade
+            var conflictPowerup = FindPowerupsConflictingWith(curPowerup);
+            if (conflictPowerup != null)
+            {
+                // conflict found
+                var powerupComponent = conflictPowerup.GetComponent<Powerup>();
+                itemCard.SetOverwriteWarningText("Warning! Will overwrite your " + powerupComponent.GetName());
+                itemCard.SetOverwriteWarningTextActive(true);
+            }
+        }
     }
 
     public void OnButtonClicked(int buttonIndex)
@@ -71,22 +74,48 @@ public class ShopBehavior : MonoBehaviour
         Debug.Log("Button " + (buttonIndex + 1) + " clicked");
         // Do whatever you want to do when a button is clicked
         Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
-        
+
         // check if player can afford it
         var playerCurrency = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCurrency>();
         var costOfItem = _shopOptions[buttonIndex].GetComponent<Powerup>().GetCost();
-
+        
         if (playerCurrency.CanBuy(costOfItem))
         {
-            // add that component to the player
-            var powerup = Instantiate(_shopOptions[buttonIndex]);
-            powerup.transform.parent = player.transform;
+            // player can get infinite augments, but we need to check for conflict on paw or grenade
+            var curPowerup = _shopOptions[buttonIndex].GetComponent<Powerup>();
+            var conflictPowerup = FindPowerupsConflictingWith(curPowerup);
+            if (conflictPowerup != null)
+            {
+                // conflict found, destroy the existing one
+                Destroy(conflictPowerup);
+            }
+            
+            // buy the new powerup, add that component to the player
+            Instantiate(_shopOptions[buttonIndex], player.transform, true);
             // and remove that currency from the player
             playerCurrency.RemoveMoney(costOfItem);
         }
         else
         {
             print("Can't afford!!");
+        }
+    }
+
+    public void SetShopOpened(bool open)
+    {
+        if (open)
+        {
+            // if we are opening the shop, disable player controls
+            SetPlayerControls(false);
+            // and open the shop window
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            // if we are closing the shop, enable player controls
+            SetPlayerControls(true);
+            // and close the shop window
+            gameObject.SetActive(false);
         }
     }
 
@@ -107,5 +136,44 @@ public class ShopBehavior : MonoBehaviour
 
         player.GetComponent<PlayerController>().enabled = value;
         mainCam.GetComponent<MouseLook>().enabled = value;
+    }
+
+    private GameObject FindPowerupsConflictingWith(Powerup curPowerup)
+    {
+        // find conflicting powerups
+        if (curPowerup.GetSlot() != Powerup.powerupType.Augment)
+        {
+            var powerupConflict = FindPowerupsConflictingWithHelper(curPowerup);
+            if (powerupConflict != null)
+            {
+                // var powerupComponent = powerupConflict.GetComponent<Powerup>();
+                // conflict found
+                return powerupConflict;
+            }
+        }
+        
+        // no conflict
+        return null;
+    }
+
+    // check if the player already has a powerup of this type, return null if none found
+    GameObject FindPowerupsConflictingWithHelper(Powerup inPowerup)
+    {
+        var type = inPowerup.GetSlot();
+
+        var listOfPowerups = GameObject.FindGameObjectsWithTag("Powerup");
+
+        foreach (var p in listOfPowerups)
+        {
+            var powerupScript = p.GetComponent<Powerup>();
+            if (powerupScript.GetSlot() == type)
+            {
+                // conflict found, return conflicting powerup
+                return p;
+            }
+        }
+
+        // no conflict found
+        return null;
     }
 }
