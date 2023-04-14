@@ -116,9 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a1e078199b94a3b80073bba87a3822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopWindowPrefab: {fileID: 7888967133282593698, guid: 19d304edd8396467eaac7f5d40e1289f, type: 3}
+  shopWindowPrefab: {fileID: 7888967133282593701, guid: 19d304edd8396467eaac7f5d40e1289f, type: 3}
   interactDistance: 2
-  _nextLevel: 
 --- !u!114 &6159012568936015386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +288,9 @@ MonoBehaviour:
   airControl: 10
   swipeRate: 0.5
   swipeSFX: {fileID: 8300000, guid: 7b2e42ea9f88540a78b0e298c446b1fa, type: 3}
+  swipeRadius: 0
+  dmgAmount: 0
+  knockBack: 0
 --- !u!114 &6159012569478392083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  healthSlider: {fileID: 0}
 --- !u!114 &6159012569478392082
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,11 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class InteractBehavior : MonoBehaviour
 {
-    [SerializeField] private Canvas shopWindowPrefab;
+    [SerializeField] private GameObject shopWindowPrefab;
     [SerializeField] private int interactDistance;
 
-    private Canvas shopWindowInstance;
+    private GameObject shopWindowInstance;
     private bool shopOpen;
+    private ShopBehavior shopPopupBehavior;
 
     private void Start()
     {
@@ -28,7 +29,17 @@ public class InteractBehavior : MonoBehaviour
                 if (hit.transform.CompareTag("ShopkeepNPC"))
                 {
                     // open the shop
-                    shopWindowInstance = Instantiate(shopWindowPrefab);
+                    if (shopWindowInstance == null)
+                    {
+                        shopWindowInstance = Instantiate(shopWindowPrefab);
+                        shopPopupBehavior = shopWindowInstance.GetComponent<ShopBehavior>();
+                    }
+                    else
+                    {
+                        shopWindowInstance.GetComponent<ShopBehavior>().SetShopOpened(true);
+                        shopPopupBehavior.SetShopOpened(true);
+                    }
+
                     shopOpen = true; 
                 }
             }
@@ -36,16 +47,9 @@ public class InteractBehavior : MonoBehaviour
             else if (shopOpen)
             {
                 // close the shop
-                Destroy(shopWindowInstance.gameObject);
+                shopPopupBehavior.SetShopOpened(false);
                 shopOpen = false;
-                Invoke(nameof(LoadLevel), 3f);
             }
         }
-    }
-
-    private void LoadLevel()
-    {
-        var levelMan = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
-        levelMan.LoadLevel();
     }
 }
