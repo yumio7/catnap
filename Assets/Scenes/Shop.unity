@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4491,7 +4491,7 @@ MonoBehaviour:
   - You're going to have to outside for that. I'll let you go but know it'll be more
     dangerous than inside.
   - Before you go, do you want anything from my shop. Simply press e while looking
-    at me.
+    at me. If not just walk out the door behind me.
   dialoguebox: {fileID: 1280791078}
   dialogueText: {fileID: 383241822}
   enemyEyes: {fileID: 646972234}
@@ -12561,6 +12561,9 @@ GameObject:
   - component: {fileID: 2013830764}
   - component: {fileID: 2013830763}
   - component: {fileID: 2013830762}
+  - component: {fileID: 2013830766}
+  - component: {fileID: 2013830767}
+  - component: {fileID: 2013830768}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -12579,8 +12582,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.0378071}
+  m_Center: {x: 0, y: 0, z: 0.018903852}
 --- !u!23 &2013830763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12647,6 +12650,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2013830766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013830761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2438b3a542759451f87ce8ad58c588a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextLevel: Forest
+--- !u!54 &2013830767
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013830761}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2013830768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013830761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.3543022}
+  m_Center: {x: 0, y: 0, z: 0.1771512}
 --- !u!224 &2072567047 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7728462997482041097, guid: 1cbbcca785df33247b2effc5e76d3d25, type: 3}
