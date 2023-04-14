@@ -48,7 +48,7 @@ MonoBehaviour:
   description: Paw is replaced with a fire wand that shoots explosive fireballs
   shopCost: 300
   mySprite: {fileID: 21300000, guid: 61c126ac3d0cc4d7fa68b102c679dc0c, type: 3}
-  newPawPrefab: {fileID: 3060023452755572069, guid: a60208ca482a74480ad06f403b107341, type: 3}
+  newPawPrefab: {fileID: 8343661264558282339, guid: 3bb938a46c0fdb64c86b0cb095e2b239, type: 3}
   projectilePrefab: {fileID: 4862840425999325253, guid: 9b729629c9e1d4c6ba19120fc020842d, type: 3}
   projectileSpeed: 100
   firingDelay: 2
