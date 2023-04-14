@@ -28,6 +28,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
     void PauseGame()
     {
+        Camera.main.GetComponent<AudioListener>().enabled = false;
         isGamePaused = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
@@ -38,6 +39,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
     public void ResumeGame()
     {
+        Camera.main.GetComponent<AudioListener>().enabled = true;
         isGamePaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
