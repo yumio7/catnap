@@ -9061,7 +9061,7 @@ PrefabInstance:
       objectReference: {fileID: 1726159999}
     - target: {fileID: 1881602099691430978, guid: a974f005125434b39a96aef01c2ce116, type: 3}
       propertyPath: nextLevel
-      value: 
+      value: Shop 2
       objectReference: {fileID: 0}
     - target: {fileID: 1881602099691430978, guid: a974f005125434b39a96aef01c2ce116, type: 3}
       propertyPath: scoreText
