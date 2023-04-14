@@ -11,16 +11,19 @@ public class DealDamageBehavior : MonoBehaviour
     private void Start()
     {
         _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _timeSinceLastAttack = _attackRate;
     }
 
     private void Update()
     {
+        _timeSinceLastAttack += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && _timeSinceLastAttack >= _attackRate)
         {
+            _timeSinceLastAttack = 0f;
             _playerHealth.TakeDamage(_attackDamage);
         }
     }
@@ -29,7 +32,6 @@ public class DealDamageBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _timeSinceLastAttack += Time.deltaTime;
             if (_timeSinceLastAttack >= _attackRate)
             {
                 _timeSinceLastAttack = 0f;
