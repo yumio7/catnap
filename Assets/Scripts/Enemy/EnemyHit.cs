@@ -71,6 +71,7 @@ public class EnemyHit : MonoBehaviour
     // make a visual indicator the enemy got hit with a red effect and play SFX
     IEnumerator HitRegister()
     {
+        // retrieve all renderers in this enemy
         if (renderersInEnemy.Length <= 0)
         {
             renderersInEnemy = gameObject.GetComponentsInChildren<Renderer>();
@@ -78,10 +79,19 @@ public class EnemyHit : MonoBehaviour
 
         var defaultColors = new Color[renderersInEnemy.Length];
 
+        // set default color to prev color and update the color of all renderers in this enemy
         for (int i = 0 ; i < renderersInEnemy.Length; i++)
         {
-            defaultColors[i] = renderersInEnemy[i].material.color;
-            renderersInEnemy[i].material.color = Color.red;
+            if (defaultColors[i] == Color.red)
+            {
+                // this coroutine is already in progress and has turned this enemy red. Don't want to double-dip!
+                yield break;
+            }
+            else
+            {
+                defaultColors[i] = renderersInEnemy[i].material.color;
+                renderersInEnemy[i].material.color = Color.red;
+            }
         }
 
         AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, .2f); 
