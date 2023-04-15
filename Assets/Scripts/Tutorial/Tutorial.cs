@@ -60,6 +60,7 @@ public class Tutorial : MonoBehaviour
         {
             "Oh hey little cat! You look so tired! Having trouble moving? " +
             "Try using WASD.",
+            "You can also jump with space bar.",
             "Wow! You did such a great job! Now try swiping, by using right click!",
             "Now look around. You have a health bar, a score counter and a coin counter. If you" +
             " press ESC, the game will pause.",
@@ -98,18 +99,22 @@ public class Tutorial : MonoBehaviour
                     Success();
                 break;
             case 2:
-                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                if(Input.GetKeyDown(KeyCode.Space))
                     Success();
                 break;
             case 3:
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                     Success();
                 break;
             case 4:
-                if (LevelManager.totalKills == 1)
+                if (Input.GetKeyDown(KeyCode.Escape))
                     Success();
                 break;
             case 5:
+                if (LevelManager.totalKills == 1)
+                    Success();
+                break;
+            case 6:
                 tutorialUIComponent.SetTextColor(Color.green);
                 break;
         }
@@ -149,15 +154,18 @@ public class Tutorial : MonoBehaviour
                     AdvanceTalkingState("Move with WASD");
                     break;
                 case 1:
-                    AdvanceTalkingState("Swipe with right click or shoot a hairball with left click");
+                    AdvanceTalkingState("Jump with Space");
                     break;
                 case 2:
-                    AdvanceTalkingState("Press ESC to pause");
+                    AdvanceTalkingState("Swipe with right click or shoot a hairball with left click");
                     break;
                 case 3:
-                    AdvanceTalkingState("Defeat the enemy rat");
+                    AdvanceTalkingState("Press ESC to pause");
                     break;
                 case 4:
+                    AdvanceTalkingState("Defeat the enemy rat");
+                    break;
+                case 5:
                     AdvanceTalkingState("Great job!");
                     break;
             }
@@ -188,12 +196,12 @@ public class Tutorial : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
-            if (talkCounter == 4)
+            if (talkCounter == 5)
             {
                 Instantiate(rat, new Vector3(0, 210, 1), player.rotation);
             }
 
-            if (talkCounter == 5)
+            if (talkCounter == 6)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
                 foreach (var p in players)
