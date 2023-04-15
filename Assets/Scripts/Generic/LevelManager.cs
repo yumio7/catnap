@@ -57,16 +57,20 @@ public class LevelManager : MonoBehaviour
 
     public void LevelLost()
     {
-        isGameOver = true;
-        gameText.text = "GAME OVER!";
-        gameText.gameObject.SetActive(true);
+        EnemyManager.Instance.numBosses -= 1;
+        if (EnemyManager.Instance.numBosses <= 0)
+        {
+            isGameOver = true;
+            gameText.text = "GAME OVER!";
+            gameText.gameObject.SetActive(true);
 
-        // destroy player object to reset health, powerups, etc
-        Invoke(nameof(DestroyPlayer), 1.95f);
+            // destroy player object to reset health, powerups, etc
+            Invoke(nameof(DestroyPlayer), 1.95f);
 
-        // we send the player back to house when they die
-        nextLevel = "House";
-        Invoke(nameof(LoadLevel), 2);
+            // we send the player back to house when they die
+            nextLevel = "House";
+            Invoke(nameof(LoadLevel), 2);   
+        }
     }
 
     void DestroyPlayer()

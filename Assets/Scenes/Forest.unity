@@ -5493,9 +5493,25 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: numBosses
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: boss.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: killsForBossSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: boss.Array.data[0]
+      value: 
+      objectReference: {fileID: 1283072471984847073, guid: 02b96cdc6e3b2422daebd78bb890ebfe, type: 3}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: boss.Array.data[1]
+      value: 
+      objectReference: {fileID: 977500199101958866, guid: 527ed4dace139a948abc25de891671df, type: 3}
     - target: {fileID: 2051230087683807537, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: m_RootOrder
       value: 9
