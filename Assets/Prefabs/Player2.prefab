@@ -205,9 +205,9 @@ MonoBehaviour:
   airControl: 10
   swipeRate: 0.5
   swipeSFX: {fileID: 8300000, guid: 7b2e42ea9f88540a78b0e298c446b1fa, type: 3}
-  swipeRadius: 0
-  dmgAmount: 0
-  knockBack: 0
+  swipeRadius: 2
+  dmgAmount: 10
+  knockBack: 50
 --- !u!114 &6159012569478392083
 MonoBehaviour:
   m_ObjectHideFlags: 0
