@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 1190232249}
     - target: {fileID: 1881602099691430978, guid: a974f005125434b39a96aef01c2ce116, type: 3}
       propertyPath: nextLevel
-      value: Forest
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1881602099691430978, guid: a974f005125434b39a96aef01c2ce116, type: 3}
       propertyPath: scoreText
@@ -2102,7 +2102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2438b3a542759451f87ce8ad58c588a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextLevel: 
 --- !u!65 &1510610495
 BoxCollider:
   m_ObjectHideFlags: 0
