@@ -10,7 +10,8 @@ public class EnemyManager : MonoBehaviour
 
     public int killsForBossSpawn = 2;
 
-    [SerializeField] private GameObject boss;
+    [SerializeField] private GameObject[] boss;
+    public int numBosses;
 
     public static EnemyManager Instance;
     
@@ -19,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        numBosses = boss.Length;
     }
 
     // Update is called once per frame
@@ -26,7 +28,12 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemiesKilled >= killsForBossSpawn && !_spawned)
         {
-            Instantiate(boss, transform.position, transform.rotation);
+            Vector3 offset = new Vector3(0, 0, 0);
+            foreach (GameObject b in boss)
+            {
+                Instantiate(b, transform.position + offset, transform.rotation);
+                offset += new Vector3(10, 0, 10);
+            }
             _spawned = true;
         }
     }
