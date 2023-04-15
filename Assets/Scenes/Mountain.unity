@@ -7558,9 +7558,21 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: numBosses
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: boss.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: killsForBossSpawn
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
+      propertyPath: boss.Array.data[0]
+      value: 
+      objectReference: {fileID: 2469662737485966044, guid: f1ff01f04e8879348bbf9e6b84189f9c, type: 3}
     - target: {fileID: 2051230087683807537, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: m_RootOrder
       value: 5
