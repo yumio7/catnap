@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
 
         // we send the player back to house when they die
         nextLevel = "House";
-        Invoke(nameof(LoadCurrentLevel), 2);
+        Invoke(nameof(LoadLevel), 2);
     }
 
     void DestroyPlayer()
