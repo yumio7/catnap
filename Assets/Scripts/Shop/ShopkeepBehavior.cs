@@ -78,6 +78,7 @@ public class ShopkeepBehavior : MonoBehaviour
             currentState = FSMStates.Interact;
             player.GetComponent<PlayerController>().enabled = false;
             Camera.main.GetComponent<MouseLook>().enabled = false;
+            Camera.main.GetComponent<ShootProjectile>().enabled = false;
         }
         else if (IsPlayerInClearFOV())
         {
@@ -104,6 +105,7 @@ public class ShopkeepBehavior : MonoBehaviour
                 counter++;
                 player.GetComponent<PlayerController>().enabled = true;
                 Camera.main.GetComponent<MouseLook>().enabled = true;
+                Camera.main.GetComponent<ShootProjectile>().enabled = true;
                 dialoguebox.SetActive(false);
                 hasTalked = true;
                 currentState = FSMStates.Idle;
