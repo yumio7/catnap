@@ -22,6 +22,7 @@ public class EnemyHit : MonoBehaviour
     private LevelManager _levelMan;
     private int maxHealth;
     private Renderer[] renderersInEnemy;
+    private bool immune;
 
     private void Start()
     {
@@ -43,15 +44,28 @@ public class EnemyHit : MonoBehaviour
         }
     }
 
+    public void SetImmune(bool immunity)
+    {
+        immune = immunity;
+    }
+
     public void EnemyHurt(int damage)
     {
-        StartCoroutine(HitRegister());
-        enemyHealth -= damage;
-
-        if (enemyHealth <= 0)
+        if (!immune)
         {
-            DestroyEnemy();
+            StartCoroutine(HitRegister());
+            enemyHealth -= damage;
+
+            if (enemyHealth <= 0)
+            {
+                DestroyEnemy();
+            }
         }
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine(HitRegister());
     }
     
     // make a visual indicator the enemy got hit with a red effect and play SFX
