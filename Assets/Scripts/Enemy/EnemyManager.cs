@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
             foreach (GameObject b in boss)
             {
                 Instantiate(b, transform.position + offset, transform.rotation);
-                offset += new Vector3(10, 0, 10);
+                offset += new Vector3(1, 3, 1);
             }
             _spawned = true;
         }
