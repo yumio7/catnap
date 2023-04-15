@@ -15491,6 +15491,7 @@ GameObject:
   - component: {fileID: -5404790573672643574}
   - component: {fileID: 628399777294191674}
   - component: {fileID: 4095878699462756276}
+  - component: {fileID: -963551343919617255}
   - component: {fileID: 7395629895586352349}
   - component: {fileID: -1611951792122858778}
   m_Layer: 0
@@ -15623,6 +15624,20 @@ MonoBehaviour:
   isBoss: 1
   minMoneyValue: 50
   maxMoneyValue: 150
+--- !u!114 &-963551343919617255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500661114641967003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7def664d7d64d89bccb1c73200bb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossName: Fido, the Family Dog
+  bossHealthBarPrefab: {fileID: 2864533590429675815, guid: e358726ea019f4ab690d82d1603af0d9, type: 3}
 --- !u!82 &7395629895586352349
 AudioSource:
   m_ObjectHideFlags: 0

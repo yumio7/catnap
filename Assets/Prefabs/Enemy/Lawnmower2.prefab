@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8458336226468751632}
   - component: {fileID: 5425680663128394597}
   - component: {fileID: -2657541394806570160}
+  - component: {fileID: 607617590667707892}
   m_Layer: 0
   m_Name: Lawnmower2
   m_TagString: Untagged
@@ -335,6 +336,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 10
+--- !u!114 &607617590667707892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283072471984847073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7def664d7d64d89bccb1c73200bb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossName: Honda 3-in-1 Variable Speed Gas Walk Behind Self Propelled Lawn Mower
+  bossHealthBarPrefab: {fileID: 2864533590429675815, guid: 5f044340abe0e42d695356761a89f696, type: 3}
 --- !u!1 &1283072472067739176
 GameObject:
   m_ObjectHideFlags: 0
