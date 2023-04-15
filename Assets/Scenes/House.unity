@@ -34165,6 +34165,10 @@ PrefabInstance:
       propertyPath: swipeRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6159012569478392081, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6159012569478392083, guid: 422cc88259c6d4a0fb8c3358a37326ae, type: 3}
       propertyPath: healthSlider
       value: 
