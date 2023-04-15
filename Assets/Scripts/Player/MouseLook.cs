@@ -5,7 +5,6 @@ public class MouseLook : MonoBehaviour
 {
     private Transform playerBody;
     public float mouseSensitivity = 100;
-    //public Slider slider;
 
     private float pitch = 0f;
 

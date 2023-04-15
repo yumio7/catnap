@@ -29,20 +29,44 @@ public class ShopBehavior : MonoBehaviour
     {
         // initialize lists
         _shopOptions = new List<GameObject>();
-
-        // shuffle the input array
-        for (var i = 0; i < _powerupsInput.Length; i++)
+        var inputArrayList = new List<GameObject>();
+        
+        // copy inputArray to inputArrayList
+        foreach (var pp in _powerupsInput)
         {
-            var j = Random.Range(i, _powerupsInput.Length);
+            inputArrayList.Add(pp);
+        }
+        
+        // remove any powerups we already have from input array
+        var playerPowerups = GameObject.FindGameObjectsWithTag("Powerup");
+        foreach(GameObject powerup in _powerupsInput)
+        {
+            var thisPowerupComponent = powerup.GetComponent<Powerup>();
+            foreach (GameObject playerPowerup in playerPowerups)
+            {
+                var playerPowerupComponent = playerPowerup.GetComponent<Powerup>();
+                if (thisPowerupComponent.GetName() == playerPowerupComponent.GetName())
+                {
+                    // same powerup, need to remove
+                    print("removed powerup " + thisPowerupComponent.GetName());
+                    inputArrayList.Remove(powerup);
+                } 
+            }
+        }
+        
+        // shuffle the input array
+        for (var i = 0; i < inputArrayList.Count; i++)
+        {
+            var j = Random.Range(i, inputArrayList.Count);
 
             // swap between j and i to shuffle
-            (_powerupsInput[i], _powerupsInput[j]) = (_powerupsInput[j], _powerupsInput[i]);
+            (inputArrayList[i], inputArrayList[j]) = (inputArrayList[j], inputArrayList[i]);
         }
 
         // select the first three items
         for (var i = 0; i < 3; i++)
         {
-            _shopOptions.Add(_powerupsInput[i]);
+            _shopOptions.Add(inputArrayList[i]);
         }
 
         // update the item cards
