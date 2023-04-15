@@ -68355,7 +68355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnDelay
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnedObject
@@ -68472,7 +68472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: killsForBossSpawn
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2051230087683807536, guid: 4ceb53a787cf64c8c9386434ef5834d6, type: 3}
       propertyPath: boss.Array.data[0]
@@ -69445,7 +69445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnDelay
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1477216537512184425, guid: 9ad8b1cad09c90143857b1ab1bf2d45c, type: 3}
       propertyPath: spawnedObject
