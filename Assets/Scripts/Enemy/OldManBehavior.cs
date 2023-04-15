@@ -20,8 +20,11 @@ public class OldManBehavior : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
         cooldown = cooldownDuration;
-        currentState = EnemyAI.FSMStates.Attack;
+        agent.speed = moveSpeed;
+        currentState = EnemyAI.FSMStates.Patrol;
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class OldManBehavior : MonoBehaviour
 
     void MoveState()
     {
+        Debug.Log("Move State");
         if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
         {
             currentState = EnemyAI.FSMStates.Attack;
@@ -60,6 +64,7 @@ public class OldManBehavior : MonoBehaviour
 
     void AttackState()
     {
+        Debug.Log("Attack State");
         if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
             if (cooldown <= 0)
