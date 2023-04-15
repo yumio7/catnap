@@ -31,9 +31,11 @@ public class MNVR_SpawnEnemies : MonoBehaviour, Maneuver
             {
                 zSpawnPos = -6;
             }
+
+            var ySpawnPos = transform.position.y + ySpawnOffset;
             
             var spawnPosition = 
-                new Vector3(xSpawnPos, ySpawnOffset, zSpawnPos);
+                new Vector3(xSpawnPos, ySpawnPos, zSpawnPos);
             
             Instantiate(enemySpawnPrefab, spawnPosition, Quaternion.identity);
         }
