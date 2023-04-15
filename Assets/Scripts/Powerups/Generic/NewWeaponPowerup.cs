@@ -20,10 +20,11 @@ public class NewWeaponPowerup : MonoBehaviour, Powerup
     private void Start()
     {
         currentPaw = GameObject.FindGameObjectWithTag("Paw");
-        Destroy(currentPaw.gameObject);
-        currentPaw = Instantiate(newPawPrefab, currentPaw.transform.position, currentPaw.transform.rotation, transform);
         projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
         playerCamera = Camera.main.transform;
+        Destroy(currentPaw.gameObject);
+        currentPaw = Instantiate(newPawPrefab, currentPaw.transform.position, currentPaw.transform.rotation, transform);
+        currentPaw.transform.parent = playerCamera;
     }
 
     private void Update()
