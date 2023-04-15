@@ -188,6 +188,7 @@ public class Tutorial : MonoBehaviour
     {
         navMeshAgent.speed = 0;
         player.GetComponent<PlayerController>().enabled = false;
+        Camera.main.GetComponent<ShootProjectile>().enabled = false;
         anim.SetInteger("animState", 2);
         var direction = (player.position - transform.position).normalized;
         direction.y = 0f;
@@ -215,6 +216,7 @@ public class Tutorial : MonoBehaviour
             dialoguebox.SetActive(false);
             canTalk = false;
             timer = 0;
+            Camera.main.GetComponent<ShootProjectile>().enabled = true;
             player.GetComponent<PlayerController>().enabled = true;
             currentState = FSMStates.Idle;
         }

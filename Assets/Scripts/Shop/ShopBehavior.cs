@@ -157,7 +157,8 @@ public class ShopBehavior : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-
+        
+        Camera.main.GetComponent<ShootProjectile>().enabled = value;
         player.GetComponent<PlayerController>().enabled = value;
         mainCam.GetComponent<MouseLook>().enabled = value;
     }
