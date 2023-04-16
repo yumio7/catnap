@@ -26,6 +26,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Debug.Log(numBosses);
         if (enemiesKilled >= killsForBossSpawn && !_spawned)
         {
             Vector3 offset = new Vector3(0, 0, 0);

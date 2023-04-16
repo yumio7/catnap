@@ -8,7 +8,6 @@ public class LevelManager : MonoBehaviour
     //public Text timerText;
     [SerializeField] private Text gameText;
     [SerializeField] private Text scoreText;
-
     //public AudioClip gameOverSFX;
     //public AudioClip gameWonSFX;
 
@@ -30,15 +29,7 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*
-    private void Update()
-    {
-        if (isGameOver)
-        {
-            LevelLost();
-        } 
-
-    }*/
+    
 
 
     public void SetScoreText()
@@ -57,10 +48,7 @@ public class LevelManager : MonoBehaviour
 
     public void LevelLost()
     {
-        EnemyManager.Instance.numBosses -= 1;
-        if (EnemyManager.Instance.numBosses <= 0)
-        {
-            isGameOver = true;
+        isGameOver = true;
             gameText.text = "GAME OVER!";
             gameText.gameObject.SetActive(true);
 
@@ -69,8 +57,7 @@ public class LevelManager : MonoBehaviour
 
             // we send the player back to house when they die
             nextLevel = "House";
-            Invoke(nameof(LoadLevel), 2);   
-        }
+            Invoke(nameof(LoadLevel), 2);
     }
 
     void DestroyPlayer()
@@ -81,16 +68,20 @@ public class LevelManager : MonoBehaviour
 
     public void LevelBeat()
     {
-        isGameOver = true;
-        gameText.text = "YOU WIN!";
-        gameText.gameObject.SetActive(true);
-
-        //Camera.main.GetComponent<AudioSource>().pitch = 2;
-        //AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
-
-        if (!string.IsNullOrEmpty(nextLevel))
+        EnemyManager.Instance.numBosses -= 1;
+        if (EnemyManager.Instance.numBosses <= 0)
         {
-            Invoke(nameof(LoadLevel), 2);
+            isGameOver = true;
+            gameText.text = "YOU WIN!";
+            gameText.gameObject.SetActive(true);
+
+            //Camera.main.GetComponent<AudioSource>().pitch = 2;
+            //AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
+
+            if (!string.IsNullOrEmpty(nextLevel))
+            {
+                Invoke(nameof(LoadLevel), 2);
+            }
         }
     }
 
