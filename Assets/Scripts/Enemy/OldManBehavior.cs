@@ -10,11 +10,13 @@ public class OldManBehavior : MonoBehaviour
     [SerializeField] private float cooldownDuration = 3;
     [SerializeField] private GameObject gunTip;
     [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private int shootForce = 10;
     
     private float cooldown;
     private EnemyAI.FSMStates currentState;
     private GameObject player;
     private NavMeshAgent agent;
+    private GameObject projectileParent;
 
 
 
@@ -24,7 +26,8 @@ public class OldManBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         cooldown = cooldownDuration;
         agent.speed = moveSpeed;
-        currentState = EnemyAI.FSMStates.Patrol;
+        currentState = EnemyAI.FSMStates.Chase;
+        projectileParent = GameObject.FindGameObjectWithTag("ProjectileParent");
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class OldManBehavior : MonoBehaviour
         {
             switch (currentState)
             {
-                case EnemyAI.FSMStates.Patrol:
+                case EnemyAI.FSMStates.Chase:
                     MoveState();
                     break;
                 case EnemyAI.FSMStates.Attack:
@@ -58,7 +61,8 @@ public class OldManBehavior : MonoBehaviour
         else
         {
             FaceTarget(player.transform.position);
-            agent.SetDestination(player.transform.position);   
+            agent.SetDestination(player.transform.position);
+            Debug.Log(agent.destination);
         }
     }
 
@@ -67,8 +71,12 @@ public class OldManBehavior : MonoBehaviour
         Debug.Log("Attack State");
         if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
+            Debug.Log("In Range");
+            agent.speed = 0;
+            FaceTarget(player.transform.position);
             if (cooldown <= 0)
             {
+                Debug.Log("Cooldown is less than zero!");
                 FireBullet();
                 cooldown = cooldownDuration;
             }
@@ -76,6 +84,7 @@ public class OldManBehavior : MonoBehaviour
         }
         else
         {
+            agent.speed = moveSpeed;
             currentState = EnemyAI.FSMStates.Chase;
         }
         
@@ -83,7 +92,12 @@ public class OldManBehavior : MonoBehaviour
 
     private void FireBullet()
     {
-        Instantiate(bullet, gunTip.transform);
+        Debug.Log("Fired Bullet");
+        var b =Instantiate(bullet, gunTip.transform.position, Quaternion.identity);
+        b.transform.parent = projectileParent.transform;
+        var rb = b.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * shootForce);
+
     }
     
     private void Initialize()

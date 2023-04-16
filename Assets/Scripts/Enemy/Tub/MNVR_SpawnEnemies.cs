@@ -12,6 +12,8 @@ public class MNVR_SpawnEnemies : MonoBehaviour, Maneuver
     
     public void Activate()
     {
+        Vector3 pos = transform.position;
+        
         for (int i = 0; i < numOfEnemiesToSpawn; i++)
         {
             var xSpawnPos = Random.Range(-xSpawnRadius, xSpawnRadius);
@@ -32,10 +34,10 @@ public class MNVR_SpawnEnemies : MonoBehaviour, Maneuver
                 zSpawnPos = -6;
             }
 
-            var ySpawnPos = transform.position.y + ySpawnOffset;
+            var ySpawnPos = pos.y + ySpawnOffset;
             
             var spawnPosition = 
-                new Vector3(xSpawnPos, ySpawnPos, zSpawnPos);
+                new Vector3(pos.x + xSpawnPos, ySpawnPos, pos.z + zSpawnPos);
             
             Instantiate(enemySpawnPrefab, spawnPosition, Quaternion.identity);
         }
