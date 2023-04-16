@@ -12,9 +12,11 @@ public class EnemyHit : MonoBehaviour
     [SerializeField] private int enemyHealth = 2;
     [SerializeField] private GameObject milkPrefab;
     [SerializeField] private GameObject slowIndicator;
+
     [SerializeField, Tooltip("What sound does this enemy make when it's hit?")]
     private AudioClip hitSFX;
-    [SerializeField, Tooltip("When enemy is hit, how long do they flash red?")] 
+
+    [SerializeField, Tooltip("When enemy is hit, how long do they flash red?")]
     private float hitIndicatorDuration = 0.1f;
 
     private GameObject _powerupParent;
@@ -23,6 +25,8 @@ public class EnemyHit : MonoBehaviour
     private int maxHealth;
     private Renderer[] renderersInEnemy;
     private bool immune;
+    private bool currentlyFlickering;
+    private BossHealthBar bossHealthBar;
 
     private void Start()
     {
@@ -31,6 +35,8 @@ public class EnemyHit : MonoBehaviour
         _enemyNav = gameObject.GetComponent<EnemyNav>();
         _levelMan = FindObjectOfType<LevelManager>();
         renderersInEnemy = gameObject.GetComponentsInChildren<Renderer>();
+        currentlyFlickering = false;
+        bossHealthBar = gameObject.GetComponent<BossHealthBar>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -53,7 +59,12 @@ public class EnemyHit : MonoBehaviour
     {
         if (!immune)
         {
-            StartCoroutine(HitRegister());
+            if (!currentlyFlickering)
+            {
+                currentlyFlickering = true;
+                StartCoroutine(HitRegister());
+            }
+
             enemyHealth -= damage;
 
             if (enemyHealth <= 0)
@@ -63,11 +74,6 @@ public class EnemyHit : MonoBehaviour
         }
     }
 
-    void OnDisable()
-    {
-        StopCoroutine(HitRegister());
-    }
-    
     // make a visual indicator the enemy got hit with a red effect and play SFX
     IEnumerator HitRegister()
     {
@@ -80,28 +86,22 @@ public class EnemyHit : MonoBehaviour
         var defaultColors = new Color[renderersInEnemy.Length];
 
         // set default color to prev color and update the color of all renderers in this enemy
-        for (int i = 0 ; i < renderersInEnemy.Length; i++)
+        for (int i = 0; i < renderersInEnemy.Length; i++)
         {
-            if (defaultColors[i] == Color.red)
-            {
-                // this coroutine is already in progress and has turned this enemy red. Don't want to double-dip!
-                yield break;
-            }
-            else
-            {
-                defaultColors[i] = renderersInEnemy[i].material.color;
-                renderersInEnemy[i].material.color = Color.red;
-            }
+            defaultColors[i] = renderersInEnemy[i].material.color;
+            renderersInEnemy[i].material.color = Color.red;
         }
 
-        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, .2f); 
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position, .2f);
 
         yield return new WaitForSeconds(hitIndicatorDuration); // wait for duration of hit indicator
-        
-        for (int i = 0 ; i < renderersInEnemy.Length ; i++)
+
+        for (int i = 0; i < renderersInEnemy.Length; i++)
         {
             renderersInEnemy[i].material.color = defaultColors[i]; // reset the color
         }
+
+        currentlyFlickering = false;
 
         StopCoroutine(HitRegister()); // stop the coroutine
     }
@@ -159,6 +159,9 @@ public class EnemyHit : MonoBehaviour
         {
             _levelMan.LevelBeat();
         }
+
+        if (isBoss)
+            bossHealthBar.SetToZero();
 
         Destroy(gameObject, 0.5f);
     }

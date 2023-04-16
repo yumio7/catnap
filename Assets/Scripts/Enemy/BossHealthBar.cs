@@ -34,7 +34,12 @@ public class BossHealthBar : MonoBehaviour
         {
             healthBar.maxValue = enemyHit.GetMaxHealth();
         }
-
+        
         healthBar.value = enemyHit.GetCurrentHealth();
+    }
+
+    public void SetToZero()
+    {
+        healthBar.value = 0;
     }
 }
