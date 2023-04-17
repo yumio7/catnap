@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
 
-    //public AudioClip deadSFX;
+    public AudioClip hurtSFX;
 
     private int currentHealth;
 
@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        AudioSource.PlayClipAtPoint(hurtSFX, transform.position);
         if (currentHealth > 0)
         {
             currentHealth -= damageAmount;
@@ -52,6 +53,5 @@ public class PlayerHealth : MonoBehaviour
         {
             FindObjectOfType<LevelManager>().LevelLost();
         }
-        // AudioSource.PlayClipAtPoint(deadSFX, transform.position);
     }
 }
