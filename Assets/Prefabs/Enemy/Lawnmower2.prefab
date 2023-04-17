@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 1
   destroyedParticleEffect: {fileID: 4671158292068359190, guid: 6d40b66375bec1f43a8c834d262a84b9, type: 3}
-  enemyHealth: 300
+  enemyHealth: 500
   milkPrefab: {fileID: 2335062486411616253, guid: 6f36679597a2e144abadb0ab1397ea79, type: 3}
   slowIndicator: {fileID: 8349572951801342927, guid: 8b0ed19635fdc4a088ab8cf838348209, type: 3}
   hitSFX: {fileID: 8300000, guid: 631a4f19833fb45fbb1dd901aab67f0e, type: 3}
