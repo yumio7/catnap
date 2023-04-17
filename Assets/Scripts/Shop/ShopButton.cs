@@ -9,8 +9,7 @@ public class ShopButton : MonoBehaviour
     // reference to the ShopBehavior script
     private ShopBehavior _shopBehavior;
 
-    // index of this button
-    public int buttonIndex;
+    private string powerup;
 
     private void Start()
     {
@@ -27,6 +26,11 @@ public class ShopButton : MonoBehaviour
     private void OnButtonClicked()
     {
         // call the OnButtonClicked method in the ShopBehavior script
-        _shopBehavior.OnButtonClicked(buttonIndex);
+        _shopBehavior.OnButtonClicked(powerup);
+    }
+
+    public void setPowerup(string s)
+    {
+        powerup = s;
     }
 }

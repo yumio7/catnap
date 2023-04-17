@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/17742/Desktop/CS3540/catnap/Builds/GoldBuild;/Users/zlembarra/CS3540/catnap/WebGL Builds;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/17742/Desktop/CS3540/catnap/Builds/GoldBuild2;C:/Users/17742/Desktop/CS3540/catnap/Builds/GoldBuild;/Users/zlembarra/CS3540/catnap/WebGL Builds;;;;;;;\"}"
             }
         ]
     }
