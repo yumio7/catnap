@@ -80,6 +80,7 @@ public class ShopBehavior : MonoBehaviour
             itemCard.SetCostText("Cost: " + curPowerup.GetCost());
             itemCard.SetImage(curPowerup.GetSprite());
             itemCard.SetOverwriteWarningTextActive(false);
+            itemCard.GetComponentInChildren<ShopButton>().setPowerup(curPowerup.GetName());
 
             // player can get infinite augments, but we need to check for conflict on paw or grenade
             var conflictPowerup = FindPowerupsConflictingWith(curPowerup);
@@ -93,20 +94,31 @@ public class ShopBehavior : MonoBehaviour
         }
     }
 
-    public void OnButtonClicked(int buttonIndex)
+    public void OnButtonClicked(string powerup)
     {
-        Debug.Log("Button " + (buttonIndex + 1) + " clicked");
+        Debug.Log("Button " + (powerup) + " clicked");
         // Do whatever you want to do when a button is clicked
-        Debug.Log("Powerup Selected: " + _shopOptions[buttonIndex]);
+        Debug.Log("Powerup Selected: " + powerup);
+
+        GameObject currentPow = new GameObject();
+
+        foreach (GameObject p in _shopOptions)
+        {
+            if (p.GetComponent<Powerup>().GetName() == powerup)
+            {
+                currentPow = p;
+                break;
+            }
+        }
 
         // check if player can afford it
         var playerCurrency = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCurrency>();
-        var costOfItem = _shopOptions[buttonIndex].GetComponent<Powerup>().GetCost();
+        var costOfItem = currentPow.GetComponent<Powerup>().GetCost();
         
         if (playerCurrency.CanBuy(costOfItem))
         {
             // player can get infinite augments, but we need to check for conflict on paw or grenade
-            var curPowerup = _shopOptions[buttonIndex].GetComponent<Powerup>();
+            var curPowerup = currentPow.GetComponent<Powerup>();
             var conflictPowerup = FindPowerupsConflictingWith(curPowerup);
             if (conflictPowerup != null)
             {
@@ -115,7 +127,7 @@ public class ShopBehavior : MonoBehaviour
             }
             
             // buy the new powerup, add that component to the player
-            Instantiate(_shopOptions[buttonIndex], player.transform, true);
+            Instantiate(currentPow, player.transform, true);
             // and remove that currency from the player
             playerCurrency.RemoveMoney(costOfItem);
         }
