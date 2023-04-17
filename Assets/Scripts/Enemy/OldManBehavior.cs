@@ -53,7 +53,6 @@ public class OldManBehavior : MonoBehaviour
 
     void MoveState()
     {
-        Debug.Log("Move State");
         if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
         {
             currentState = EnemyAI.FSMStates.Attack;
@@ -62,21 +61,17 @@ public class OldManBehavior : MonoBehaviour
         {
             FaceTarget(player.transform.position);
             agent.SetDestination(player.transform.position);
-            Debug.Log(agent.destination);
         }
     }
 
     void AttackState()
     {
-        Debug.Log("Attack State");
         if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
         {
-            Debug.Log("In Range");
             agent.speed = 0;
             FaceTarget(player.transform.position);
             if (cooldown <= 0)
             {
-                Debug.Log("Cooldown is less than zero!");
                 FireBullet();
                 cooldown = cooldownDuration;
             }
@@ -92,7 +87,6 @@ public class OldManBehavior : MonoBehaviour
 
     private void FireBullet()
     {
-        Debug.Log("Fired Bullet");
         var b =Instantiate(bullet, gunTip.transform.position, Quaternion.identity);
         b.transform.parent = projectileParent.transform;
         b.transform.LookAt(player.transform);

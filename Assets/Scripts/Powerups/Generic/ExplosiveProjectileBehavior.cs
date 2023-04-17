@@ -35,7 +35,16 @@ public class ExplosiveProjectileBehavior : MonoBehaviour
             {
                 hit.gameObject.GetComponent<EnemyHit>().EnemyHurt(damageAmount);
                 if (slowingProjectile)
-                    hit.gameObject.GetComponent<EnemyHit>().Slow(slowDuration);
+                {
+                    try
+                    {
+                        hit.gameObject.GetComponent<EnemyHit>().Slow(slowDuration);
+                    }
+                    catch
+                    {
+                        // fighting a weird boss movement type, can't slow it...
+                    }
+                }
             }
         }
 

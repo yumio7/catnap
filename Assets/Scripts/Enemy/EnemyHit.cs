@@ -130,12 +130,13 @@ public class EnemyHit : MonoBehaviour
             Quaternion.identity);
         slowIndctr.transform.parent = gameObject.transform;
         _enemyNav.SlowMovespeed();
-        Destroy(slowIndctr, duration);
+
+            Destroy(slowIndctr, duration);
     }
 
     private void RegularMoveSpeed()
     {
-        _enemyNav.RegularMovespeed();
+        _enemyNav.SlowMovespeed();
     }
 
     private void DestroyEnemy()
