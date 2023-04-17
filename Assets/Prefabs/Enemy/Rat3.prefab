@@ -21909,7 +21909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackDamage: 10
-  _attackRate: 12
+  _attackRate: 1
 --- !u!114 &4861511519214447063
 MonoBehaviour:
   m_ObjectHideFlags: 0

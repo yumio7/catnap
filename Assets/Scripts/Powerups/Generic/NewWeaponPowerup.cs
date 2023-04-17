@@ -29,12 +29,12 @@ public class NewWeaponPowerup : MonoBehaviour, Powerup
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !firing)
         {
             firing = true;
             StartCoroutine(FireProjectiles());
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.F) && firing)
         {
             firing = false;
         }
