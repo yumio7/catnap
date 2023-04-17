@@ -95,8 +95,9 @@ public class OldManBehavior : MonoBehaviour
         Debug.Log("Fired Bullet");
         var b =Instantiate(bullet, gunTip.transform.position, Quaternion.identity);
         b.transform.parent = projectileParent.transform;
+        b.transform.LookAt(player.transform);
         var rb = b.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * shootForce);
+        rb.AddForce(b.transform.forward * shootForce);
 
     }
     
